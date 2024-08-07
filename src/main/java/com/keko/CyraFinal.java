@@ -17,6 +17,6 @@ public class CyraFinal implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Esti foarte amuzant");
+		LOGGER.info("Esti foarte amuzantaaaaaaaaa");
 	}
 }
