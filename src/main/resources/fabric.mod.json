@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "cyra-final",
+	"id": "cyra",
 	"version": "${version}",
 	"name": "Cyra Final",
 	"description": "This is an example description! Tell everyone what your mod is about!",

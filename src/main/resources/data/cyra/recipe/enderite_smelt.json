@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "enderite_ingot",
+  "ingredient": {
+    "item": "cyra:enderite_chunk"
+  },
+  "result": {
+    "id": "cyra:enderite_ingot"
+  }
+}
