@@ -1,9 +1,6 @@
 package com.keko;
 
-import com.keko.data.ModLootTableGenerator;
-import com.keko.data.ModModelProvider;
-import com.keko.data.ModRecipegenerator;
-import com.keko.data.ModWorldGenerator;
+import com.keko.data.*;
 import com.keko.world.ModConfiguredFeatures;
 import com.keko.world.ModPlacedFeature;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -20,6 +17,7 @@ public class CyraFinalDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModRecipegenerator::new);
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModWorldGenerator::new);
+		pack.addProvider(ModitemTagProvider::new);
 	}
 
 	@Override

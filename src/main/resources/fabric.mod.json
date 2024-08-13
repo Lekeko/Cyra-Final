@@ -20,6 +20,10 @@
 		],
 		"fabric-datagen": [
 			"com.keko.CyraFinalDataGenerator"
+		],
+		"client": [
+			"com.keko.CyraModClient"
+
 		]
 	},
 	"mixins": [
