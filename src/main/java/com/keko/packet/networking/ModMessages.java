@@ -8,6 +8,8 @@ import net.minecraft.util.Identifier;
 
 public class ModMessages {
     public static final Identifier HEALING_SYNC_ID = Identifier.of(CyraFinal.MOD_ID, "healing");
+    public static final Identifier BUFF_SYNC_ID = Identifier.of(CyraFinal.MOD_ID, "buff");
+    public static final Identifier DASH_SYNC_ID = Identifier.of(CyraFinal.MOD_ID, "dash");
 
     public static void registerC2SPacket() {
 

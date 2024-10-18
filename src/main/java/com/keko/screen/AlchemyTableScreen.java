@@ -1,9 +1,12 @@
 package com.keko.screen;
 
 import com.keko.CyraFinal;
+import com.keko.blocks.environment.AlchemyTableEntity;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.tooltip.Tooltip;
+import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
@@ -15,9 +18,30 @@ public class AlchemyTableScreen extends HandledScreen<AlchemyTableScreenhandler>
         super(handler, inventory, title);
     }
 
+
+    public ButtonWidget button1;
+
     @Override
     protected void init() {
+        button1 = ButtonWidget.builder(Text.literal("Combine"), button -> {
+            if (button.active){
+                if (AlchemyTableEntity.canCraft){
+                    AlchemyTableEntity.wantsToCraft = true;
+                }
+            }
+        }) .dimensions(width / 2 - 29, height / 2 - 48, 50, 15)
+                .build();
+        addDrawableChild(button1);
+
         super.init();
+    }
+
+
+
+    @Override
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        super.render(context, mouseX, mouseY, delta);
+        drawMouseoverTooltip(context, mouseX, mouseY);
     }
 
     @Override

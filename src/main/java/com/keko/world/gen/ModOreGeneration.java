@@ -9,5 +9,7 @@ public class ModOreGeneration {
     public static void generateOres() {
         BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.ENDERITE_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.all(),
+                GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.LANTERN_ORE_PLACED_KEY);
     }
 }

@@ -29,6 +29,13 @@ public class ModItemGroup {
                         entries.add(ModItems.ENDERITE_BOOTS);
                         entries.add(ModItems.HEALING_FLASK);
                         entries.add(ModItems.BUFF_FLASK);
+                        entries.add(ModItems.ORB_OF_BOUND);
+                        entries.add(ModItems.ORB_OF_FORCE);
+                        entries.add(ModItems.ORB_OF_DAHY);
+                        entries.add(ModItems.ORB_OF_IMPETOUSITY);
+                        entries.add(ModItems.ORB_OF_VITALITY);
+                        entries.add(ModBlocks.ALCHEMY_TABLE);
+                        entries.add(ModBlocks.CORE_OF_THE_SEA);
                     }).build());
 
 

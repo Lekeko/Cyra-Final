@@ -2,20 +2,20 @@ package com.keko.blocks.environment;
 
 import com.keko.blocks.ImplementedInventory;
 import com.keko.blocks.ModBlockEntity;
-import com.keko.helpers.Directional;
 import com.keko.items.ModItems;
+import com.keko.items.tools.BuffFlask;
 import com.keko.screen.AlchemyTableScreenhandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
-import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
@@ -23,34 +23,26 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 
 public class AlchemyTableEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
+    public static boolean wantsToCraft = false;
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
     private static final int INPUT_SLOT_1 = 0;
     private static final int INPUT_SLOT_2 = 1;
     private static final int INPUT_SLOT_3 = 2;
 
-     ArrayList<Item> orbs = new ArrayList<>() {{
-                 add(ModItems.ORB_OF_IMPETOUSITY);
-                 add(ModItems.ORB_OF_DAHY);
-                 add(ModItems.ORB_OF_BOUND);
-                 add(ModItems.ORB_OF_VITALITY);
-                 add(ModItems.ORB_OF_FORCE);
-     }};
+     HashMap<Item, StatusEffectInstance> orb = new HashMap<Item, StatusEffectInstance>();
 
 
-    private static boolean canCraft = false;
+    public static boolean canCraft = false;
 
     protected final PropertyDelegate propertyDelegate;
-
+    private StatusEffectInstance effect1;
+    private StatusEffectInstance effect2;
 
 
     public AlchemyTableEntity(BlockPos pos, BlockState state) {
@@ -78,6 +70,8 @@ public class AlchemyTableEntity extends BlockEntity implements ExtendedScreenHan
         super.writeNbt(nbt, registryLookup);
         Inventories.writeNbt(nbt, inventory, registryLookup);
     }
+
+
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
@@ -111,20 +105,44 @@ public class AlchemyTableEntity extends BlockEntity implements ExtendedScreenHan
             return;
         }
 
+
+
         if (outputHaveBuffPotion()){
+            orb.put(ModItems.ORB_OF_IMPETOUSITY, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
+            orb.put(ModItems.ORB_OF_DAHY, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
+            orb.put(ModItems.ORB_OF_BOUND, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
+            orb.put(ModItems.ORB_OF_VITALITY, new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 60 * 2, 2));
+            orb.put(ModItems.ORB_OF_FORCE, new StatusEffectInstance(StatusEffects.STRENGTH, 20 * 60 * 2, 2));
+
             if (firstSlotHasOrb() && secondSlotHasOrb()){
                 canCraft = true;
+            }
+            if (wantsToCraft){
+                ((BuffFlask)(this.getStack(INPUT_SLOT_3).getItem())).addEffect(
+                        effect1, effect2
+                );
+
+
+                wantsToCraft = false;
             }
         }
     }
 
     private boolean secondSlotHasOrb() {
-        return orbs.contains(this.getStack(INPUT_SLOT_1).getItem());
+        if (orb.containsKey(this.getStack(INPUT_SLOT_1).getItem())){
+            effect1 = orb.get(this.getStack(INPUT_SLOT_1).getItem());
+            return true;
+        }
+        return false;
 
     }
 
     private boolean firstSlotHasOrb() {
-        return orbs.contains(this.getStack(INPUT_SLOT_2).getItem());
+        if (orb.containsKey(this.getStack(INPUT_SLOT_2).getItem())){
+            effect2 = orb.get(this.getStack(INPUT_SLOT_2).getItem());
+            return true;
+        }
+        return false;
     }
 
 

@@ -1,5 +1,6 @@
 package com.keko.data;
 
+import com.keko.blocks.ModBlocks;
 import com.keko.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -15,8 +16,11 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
+        blockStateModelGenerator.registerSimpleState(ModBlocks.CORE_OF_THE_SEA);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.ENDERITE_ORE);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.PRISMATIC_LEAVES);
     }
+
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
@@ -32,6 +36,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ORB_OF_FORCE, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORB_OF_IMPETOUSITY, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORB_OF_VITALITY, Models.GENERATED);
+
 
 
 

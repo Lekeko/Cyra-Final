@@ -1,9 +1,11 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
+
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "cyra:block/alchemy_table",
-		"particle": "cyra:block/alchemy_table"
+		"particle": "minecraft:block/end_portal_frame_side"
 	},
 	"elements": [
 		{

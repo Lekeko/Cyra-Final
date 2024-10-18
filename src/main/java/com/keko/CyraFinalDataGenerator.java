@@ -2,6 +2,7 @@ package com.keko;
 
 import com.keko.data.*;
 import com.keko.world.ModConfiguredFeatures;
+import com.keko.world.ModDimensions;
 import com.keko.world.ModPlacedFeature;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;

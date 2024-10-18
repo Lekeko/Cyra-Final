@@ -21,17 +21,38 @@ public class KeyBinds {
 
     public static float healing_amount = 3; // Hearts
     public static int cooldown = 30; //seconds
+    public static int cooldownBuff = 60 * 4; //seconds
 
-    public static KeyBinding keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+    public static KeyBinding keyBinding1 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.cyra.heal",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_H,
             "key.cyra.cyramod"
     ));
 
+    public static KeyBinding keyBinding2 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.cyra.buff",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_B,
+            "key.cyra.cyramod"
+    ));
+
+    public static KeyBinding keyBindingDash1 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.cyra.dash1",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_D,
+            "key.cyra.cyramod"
+    ));
+    public static KeyBinding keyBindingDash2 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.cyra.dash2",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_A,
+            "key.cyra.cyramod"
+    ));
+
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (keyBinding.wasPressed()){
+            if (keyBinding1.wasPressed()){
                 assert client.player != null;
                 if (InvSearch.hasItemInInv(client.player, ModItems.HEALING_FLASK)){
                     ItemStack itemStack = InvSearch.getItemInInv(client.player, ModItems.HEALING_FLASK);
@@ -44,6 +65,31 @@ public class KeyBinds {
                         ClientPlayNetworking.send(new HealPayload(10));
                     }
                 }
+            }
+        });
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (keyBinding2.wasPressed()){
+                assert client.player != null;
+                if (InvSearch.hasItemInInv(client.player, ModItems.BUFF_FLASK)){
+                    ItemStack itemStack = InvSearch.getItemInInv(client.player, ModItems.BUFF_FLASK);
+                    assert itemStack != null;
+                    if (!client.player.getItemCooldownManager().isCoolingDown(itemStack.getItem())){
+
+                        PacketByteBuf buf = PacketByteBufs.create();
+                        buf.writeInt(10);
+
+                        ClientPlayNetworking.send(new BuffPayload(10));
+                    }
+                }
+            }
+        });
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (keyBindingDash1.wasPressed()){
+                assert client.player != null;
+                client.player.addVelocity(5, 0, 0);
+                client.player.velocityModified = true;
             }
         });
     }

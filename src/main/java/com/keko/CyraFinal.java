@@ -9,11 +9,14 @@ import com.keko.items.ModArmorMaterial;
 import com.keko.items.ModItemGroup;
 import com.keko.items.ModItems;
 import com.keko.screen.ModScreenHandlers;
+import com.keko.world.ModDimensions;
+import com.keko.world.biome.ModBiomes;
 import com.keko.world.gen.ModWorldGen;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,14 +32,18 @@ public class CyraFinal implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModItems.registerModItems();
 		ModArmorMaterial.load();
-		//KeyBinds.initializeKeyBinds();
 		ModBlockEntity.registerBlockEnt();
 		ModScreenHandlers.registerScreenhandler();
-
+		ModDimensions.register();
+		ModBiomes.registerBiomes();
 
 
 
 
 		LOGGER.info("Skibidi toilet ohio rizz pomni gayat");
+	}
+
+	public static Identifier id(String path) {
+		return Identifier.of(MOD_ID, path);
 	}
 }

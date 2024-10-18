@@ -7,7 +7,7 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 
-public class HealSyncDataS2CPacket {
+public class  HealSyncDataS2CPacket {
     public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler,
                                PacketByteBuf byteBuf, PacketSender packetSender){
         assert client.player != null;

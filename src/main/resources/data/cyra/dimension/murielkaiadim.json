@@ -1,0 +1,11 @@
+{
+  "type": "cyra:murielkaiadim",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "cyra:murielkaiadim",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "cyra:muriel_waters"
+    }
+  }
+}

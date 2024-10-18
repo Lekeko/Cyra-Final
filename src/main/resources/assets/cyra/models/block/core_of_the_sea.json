@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "cyra:block/core_of_the_sea"
+  }
+}
+
