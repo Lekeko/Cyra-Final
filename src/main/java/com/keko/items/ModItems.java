@@ -17,6 +17,24 @@ public class ModItems {
     public static final Item HEALING_FLASK = registerItem(new HealingFlask(new Item.Settings().maxCount(1)), "healing_flask");
     public static final Item BUFF_FLASK = registerItem(new BuffFlask(new Item.Settings().maxCount(1)), "buff_flask");
 
+
+
+    public static final Item SEA_CRYSTAL_FRAGMENT = registerItem(new BuffFlask(new Item.Settings()), "sea_crystal_fragment");
+    public static final Item SEA_CRYSTAL = registerItem(new BuffFlask(new Item.Settings()), "sea_crystal");
+
+    public static final Item SEA_CRYSTAL = registerItem(new BuffFlask(new Item.Settings()), "sea_crystal");
+    public static final Item SEA_CRYSTAL = registerItem(new BuffFlask(new Item.Settings()), "sea_crystal");
+    public static final Item SEA_CRYSTAL = registerItem(new BuffFlask(new Item.Settings()), "sea_crystal");
+    public static final Item SEA_CRYSTAL = registerItem(new BuffFlask(new Item.Settings()), "sea_crystal");
+
+    public static final Item SEA_STRIDERS = registerItem(new Item(new Item.Settings()), "sea_striders");
+
+    public static final Item SEA_CRYSTAL_SWORD = registerItem(new SwordItem(new Item.Settings()), "sea_crystal_sword");
+    public static final Item SEA_CRYSTAL_SHOVEL = registerItem(new ShovelItem(new Item.Settings()), "sea_crystal_shovel");
+    public static final Item SEA_CRYSTAL_PICKAXE = registerItem(new PickaxeItem(new Item.Settings()), "sea_crystal_pickaxe");
+    public static final Item SEA_CRYSTAL_AXE = registerItem(new AxeItem(new Item.Settings()), "sea_crystal_axe");
+    public static final Item SEA_CRYSTAL_HOE = registerItem(new HoeItem(new Item.Settings()), "sea_crystal_hoe");
+
     public static final Item ORB_OF_BOUND = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_bound");
     public static final Item ORB_OF_DAHY = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_dahy");
     public static final Item ORB_OF_FORCE = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_force");
