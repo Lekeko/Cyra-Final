@@ -32,10 +32,21 @@ public class ModItemGroup {
                         entries.add(ModItems.ORB_OF_BOUND);
                         entries.add(ModItems.ORB_OF_FORCE);
                         entries.add(ModItems.ORB_OF_DAHY);
-                        entries.add(ModItems.ORB_OF_IMPETOUSITY);
+                        entries.add(ModItems.ORB_OF_IMPETUOSITY);
                         entries.add(ModItems.ORB_OF_VITALITY);
                         entries.add(ModBlocks.ALCHEMY_TABLE);
-                        entries.add(ModBlocks.CORE_OF_THE_SEA);
+                        entries.add(ModBlocks.SEA_CRYSTAL_CLUSTER);
+                        entries.add(ModItems.SEA_CRYSTAL);
+                        entries.add(ModItems.SEA_CRYSTAL_FRAGMENT);
+                        entries.add(ModItems.SEA_CRYSTAL_AXE);
+                        entries.add(ModItems.SEA_CRYSTAL_HELMET);
+                        entries.add(ModItems.SEA_CRYSTAL_CHESTPLATE);
+                        entries.add(ModItems.SEA_CRYSTAL_LEGGINGS);
+                        entries.add(ModItems.SEA_CRYSTAL_BOOTS);
+                        entries.add(ModItems.SEA_CRYSTAL_SWORD);
+                        entries.add(ModItems.SEA_CRYSTAL_PICKAXE);
+                        entries.add(ModItems.SEA_CRYSTAL_SHOVEL);
+                        entries.add(ModItems.SEA_CRYSTAL_HOE);
                     }).build());
 
 

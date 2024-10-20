@@ -1,7 +1,9 @@
-// 1.21	2024-10-14T11:20:38.0096149	Cyra Final/cyra
+// 1.21	2024-10-19T15:21:45.1585951	Cyra Final/cyra
 b719fe475a2a3acab96c80edde00b5a19d8ef6f4 data\cyra\worldgen\configured_feature\prismatic_tree.json
+35d4cad2a0a1403c4599f8cc304dd673177120b6 data\cyra\worldgen\configured_feature\sea_crystal_cluster.json
 591410180bfc6535b36c90ff45bd6e68157f287b data\cyra\worldgen\placed_feature\enderite_ore_placed.json
 5d3dc53472c779e9027032772a61e3a4a3a614e4 data\cyra\worldgen\placed_feature\prismatic_tree_placed.json
-17fe7e782299d863d1d126f4fbdbf4f1265d5c45 data\cyra\worldgen\placed_feature\dim_sea_lantern_placed.json
-a975c727b54d0252b3bcf05de360cc7909b5b659 data\cyra\worldgen\configured_feature\dim_sea_lantern_ore.json
+ff964cba53d46ce0c6688837b17dffb10fb79c9d data\cyra\worldgen\placed_feature\dim_sea_lantern_placed.json
+77dba3a3e694586cd4bb043465df3cc64df95fdd data\cyra\worldgen\configured_feature\dim_sea_lantern_ore.json
 e02f7fb969645c8de89b12e1c9ace6254f8b9bbf data\cyra\worldgen\configured_feature\enderite_ore.json
+63664696dec84f59edada95cc48f5f52910669c6 data\cyra\worldgen\placed_feature\sea_crystal_cluster_key.json

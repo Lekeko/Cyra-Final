@@ -108,7 +108,7 @@ public class AlchemyTableEntity extends BlockEntity implements ExtendedScreenHan
 
 
         if (outputHaveBuffPotion()){
-            orb.put(ModItems.ORB_OF_IMPETOUSITY, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
+            orb.put(ModItems.ORB_OF_IMPETUOSITY, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
             orb.put(ModItems.ORB_OF_DAHY, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
             orb.put(ModItems.ORB_OF_BOUND, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
             orb.put(ModItems.ORB_OF_VITALITY, new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 60 * 2, 2));

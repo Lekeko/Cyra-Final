@@ -31,16 +31,33 @@ public class ModitemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.HOES)
                 .add(ModItems.ENDERITE_HOE);
 
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(ModItems.SEA_CRYSTAL_SWORD);
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .add(ModItems.SEA_CRYSTAL_SHOVEL);
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(ModItems.SEA_CRYSTAL_AXE);
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(ModItems.SEA_CRYSTAL_PICKAXE);
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .add(ModItems.SEA_CRYSTAL_HOE);
+
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModItems.ENDERITE_HELMET);
-
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ModItems.ENDERITE_CHESTPLATE);
-
         getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ModItems.ENDERITE_LEGGINGS);
-
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModItems.ENDERITE_BOOTS);
+
+        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+                .add(ModItems.SEA_CRYSTAL_HELMET);
+        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+                .add(ModItems.SEA_CRYSTAL_CHESTPLATE);
+        getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+                .add(ModItems.SEA_CRYSTAL_LEGGINGS);
+        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+                .add(ModItems.SEA_CRYSTAL_BOOTS);
     }
 }

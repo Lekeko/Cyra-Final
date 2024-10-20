@@ -18,6 +18,7 @@ import static com.keko.world.ModConfiguredFeatures.PRISMATIC_TREE_KEY;
 
 public class ModPlacedFeature {
     public static final RegistryKey<PlacedFeature> ENDERITE_ORE_PLACED_KEY = registerKey("enderite_ore_placed");
+    public static final RegistryKey<PlacedFeature> SEA_CRYSTAL_CLUSTER_PLACED_KEY = registerKey("sea_crystal_cluster_key");
     public static final RegistryKey<PlacedFeature> LANTERN_ORE_PLACED_KEY = registerKey("dim_sea_lantern_placed");
     public static final RegistryKey<PlacedFeature> PRISMATIC_TREE_PLACED = registerKey("prismatic_tree_placed");
 
@@ -26,8 +27,10 @@ public class ModPlacedFeature {
 
         register(context, ENDERITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ENDERITE_ORE_KEY),
                 ModorePlacement.modifiersWithCount(5, HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+        register(context, SEA_CRYSTAL_CLUSTER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SEA_CRYSTAL_CLUSTER_KEY),
+                ModorePlacement.modifiersWithCount(7, HeightRangePlacementModifier.uniform(YOffset.fixed(-20), YOffset.fixed(300))));
         register(context, LANTERN_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LANTERN_ORE_KEY),
-                ModorePlacement.modifiersWithCount(20, HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(380))));
+                ModorePlacement.modifiersWithCount(50, HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(380))));
         register(context, PRISMATIC_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(PRISMATIC_TREE_KEY),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2),
                         ModBlocks.PRISMATIC_SAMPLING));

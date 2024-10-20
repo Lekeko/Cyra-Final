@@ -21,9 +21,12 @@ import java.util.Optional;
 public class ModBlocks {
 
     public static final  Block ENDERITE_ORE = registerBlock(new Block(Block.Settings.create().strength(30.0F, 1200.0F).requiresTool()), "enderite_ore");
+    public static final  Block SEA_CRYSTAL_CLUSTER = registerBlock(new Block(Block.Settings.create().strength(20.0F, 1000.0F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool()), "sea_crystal_cluster");
+
     public static final  Block CORE_OF_THE_SEA = registerBlock(new CoreOfTheSeaBlock(Block.Settings.create().strength(20.0F, 1200.0F).requiresTool().luminance((state) -> 20)), "core_of_the_sea");
     public static final  Block PRISMATIC_LEAVES = registerBlock(new LeavesBlock(Block.Settings.create().strength(5.2F, 10.0F).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((state) -> 15)), "prismatic_leaves");
     public static final Block ALCHEMY_TABLE = registerBlock(new AlchemyTable(AbstractBlock.Settings.copy(Blocks.BEACON)),"alchemy_table");
+
     public static final SaplingBlock PRISMATIC_SAMPLING = (SaplingBlock) registerBlock(
             new SaplingBlock(
                     new SaplingGenerator(

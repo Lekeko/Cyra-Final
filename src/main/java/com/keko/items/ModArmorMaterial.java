@@ -30,6 +30,18 @@ public class ModArmorMaterial{
             0.1F,
             false);
 
+    public static final RegistryEntry<ArmorMaterial> SEA_CRYSTAL = register("sea_crystal", Map.of(
+                    ArmorItem.Type.HELMET, 5,
+                    ArmorItem.Type.CHESTPLATE, 10,
+                    ArmorItem.Type.LEGGINGS, 8,
+                    ArmorItem.Type.BOOTS, 6
+            ),
+            15,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(ModItems.SEA_CRYSTAL),
+            5.5F,
+            0.3F,
+            false);
     public static RegistryEntry<ArmorMaterial> register(String id, Map<ArmorItem.Type, Integer> defensePoints,
                                                         int enchantability, RegistryEntry<SoundEvent> equipSound,
                                                         Supplier<Ingredient> repairIngredient, float toughness,

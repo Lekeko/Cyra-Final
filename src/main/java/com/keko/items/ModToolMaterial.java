@@ -13,30 +13,26 @@ import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
     ENDERITE(5,2431, 9.0F, 4.0F, 15, ModBlockTags.INCORRECT_FOR_ENDERITE_TOOL, () ->
-            Ingredient.ofItems(ModItems.ENDERITE_INGOT));
-    ;
-
-
-
-    /*,
-    SEA_CRYSTAL(6, 3000, 10.0F, 5.2F, 15, () -> {
-        return Ingredient.ofItems(ModItems.ENDERITE_INGOT);
-    }),
-    PYRITE(7, 3420, 11.5F, 5.9F, 15, () -> {
-        return Ingredient.ofItems(ModItems.ENDERITE_INGOT);
-    }),
-    RAINBOW_PYRITE(8, 3850, 13.5F, 6.5F, 15, () -> {
-        return Ingredient.ofItems(ModItems.ENDERITE_INGOT);
-    }),
-    BAUXITE(9, 4200, 15.5F, 7.2F, 15, () -> {
-        return Ingredient.ofItems(ModItems.ENDERITE_INGOT);
-    }),
-    VULCANIUM(10, 5000, 17.5F, 8.1F, 15, () -> {
-        return Ingredient.ofItems(ModItems.ENDERITE_INGOT);
-    }),
-    Cyranium(11, 7350, 20.0F, 9.5F, 15, () -> {
-        return Ingredient.ofItems(ModItems.ENDERITE_INGOT);
-    })*/
+            Ingredient.ofItems(ModItems.ENDERITE_INGOT)
+    ),
+    SEA_CRYSTAL(6, 3000, 10.0F, 5.2F, 15,  ModBlockTags.INCORRECT_FOR_SEA_CRYSTAL_TOOL, () ->
+            Ingredient.ofItems(ModItems.SEA_CRYSTAL)
+    ),
+    PYRITE(7, 3420, 11.5F, 5.9F, 15, ModBlockTags.INCORRECT_FOR_PYRITE_TOOL,() ->
+         Ingredient.ofItems(ModItems.ENDERITE_INGOT)
+    ),
+    RAINBOW_PYRITE(8, 3850, 13.5F, 6.5F, 15, ModBlockTags.INCORRECT_FOR_RAINBOW_PYRITE_TOOL,() ->
+         Ingredient.ofItems(ModItems.ENDERITE_INGOT)
+    ),
+    BAUXITE(9, 4200, 15.5F, 7.2F, 15, ModBlockTags.INCORRECT_FOR_BAUXITE_TOOL,() ->
+         Ingredient.ofItems(ModItems.ENDERITE_INGOT)
+    ),
+    VULCANIUM(10, 5000, 17.5F, 8.1F, 15, ModBlockTags.INCORRECT_FOR_VULCANIUM_TOOL,() ->
+         Ingredient.ofItems(ModItems.ENDERITE_INGOT)
+    ),
+    CYRANIUM(11, 7350, 20.0F, 9.5F, 15, ModBlockTags.INCORRECT_FOR_CYRANIUM_TOOL,() ->
+         Ingredient.ofItems(ModItems.ENDERITE_INGOT)
+    );
 
     private final int miningLevel;
     private final int itemDurability;

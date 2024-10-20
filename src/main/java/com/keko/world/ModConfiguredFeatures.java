@@ -31,6 +31,7 @@ import java.util.List;
 
 public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ENDERITE_ORE_KEY = registerKey("enderite_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SEA_CRYSTAL_CLUSTER_KEY = registerKey("sea_crystal_cluster");
     public static final RegistryKey<ConfiguredFeature<?,?>> LANTERN_ORE_KEY = registerKey("dim_sea_lantern_ore");
 
     public static final RegistryKey<ConfiguredFeature<?,?>> PRISMATIC_TREE_KEY =registerKey("prismatic_tree");
@@ -38,14 +39,18 @@ public class ModConfiguredFeatures {
     public static void boostrap (Registerable<ConfiguredFeature<?, ?>> context){
         RuleTest endStoneReplaceables = new BlockMatchRuleTest(Blocks.END_STONE);
         RuleTest prismarineReplaceables = new BlockMatchRuleTest(Blocks.PRISMARINE);
+        RuleTest seaCrystalClusterReplaceables = new BlockMatchRuleTest(Blocks.PRISMARINE);
 
         List<OreFeatureConfig.Target> endEnderiteOres =
                 List.of(OreFeatureConfig.createTarget(endStoneReplaceables, ModBlocks.ENDERITE_ORE.getDefaultState()));
         List<OreFeatureConfig.Target> prismarine =
                 List.of(OreFeatureConfig.createTarget(prismarineReplaceables, Blocks.SEA_LANTERN.getDefaultState()));
+        List<OreFeatureConfig.Target> seaCrystalCluster =
+                List.of(OreFeatureConfig.createTarget(seaCrystalClusterReplaceables, ModBlocks.SEA_CRYSTAL_CLUSTER.getDefaultState()));
 
         register(context, ENDERITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(endEnderiteOres, 4));
-        register(context, LANTERN_ORE_KEY, Feature.SCATTERED_ORE, new OreFeatureConfig(prismarine, 50));
+        register(context, SEA_CRYSTAL_CLUSTER_KEY, Feature.ORE, new OreFeatureConfig(seaCrystalCluster, 7));
+        register(context, LANTERN_ORE_KEY, Feature.SCATTERED_ORE, new OreFeatureConfig(prismarine, 60));
         register(context, PRISMATIC_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 SimpleBlockStateProvider.of(Blocks.AMETHYST_BLOCK),
                 //new CherryTrunkPlacer(7, 1, 0, ConstantIntProvider.create(3), UniformIntProvider.create(2, 4), UniformIntProvider.create(-4, -3), UniformIntProvider.create(-1, 0)),
