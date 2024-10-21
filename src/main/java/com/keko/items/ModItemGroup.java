@@ -47,6 +47,7 @@ public class ModItemGroup {
                         entries.add(ModItems.SEA_CRYSTAL_PICKAXE);
                         entries.add(ModItems.SEA_CRYSTAL_SHOVEL);
                         entries.add(ModItems.SEA_CRYSTAL_HOE);
+                        entries.add(ModItems.SEA_CRYSTAL_STRIDERS);
                     }).build());
 
 

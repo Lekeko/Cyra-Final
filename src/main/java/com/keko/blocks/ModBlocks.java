@@ -3,6 +3,7 @@ package com.keko.blocks;
 import com.keko.CyraFinal;
 import com.keko.blocks.environment.AlchemyTable;
 import com.keko.blocks.environment.dim1.CoreOfTheSeaBlock;
+import com.keko.blocks.environment.dim1.SeaCrystalCluster;
 import com.keko.world.ModConfiguredFeatures;
 import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.minecraft.block.*;
@@ -21,7 +22,9 @@ import java.util.Optional;
 public class ModBlocks {
 
     public static final  Block ENDERITE_ORE = registerBlock(new Block(Block.Settings.create().strength(30.0F, 1200.0F).requiresTool()), "enderite_ore");
-    public static final  Block SEA_CRYSTAL_CLUSTER = registerBlock(new Block(Block.Settings.create().strength(20.0F, 1000.0F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool()), "sea_crystal_cluster");
+    public static final  Block SEA_CRYSTAL_CLUSTER = registerBlock(new SeaCrystalCluster(7.0F, 3.0F, Block.Settings.create().strength(20.0F, 1000.0F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((state) -> 20).solid().nonOpaque()), "sea_crystal_cluster");
+    public static final  Block SEA_CRYSTAL_FORMATION = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_formation");
+
 
     public static final  Block CORE_OF_THE_SEA = registerBlock(new CoreOfTheSeaBlock(Block.Settings.create().strength(20.0F, 1200.0F).requiresTool().luminance((state) -> 20)), "core_of_the_sea");
     public static final  Block PRISMATIC_LEAVES = registerBlock(new LeavesBlock(Block.Settings.create().strength(5.2F, 10.0F).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((state) -> 15)), "prismatic_leaves");

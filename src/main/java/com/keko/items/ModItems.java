@@ -3,6 +3,7 @@ package com.keko.items;
 import com.keko.CyraFinal;
 import com.keko.items.tools.BuffFlask;
 import com.keko.items.tools.HealingFlask;
+import com.keko.items.tools.SeaCrystalStriders;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -58,7 +59,7 @@ public class ModItems {
     public static final Item SEA_CRYSTAL_LEGGINGS = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.LEGGINGS , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_leggings");
     public static final Item SEA_CRYSTAL_BOOTS = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.BOOTS , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_boots");
 
-    public static final Item SEA_STRIDERS = registerItem(new Item(new Item.Settings()), "sea_striders");
+    public static final Item SEA_CRYSTAL_STRIDERS = registerItem(new SeaCrystalStriders(new Item.Settings()), "sea_crystal_striders");
 
     public static final Item SEA_CRYSTAL_SWORD = registerItem(new SwordItem(ModToolMaterial.SEA_CRYSTAL, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.SEA_CRYSTAL, 6, -1.8F)))), "sea_crystal_sword");
     public static final Item SEA_CRYSTAL_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.SEA_CRYSTAL, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.SEA_CRYSTAL, 2, -2.0F)))), "sea_crystal_shovel");

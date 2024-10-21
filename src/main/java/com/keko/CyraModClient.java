@@ -1,5 +1,6 @@
 package com.keko;
 
+import com.keko.blocks.ModBlocks;
 import com.keko.game.BuffPayload;
 import com.keko.game.HealPayload;
 import com.keko.game.KeyBinds;
@@ -10,6 +11,7 @@ import com.keko.screen.AlchemyTableScreen;
 import com.keko.screen.ModScreenHandlers;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
@@ -19,6 +21,7 @@ import net.minecraft.block.enums.CameraSubmersionType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.BackgroundRenderer;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.ItemStack;
 
 public class CyraModClient implements ClientModInitializer {
@@ -47,6 +50,7 @@ public class CyraModClient implements ClientModInitializer {
 
 
 
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_CRYSTAL_CLUSTER, RenderLayer.getCutout());
 
         HandledScreens.register(ModScreenHandlers.ALCHEMY_TABLE_SCREENHANDLER_SCREEN_HANDLER_TYPE, AlchemyTableScreen::new);
         KeyBinds.initializeKeyBinds();

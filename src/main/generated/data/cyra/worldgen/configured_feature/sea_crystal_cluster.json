@@ -1,18 +1,81 @@
 {
-  "type": "minecraft:ore",
+  "type": "minecraft:geode",
   "config": {
-    "discard_chance_on_air_exposure": 0.0,
-    "size": 7,
-    "targets": [
-      {
+    "blocks": {
+      "alternate_inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "cyra:sea_crystal_cluster"
-        },
-        "target": {
-          "block": "minecraft:prismarine",
-          "predicate_type": "minecraft:block_match"
+          "Name": "cyra:sea_crystal_formation"
+        }
+      },
+      "cannot_replace": "#minecraft:features_cannot_replace",
+      "filling_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:air"
+        }
+      },
+      "inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "cyra:sea_crystal_formation"
+        }
+      },
+      "inner_placements": [
+        {
+          "Name": "cyra:sea_crystal_cluster",
+          "Properties": {
+            "facing": "up",
+            "waterlogged": "false"
+          }
+        }
+      ],
+      "invalid_blocks": "#minecraft:geode_invalid_blocks",
+      "middle_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "cyra:sea_crystal_formation"
+        }
+      },
+      "outer_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:dark_prismarine"
         }
       }
-    ]
+    },
+    "crack": {
+      "base_crack_size": 1.5,
+      "crack_point_offset": 1,
+      "generate_crack_chance": 0.25
+    },
+    "distribution_points": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 6,
+      "min_inclusive": 2
+    },
+    "invalid_blocks_threshold": 1,
+    "layers": {
+      "filling": 1.7,
+      "inner_layer": 1.2,
+      "middle_layer": 2.5,
+      "outer_layer": 3.5
+    },
+    "max_gen_offset": 18,
+    "min_gen_offset": -18,
+    "noise_multiplier": 0.075,
+    "outer_wall_distance": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 8,
+      "min_inclusive": 3
+    },
+    "placements_require_layer0_alternate": true,
+    "point_offset": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 2,
+      "min_inclusive": 1
+    },
+    "use_alternate_layer0_chance": 0.1,
+    "use_potential_placements_chance": 0.5
   }
 }

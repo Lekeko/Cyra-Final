@@ -15,7 +15,7 @@ import net.minecraft.world.gen.GenerationStep;
 public class ModTreeGeneration {
     public static void generateTrees() {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.MURIEL_WATERS),
-                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeature.PRISMATIC_TREE_PLACED);
+                GenerationStep.Feature.UNDERGROUND_DECORATION, ModPlacedFeature.PRISMATIC_TREE_PLACED);
     }
 
 
