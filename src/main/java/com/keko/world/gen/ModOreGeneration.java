@@ -16,5 +16,11 @@ public class ModOreGeneration {
 
         BiomeModifications.addFeature(BiomeSelectors.all(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.LANTERN_ORE_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.MURIEL_WATERS),
+                GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.MINIARITE_FORMATION);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.MURIEL_WATERS),
+                GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.MURIANITE_FORMATION);
     }
 }

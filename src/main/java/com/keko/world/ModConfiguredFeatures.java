@@ -35,20 +35,32 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> LANTERN_ORE_KEY = registerKey("dim_sea_lantern_ore");
 
     public static final RegistryKey<ConfiguredFeature<?,?>> PRISMATIC_TREE_KEY =registerKey("prismatic_tree");
+    public static final RegistryKey<ConfiguredFeature<?,?>> MINIARITE_ORE = registerKey("miniarite_formation");
+    public static final RegistryKey<ConfiguredFeature<?,?>> MURIANITE_ORE = registerKey("murianite_formation");
 
     public static void boostrap (Registerable<ConfiguredFeature<?, ?>> context){
         RuleTest endStoneReplaceables = new BlockMatchRuleTest(Blocks.END_STONE);
-        RuleTest prismarineReplaceables = new BlockMatchRuleTest(Blocks.PRISMARINE);
-        RuleTest seaCrystalClusterReplaceables = new BlockMatchRuleTest(Blocks.PRISMARINE);
+        RuleTest seaStoneReplaceables = new BlockMatchRuleTest(ModBlocks.SEA_STONE);
 
         List<OreFeatureConfig.Target> endEnderiteOres =
                 List.of(OreFeatureConfig.createTarget(endStoneReplaceables, ModBlocks.ENDERITE_ORE.getDefaultState()));
+
+        List<OreFeatureConfig.Target> seaMirianFormation =
+                List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.SEA_MIRIANITE.getDefaultState()));
+
+        List<OreFeatureConfig.Target> seaMurianiteFormation =
+                List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.SEA_MURIANITE.getDefaultState()));
+
         List<OreFeatureConfig.Target> prismarine =
-                List.of(OreFeatureConfig.createTarget(prismarineReplaceables, Blocks.SEA_LANTERN.getDefaultState()));
+                List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, Blocks.SEA_LANTERN.getDefaultState()));
+
         List<OreFeatureConfig.Target> seaCrystalCluster =
-                List.of(OreFeatureConfig.createTarget(seaCrystalClusterReplaceables, ModBlocks.SEA_CRYSTAL_CLUSTER.getDefaultState()));
+                List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.SEA_CRYSTAL_CLUSTER.getDefaultState()));
+
 
         register(context, ENDERITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(endEnderiteOres, 4));
+        register(context, MINIARITE_ORE, Feature.ORE, new OreFeatureConfig(seaMirianFormation, 45));
+        register(context, MURIANITE_ORE, Feature.ORE, new OreFeatureConfig(seaMurianiteFormation, 45));
 
         register(context, SEA_CRYSTAL_CLUSTER_KEY,Feature.GEODE,
                 new GeodeFeatureConfig(new GeodeLayerConfig(BlockStateProvider.of(Blocks.AIR),
@@ -73,7 +85,7 @@ public class ModConfiguredFeatures {
                 SimpleBlockStateProvider.of(ModBlocks.PRISMATIC_LEAVES),
                 new BlobFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(2), 4),
                 new TwoLayersFeatureSize(1, 0 ,2)).
-                dirtProvider(SimpleBlockStateProvider.of(Blocks.PRISMARINE)).
+                dirtProvider(SimpleBlockStateProvider.of(ModBlocks.SEA_STONE)).
                 build()
         );
     }

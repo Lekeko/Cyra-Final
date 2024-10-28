@@ -14,8 +14,11 @@ public class ModItemGroup {
     public static final ItemGroup RUBY_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(CyraFinal.MOD_ID, "cyra"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.cyra"))
-                    .icon(() -> new ItemStack(ModItems.ENDERITE_SWORD)).entries((displayContext, entries) -> {
+                    .icon(() -> new ItemStack(ModItems.SEA_CRYSTAL_PICKAXE)).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.ENDERITE_ORE);
+                        entries.add(ModBlocks.SEA_STONE);
+                        entries.add(ModBlocks.SEA_MIRIANITE);
+                        entries.add(ModBlocks.SEA_MURIANITE);
                         entries.add(ModItems.ENDERITE_CHUNK);
                         entries.add(ModItems.ENDERITE_INGOT);
                         entries.add(ModItems.ENDERITE_SWORD);

@@ -21,20 +21,33 @@ public class ModPlacedFeature {
     public static final RegistryKey<PlacedFeature> SEA_CRYSTAL_CLUSTER_PLACED_KEY = registerKey("sea_crystal_cluster_key");
     public static final RegistryKey<PlacedFeature> LANTERN_ORE_PLACED_KEY = registerKey("dim_sea_lantern_placed");
     public static final RegistryKey<PlacedFeature> PRISMATIC_TREE_PLACED = registerKey("prismatic_tree_placed");
+    public static final RegistryKey<PlacedFeature> MINIARITE_FORMATION = registerKey("miniarite_formation_placed");
+    public static final RegistryKey<PlacedFeature> MURIANITE_FORMATION = registerKey("murianite_formation_placed");
 
     public static void boostrap(Registerable<PlacedFeature> context){
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         register(context, ENDERITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ENDERITE_ORE_KEY),
                 ModorePlacement.modifiersWithCount(5, HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+
         register(context, SEA_CRYSTAL_CLUSTER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SEA_CRYSTAL_CLUSTER_KEY),
                 ModorePlacement.modifiersWithCount(1, HeightRangePlacementModifier.uniform(YOffset.fixed(-20), YOffset.fixed(300))));
+
         register(context, LANTERN_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LANTERN_ORE_KEY),
-                ModorePlacement.modifiersWithCount(20, HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(380))));
+                ModorePlacement.modifiersWithCount(25, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(200))));
+
+        register(context, MINIARITE_FORMATION, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MINIARITE_ORE),
+                ModorePlacement.modifiersWithCount(30, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(200))));
+
+        register(context, MURIANITE_FORMATION, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MURIANITE_ORE),
+                ModorePlacement.modifiersWithCount(30, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(200))));
+
         register(context, PRISMATIC_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(PRISMATIC_TREE_KEY),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2),
                         ModBlocks.PRISMATIC_SAMPLING));
     }
+
+
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE,Identifier.of(CyraFinal.MOD_ID, name));

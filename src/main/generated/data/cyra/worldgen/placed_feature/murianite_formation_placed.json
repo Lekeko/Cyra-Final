@@ -1,9 +1,9 @@
 {
-  "feature": "cyra:dim_sea_lantern_ore",
+  "feature": "cyra:murianite_formation",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 25
+      "count": 30
     },
     {
       "type": "minecraft:in_square"

@@ -18,6 +18,9 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleState(ModBlocks.CORE_OF_THE_SEA);
         blockStateModelGenerator.registerSimpleState(ModBlocks.ENDERITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_STONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_MIRIANITE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_MURIANITE);
         blockStateModelGenerator.registerSimpleState(ModBlocks.PRISMATIC_LEAVES);
     }
 
@@ -43,6 +46,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(ModItems.HEALING_FLASK, Models.GENERATED);
         itemModelGenerator.register(ModItems.SEA_CRYSTAL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SEA_BOLT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SEA_CRYSTAL_FRAGMENT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SEA_CRYSTAL_STRIDERS, Models.GENERATED);
         itemModelGenerator.register(ModItems.BUFF_FLASK, Models.GENERATED);

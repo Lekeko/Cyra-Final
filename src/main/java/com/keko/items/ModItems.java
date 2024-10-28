@@ -4,6 +4,7 @@ import com.keko.CyraFinal;
 import com.keko.items.tools.BuffFlask;
 import com.keko.items.tools.HealingFlask;
 import com.keko.items.tools.SeaCrystalStriders;
+import com.keko.items.weapons.SeaShooter;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -53,6 +54,8 @@ public class ModItems {
 
     public static final Item SEA_CRYSTAL_FRAGMENT = registerItem(new Item(new Item.Settings()), "sea_crystal_fragment");
     public static final Item SEA_CRYSTAL = registerItem(new Item(new Item.Settings()), "sea_crystal");
+    public static final Item SEA_SHOOTER = registerItem(new SeaShooter(new Item.Settings()), "sea_shooter");
+    public static final Item SEA_BOLT =  registerItem(new Item(new Item.Settings().maxCount(1)), "sea_bolt");
 
     public static final Item SEA_CRYSTAL_HELMET = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.HELMET , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_helmet");
     public static final Item SEA_CRYSTAL_CHESTPLATE = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.CHESTPLATE , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_chestplate");
@@ -66,6 +69,7 @@ public class ModItems {
     public static final Item SEA_CRYSTAL_PICKAXE = registerItem(new PickaxeItem(ModToolMaterial.SEA_CRYSTAL, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.SEA_CRYSTAL, 2, -2.0F))), "sea_crystal_pickaxe");
     public static final Item SEA_CRYSTAL_AXE = registerItem(new AxeItem(ModToolMaterial.SEA_CRYSTAL, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.SEA_CRYSTAL, 7, -2.4F))), "sea_crystal_axe");
     public static final Item SEA_CRYSTAL_HOE = registerItem(new HoeItem(ModToolMaterial.SEA_CRYSTAL, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.SEA_CRYSTAL, -1, -1.8F))), "sea_crystal_hoe");
+
 
     private static Item registerItem(Item item, String path) {
         return Registry.register(Registries.ITEM, Identifier.of(CyraFinal.MOD_ID, path), item);

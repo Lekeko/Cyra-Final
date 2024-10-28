@@ -1,6 +1,8 @@
 package com.keko;
 
 import com.keko.blocks.ModBlocks;
+import com.keko.client.BoltRenderer;
+import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.game.BuffPayload;
 import com.keko.game.HealPayload;
 import com.keko.game.KeyBinds;
@@ -13,6 +15,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
@@ -54,6 +57,9 @@ public class CyraModClient implements ClientModInitializer {
 
         HandledScreens.register(ModScreenHandlers.ALCHEMY_TABLE_SCREENHANDLER_SCREEN_HANDLER_TYPE, AlchemyTableScreen::new);
         KeyBinds.initializeKeyBinds();
+        EntityRendererRegistry.register(ModProjectileEntities.SEA_BOLT_ENTITY_TYPE, BoltRenderer::new);
+
+
 
     }
 }
