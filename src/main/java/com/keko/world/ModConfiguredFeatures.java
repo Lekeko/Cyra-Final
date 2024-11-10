@@ -37,10 +37,12 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> PRISMATIC_TREE_KEY =registerKey("prismatic_tree");
     public static final RegistryKey<ConfiguredFeature<?,?>> MINIARITE_ORE = registerKey("miniarite_formation");
     public static final RegistryKey<ConfiguredFeature<?,?>> MURIANITE_ORE = registerKey("murianite_formation");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PYRITE_ORE_KEY = registerKey("pyrite_ore");
 
     public static void boostrap (Registerable<ConfiguredFeature<?, ?>> context){
         RuleTest endStoneReplaceables = new BlockMatchRuleTest(Blocks.END_STONE);
         RuleTest seaStoneReplaceables = new BlockMatchRuleTest(ModBlocks.SEA_STONE);
+        RuleTest mirianiteReplaceables = new BlockMatchRuleTest(ModBlocks.SEA_MIRIANITE);
 
         List<OreFeatureConfig.Target> endEnderiteOres =
                 List.of(OreFeatureConfig.createTarget(endStoneReplaceables, ModBlocks.ENDERITE_ORE.getDefaultState()));
@@ -57,10 +59,15 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> seaCrystalCluster =
                 List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.SEA_CRYSTAL_CLUSTER.getDefaultState()));
 
+        List<OreFeatureConfig.Target> mirianiteOrePyrite =
+                List.of(OreFeatureConfig.createTarget(mirianiteReplaceables, ModBlocks.PYRITE_ORE.getDefaultState()));
+
+
 
         register(context, ENDERITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(endEnderiteOres, 4));
         register(context, MINIARITE_ORE, Feature.ORE, new OreFeatureConfig(seaMirianFormation, 45));
         register(context, MURIANITE_ORE, Feature.ORE, new OreFeatureConfig(seaMurianiteFormation, 45));
+        register(context, PYRITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(seaMurianiteFormation, 5));
 
         register(context, SEA_CRYSTAL_CLUSTER_KEY,Feature.GEODE,
                 new GeodeFeatureConfig(new GeodeLayerConfig(BlockStateProvider.of(Blocks.AIR),

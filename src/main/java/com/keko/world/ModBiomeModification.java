@@ -8,10 +8,5 @@ import net.minecraft.world.gen.feature.PlacedFeatures;
 
 public class ModBiomeModification {
     public static void load(){
-        BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(ModBiomes.MURIEL_WATERS),
-                GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeature.PRISMATIC_TREE_PLACED
-        );
     }
 }

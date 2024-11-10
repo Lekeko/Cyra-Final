@@ -22,5 +22,8 @@ public class ModOreGeneration {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.MURIEL_WATERS),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.MURIANITE_FORMATION);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.MURIEL_WATERS),
+                GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.PYRITE_ORE);
     }
 }

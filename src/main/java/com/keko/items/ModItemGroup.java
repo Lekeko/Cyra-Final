@@ -19,6 +19,8 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SEA_STONE);
                         entries.add(ModBlocks.SEA_MIRIANITE);
                         entries.add(ModBlocks.SEA_MURIANITE);
+                        entries.add(ModBlocks.PYRITE_ORE);
+                        entries.add(ModBlocks.SEA_STONE_BRICK);
                         entries.add(ModItems.ENDERITE_CHUNK);
                         entries.add(ModItems.ENDERITE_INGOT);
                         entries.add(ModItems.ENDERITE_SWORD);

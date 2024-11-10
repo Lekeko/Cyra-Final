@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "cyra:sea_treasure_monument",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136474,
+
+    "spacing": 6,
+
+    "separation": 2,
+
+    "type": "minecraft:random_spread"
+  }
+}
