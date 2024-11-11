@@ -1,7 +1,7 @@
 package com.keko;
 
 import com.keko.blocks.ModBlocks;
-import com.keko.client.BoltRenderer;
+import com.keko.entities.projectiles.seaBolt.BoltRenderer;
 import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.game.BuffPayload;
 import com.keko.game.HealPayload;
@@ -9,21 +9,17 @@ import com.keko.game.KeyBinds;
 import com.keko.helpers.InvSearch;
 import com.keko.items.ModItems;
 import com.keko.items.tools.BuffFlask;
+import com.keko.particle.ModParticles;
+import com.keko.particle.custom.WaterBoltParticle;
 import com.keko.screen.AlchemyTableScreen;
 import com.keko.screen.ModScreenHandlers;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.block.enums.CameraSubmersionType;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
-import net.minecraft.client.render.BackgroundRenderer;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.ItemStack;
 
@@ -58,7 +54,7 @@ public class CyraModClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandlers.ALCHEMY_TABLE_SCREENHANDLER_SCREEN_HANDLER_TYPE, AlchemyTableScreen::new);
         KeyBinds.initializeKeyBinds();
         EntityRendererRegistry.register(ModProjectileEntities.SEA_BOLT_ENTITY_TYPE, BoltRenderer::new);
-
+        ParticleFactoryRegistry.getInstance().register(ModParticles.WATER_BOLT_PARTICLE_TYPE, WaterBoltParticle.Factory::new);
 
 
     }

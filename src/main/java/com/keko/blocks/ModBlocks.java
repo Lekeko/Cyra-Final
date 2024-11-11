@@ -22,6 +22,7 @@ public class ModBlocks {
 
 
     public static final  Block SEA_CRYSTAL_FORMATION = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_formation");
+    public static final  Block SEA_CRYSTAL_BRICK = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_brick");
     public static final  Block SEA_STONE = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F, 6.5F).sounds(BlockSoundGroup.DEEPSLATE)), "sea_stone");
     public static final  Block SEA_MIRIANITE = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F, 6.5F).sounds(BlockSoundGroup.DEEPSLATE)), "sea_mirianite");
     public static final  Block SEA_MURIANITE = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F, 6.5F).sounds(BlockSoundGroup.DEEPSLATE)), "sea_murianite");

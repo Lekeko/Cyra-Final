@@ -1,7 +1,7 @@
 package com.keko.entities.projectiles;
 
 import com.keko.CyraFinal;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType;
+import com.keko.entities.projectiles.seaBolt.SeaBolt;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;

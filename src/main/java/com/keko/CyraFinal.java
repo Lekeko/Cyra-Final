@@ -6,6 +6,7 @@ import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.items.ModArmorMaterial;
 import com.keko.items.ModItemGroup;
 import com.keko.items.ModItems;
+import com.keko.particle.ModParticles;
 import com.keko.screen.ModScreenHandlers;
 import com.keko.world.ModDimensions;
 import com.keko.world.biome.ModBiomes;
@@ -34,6 +35,7 @@ public class CyraFinal implements ModInitializer {
 		ModDimensions.register();
 		ModBiomes.registerBiomes();
 		ModProjectileEntities.registerModEntityProjectiles();
+		ModParticles.register();
 
 
 

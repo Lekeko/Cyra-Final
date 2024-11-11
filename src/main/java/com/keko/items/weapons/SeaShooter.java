@@ -1,10 +1,9 @@
 package com.keko.items.weapons;
 
-import com.keko.entities.projectiles.SeaBolt;
+import com.keko.entities.projectiles.seaBolt.SeaBolt;
 import com.keko.helpers.InvSearch;
 import com.keko.items.ModItems;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -31,7 +30,7 @@ public class SeaShooter extends Item {
     }
 
     private void shootBolt(World world, Entity user) {
-        SeaBolt seaBolt = new SeaBolt(world, (LivingEntity) user);
+        SeaBolt seaBolt = new SeaBolt(world , (LivingEntity) user, ModItems.SEA_BOLT.getDefaultStack());
         seaBolt.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 4.5F, 1.0F);
         world.spawnEntity(seaBolt);
     }
