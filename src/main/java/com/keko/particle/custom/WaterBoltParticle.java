@@ -44,6 +44,16 @@ public class WaterBoltParticle extends SpriteBillboardParticle {
     }
 
     @Override
+    public void move(double dx, double dy, double dz) {
+        super.move(this.velocityX, this.velocityY, this.velocityZ);
+    }
+
+    @Override
+    public Particle move(float speed) {
+        return super.move(2);
+    }
+
+    @Override
     protected int getBrightness(float tint) {
         return 15728880;
     }
@@ -59,6 +69,8 @@ public class WaterBoltParticle extends SpriteBillboardParticle {
     public void tick() {
         super.tick();
         fade();
+        rotationAngle += 0.04f;
+        this.scale-= 0.01f;
         this.angle = rotationAngle;
     }
 
@@ -75,6 +87,7 @@ public class WaterBoltParticle extends SpriteBillboardParticle {
         public Particle createParticle(SimpleParticleType parameters, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
             return new WaterBoltParticle(world, x, y, z, this.spriteProvider , velocityX, velocityY, velocityZ);
         }
+
 
         public Factory(SpriteProvider spriteProvider){
             this.spriteProvider = spriteProvider;

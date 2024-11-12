@@ -11,6 +11,7 @@ import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
@@ -52,7 +53,6 @@ public class SeaBolt extends PersistentProjectileEntity {
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         this.discard();
-        super.onBlockHit(blockHitResult);
     }
 
     @Override
@@ -66,6 +66,7 @@ public class SeaBolt extends PersistentProjectileEntity {
 
 
         if (this.getWorld().isClient && this.age > 1){
+            spawnPartilce(this.getWorld());
         }else {
             this.ticksExisted++;
             if (this.isTouchingWater()) {
@@ -87,7 +88,10 @@ public class SeaBolt extends PersistentProjectileEntity {
         world.addParticle(ModParticles.WATER_BOLT_PARTICLE_TYPE,
                 this.getX(),
                 this.getY(),
-                this.getZ(),0,0,0);
+                this.getZ(),
+                -this.getVelocity().x
+                ,-this.getVelocity().y
+                ,-this.getVelocity().z );
     }
 
 }
