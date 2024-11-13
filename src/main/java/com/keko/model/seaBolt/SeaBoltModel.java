@@ -34,7 +34,7 @@ public class SeaBoltModel extends Model {
 
     @Override
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
-        this.sea_bolt_projectile.render(matrices, vertices, light, overlay);
+        this.sea_bolt_projectile.render(matrices, vertices, light, overlay, color);
     }
 
 

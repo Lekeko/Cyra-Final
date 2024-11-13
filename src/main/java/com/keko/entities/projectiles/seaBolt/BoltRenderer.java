@@ -30,14 +30,14 @@ public class BoltRenderer extends ProjectileEntityRenderer<SeaBolt> {
 
     @Override
     public void render(SeaBolt persistentProjectileEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-
         matrixStack.push();
-
+        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(g, persistentProjectileEntity.prevPitch, persistentProjectileEntity.getPitch()) + 90.0F));
+        matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MathHelper.lerp(g, persistentProjectileEntity.prevPitch, persistentProjectileEntity.getPitch()) + 90.0F));
+        matrixStack.scale(1f, 1f, 1f);
+        matrixStack.translate(0.0, -1.5, 0.0);
+        VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumerProvider, this.model.getLayer(this.getTexture(persistentProjectileEntity)), true, false);
         matrixStack.pop();
-        VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumerProvider, this.model.getLayer(this.getTexture(persistentProjectileEntity)), false, false);
-
-        this.model.render(matrixStack, vertexConsumer, (int) 22, (int) g,i);
-
+        this.model.render(matrixStack, vertexConsumer, 255,  OverlayTexture.DEFAULT_UV, 16777215);
     }
 
 }
