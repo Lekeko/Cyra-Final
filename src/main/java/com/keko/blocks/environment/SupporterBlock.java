@@ -1,16 +1,22 @@
 package com.keko.blocks.environment;
 
-import net.minecraft.block.AbstractBlock;
+import com.keko.particle.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.IceBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 public class SupporterBlock extends Block {
 
-    public static int age;
+    public int age;
 
 
     public SupporterBlock(Settings sounds) {
@@ -19,14 +25,45 @@ public class SupporterBlock extends Block {
     }
 
     @Override
-    protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        world.scheduleBlockTick(pos, this, 100);
+        age = 0;
+        super.onBlockAdded(state, world, pos, oldState, notify);
+    }
+
+
+    @Override
+    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!world.isClient){
             age++;
-            if (age > 200){
+            if (age > 0){
                 world.setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
-
-        super.randomTick(state, world, pos, random);
+        super.scheduledTick(state, world, pos, random);
     }
+
+
+    @Override
+    protected boolean hasRandomTicks(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected VoxelShape getSidesShape(BlockState state, BlockView world, BlockPos pos) {
+        return VoxelShapes.empty();
+    }
+
+    @Override
+
+    protected float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
+        return 1.0F;
+    }
+
+
+    @Override
+    protected boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
+        return true;
+    }
+
 }

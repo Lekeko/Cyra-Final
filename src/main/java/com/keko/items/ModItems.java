@@ -4,6 +4,7 @@ import com.keko.CyraFinal;
 import com.keko.items.tools.BuffFlask;
 import com.keko.items.tools.HealingFlask;
 import com.keko.items.tools.SeaCrystalStriders;
+import com.keko.items.tools.SeaWandItem;
 import com.keko.items.weapons.SeaShooter;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -54,6 +55,7 @@ public class ModItems {
 
     public static final Item SEA_CRYSTAL_FRAGMENT = registerItem(new Item(new Item.Settings()), "sea_crystal_fragment");
     public static final Item SEA_CRYSTAL = registerItem(new Item(new Item.Settings()), "sea_crystal");
+    public static final Item SEA_WAND = registerItem(new SeaWandItem(new Item.Settings()), "sea_support_block_wand");
     public static final Item SEA_SHOOTER = registerItem(new SeaShooter(new Item.Settings()), "sea_shooter");
     public static final Item SEA_BOLT =  registerItem(new Item(new Item.Settings().maxCount(1)), "sea_bolt");
 
