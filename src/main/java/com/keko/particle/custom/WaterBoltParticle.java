@@ -70,8 +70,8 @@ public class WaterBoltParticle extends SpriteBillboardParticle {
         super.tick();
         fade();
         rotationAngle += 0.04f;
-        this.scale-= 0.01f;
-        this.angle = rotationAngle;
+        this.scale+= 0.01f;
+        //this.angle = rotationAngle;
     }
 
     private void fade() {

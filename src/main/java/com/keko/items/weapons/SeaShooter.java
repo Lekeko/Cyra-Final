@@ -19,12 +19,15 @@ public class SeaShooter extends Item {
         super(settings.maxCount(1));
     }
 
+    private final int COOLDWON = 2;
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
             if (InvSearch.hasItemInInv(user, ModItems.SEA_BOLT)){
                 user.getWorld().playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.NEUTRAL, 0.5F, 0.4F / (user.getWorld().getRandom().nextFloat() * 0.4F + 0.8F));
 
                 shootBolt(world, user);
+                user.getItemCooldownManager().set(user.getActiveItem().getItem(), COOLDWON * 20);
             }
         return super.use(world, user, hand);
     }

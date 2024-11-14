@@ -1,8 +1,8 @@
-// 1.21	2024-11-10T19:04:57.8807178	Cyra Final/cyra
+// 1.21	2024-11-14T09:50:38.4358413	Cyra Final/cyra
 cc2f7d4a10ccd02d76503d2751dbd01b06956b62 data\cyra\worldgen\configured_feature\prismatic_tree.json
-8e436a2f84fc8e540b1ac1269a98cc645edbf480 data\cyra\worldgen\placed_feature\pyrite_ore_placed.json
+8f9a50e0663e44ea0738df00dbb69a868ada367d data\cyra\worldgen\placed_feature\pyrite_ore_placed.json
 86cba13f526491d098b2d8cc7ea0033f7f86670a data\cyra\worldgen\placed_feature\miniarite_formation_placed.json
-cdce27da415073063d7e98c92d75cf31dccc5bfd data\cyra\worldgen\configured_feature\pyrite_ore.json
+221cc3c6c836ace1cd131851dfca67aabc6fcd81 data\cyra\worldgen\configured_feature\pyrite_ore.json
 05c5e9fb7defbc561672bd8cac1dea8d385920bf data\cyra\worldgen\configured_feature\miniarite_formation.json
 78d48d28265bd62b34c855850ec409d6a86fbd01 data\cyra\worldgen\placed_feature\murianite_formation_placed.json
 d5c0e86be125a4cdd5cb78e03b24586863ab8d6c data\cyra\worldgen\configured_feature\murianite_formation.json

@@ -60,14 +60,14 @@ public class ModConfiguredFeatures {
                 List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.SEA_CRYSTAL_CLUSTER.getDefaultState()));
 
         List<OreFeatureConfig.Target> mirianiteOrePyrite =
-                List.of(OreFeatureConfig.createTarget(mirianiteReplaceables, ModBlocks.PYRITE_ORE.getDefaultState()));
+                List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.PYRITE_ORE.getDefaultState()));
 
 
 
         register(context, ENDERITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(endEnderiteOres, 4));
         register(context, MINIARITE_ORE, Feature.ORE, new OreFeatureConfig(seaMirianFormation, 45));
         register(context, MURIANITE_ORE, Feature.ORE, new OreFeatureConfig(seaMurianiteFormation, 45));
-        register(context, PYRITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(seaMurianiteFormation, 5));
+        register(context, PYRITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(mirianiteOrePyrite, 6));
 
         register(context, SEA_CRYSTAL_CLUSTER_KEY,Feature.GEODE,
                 new GeodeFeatureConfig(new GeodeLayerConfig(BlockStateProvider.of(Blocks.AIR),

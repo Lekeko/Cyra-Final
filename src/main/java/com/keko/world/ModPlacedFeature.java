@@ -46,7 +46,7 @@ public class ModPlacedFeature {
                 ModorePlacement.modifiersWithCount(20, HeightRangePlacementModifier.uniform(YOffset.fixed(200 - offset), YOffset.fixed(300 - offset))));
 
         register(context, PYRITE_ORE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PYRITE_ORE_KEY),
-                ModorePlacement.modifiersWithCount(3, HeightRangePlacementModifier.uniform(YOffset.fixed(80 - offset), YOffset.fixed(200- offset))));
+                ModorePlacement.modifiersWithCount(6, HeightRangePlacementModifier.uniform(YOffset.fixed(80 - offset), YOffset.fixed(200- offset))));
 
     }
 

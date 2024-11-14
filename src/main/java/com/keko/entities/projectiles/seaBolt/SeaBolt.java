@@ -33,7 +33,15 @@ public class SeaBolt extends PersistentProjectileEntity {
     }
 
 
+    @Override
+    protected float getDragInWater() {
+        return 0.9f;
+    }
 
+    @Override
+    public boolean isSubmergedInWater() {
+        return false;
+    }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
@@ -41,6 +49,7 @@ public class SeaBolt extends PersistentProjectileEntity {
             this.getWorld().playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.BLOCK_POINTED_DRIPSTONE_DRIP_WATER, SoundCategory.NEUTRAL, 0.5F, 0.4F / (this.getWorld().getRandom().nextFloat() * 0.4F + 0.8F));
 
             entityHitResult.getEntity().damage(this.getDamageSources().thrown(this, this.getOwner()), 4f);
+            this.discard();
         }
         super.onEntityHit(entityHitResult);
     }
