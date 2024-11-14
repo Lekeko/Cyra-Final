@@ -82,6 +82,7 @@ public class SeaBolt extends PersistentProjectileEntity {
                 this.setVelocity(this.getVelocity().multiply(1.23f));
 
             }
+            if (this.age > 100) discard();
         }
         super.tick();
     }
