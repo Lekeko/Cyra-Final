@@ -54,7 +54,7 @@ public class ModConfiguredFeatures {
                 List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.SEA_MURIANITE.getDefaultState()));
 
         List<OreFeatureConfig.Target> prismarine =
-                List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, Blocks.SEA_LANTERN.getDefaultState()));
+                List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.DEEP_SEA_LANTERN.getDefaultState()));
 
         List<OreFeatureConfig.Target> seaCrystalCluster =
                 List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.SEA_CRYSTAL_CLUSTER.getDefaultState()));

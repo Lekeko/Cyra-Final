@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "minecraft:sea_lantern"
+          "Name": "cyra:deep_sea_lantern"
         },
         "target": {
           "block": "cyra:sea_stone",

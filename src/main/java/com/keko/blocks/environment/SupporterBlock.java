@@ -16,18 +16,15 @@ import net.minecraft.world.World;
 
 public class SupporterBlock extends Block {
 
-    public int age;
 
 
     public SupporterBlock(Settings sounds) {
         super(sounds);
-        age = 0;
     }
 
     @Override
     protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         world.scheduleBlockTick(pos, this, 100);
-        age = 0;
         super.onBlockAdded(state, world, pos, oldState, notify);
     }
 
@@ -35,10 +32,7 @@ public class SupporterBlock extends Block {
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!world.isClient){
-            age++;
-            if (age > 0){
                 world.setBlockState(pos, Blocks.AIR.getDefaultState());
-            }
         }
         super.scheduledTick(state, world, pos, random);
     }

@@ -17,6 +17,7 @@ public class ModItemGroup {
                     .icon(() -> new ItemStack(ModItems.SEA_CRYSTAL_PICKAXE)).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.ENDERITE_ORE);
                         entries.add(ModBlocks.SEA_STONE);
+                        entries.add(ModBlocks.DEEP_SEA_LANTERN);
                         entries.add(ModBlocks.SEA_MIRIANITE);
                         entries.add(ModBlocks.SEA_MURIANITE);
                         entries.add(ModBlocks.PYRITE_ORE);
