@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "textures": {
+    "bottom": "cyra:block/sea_crystal_bricks_door_bottom",
+    "top": "cyra:block/sea_crystal_bricks_door_top"
+  }
+}

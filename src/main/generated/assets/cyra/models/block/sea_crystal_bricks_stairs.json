@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "cyra:block/sea_crystal_bricks",
+    "side": "cyra:block/sea_crystal_bricks",
+    "top": "cyra:block/sea_crystal_bricks"
+  }
+}

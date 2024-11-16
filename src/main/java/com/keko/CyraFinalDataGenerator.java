@@ -19,6 +19,7 @@ public class CyraFinalDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModWorldGenerator::new);
 		pack.addProvider(ModitemTagProvider::new);
+		pack.addProvider(ModBlockTagProvider::new);
 	}
 
 	@Override

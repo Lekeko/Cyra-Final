@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cyra:block/sea_crystal_bricks_slab"
+    },
+    "type=double": {
+      "model": "cyra:block/sea_crystal_bricks"
+    },
+    "type=top": {
+      "model": "cyra:block/sea_crystal_bricks_slab_top"
+    }
+  }
+}

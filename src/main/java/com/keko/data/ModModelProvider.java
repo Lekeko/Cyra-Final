@@ -1,5 +1,6 @@
 package com.keko.data;
 
+import com.keko.CyraFinal;
 import com.keko.blocks.ModBlocks;
 import com.keko.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -8,6 +9,7 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.util.Identifier;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -16,6 +18,8 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        BlockStateModelGenerator.BlockTexturePool seaPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.SEA_CRYSTAL_BRICKS);
+
         blockStateModelGenerator.registerSimpleState(ModBlocks.CORE_OF_THE_SEA);
         blockStateModelGenerator.registerSimpleState(ModBlocks.ENDERITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_STONE);
@@ -27,8 +31,15 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PYRITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_STONE_BRICK);
         blockStateModelGenerator.registerSimpleState(ModBlocks.PRISMATIC_LEAVES);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_CRYSTAL_BRICK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.SEA_CRYSTAL_STAIR);
+
+        seaPool.stairs(ModBlocks.SEA_CRYSTAL_BRICKS_STAIRS);
+        seaPool.slab(ModBlocks.SEA_CRYSTAL_BRICKS_SLAB);
+        seaPool.wall(ModBlocks.SEA_CRYSTAL_BRICKS_WALL);
+
+        blockStateModelGenerator.registerDoor(ModBlocks.SEA_CRYSTAL_BRICKS_DOOR);
+        blockStateModelGenerator.registerTrapdoor(ModBlocks.SEA_CRYSTAL_BRICKS_TRAPDOOR);
+
+
     }
 
 

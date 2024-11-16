@@ -113,6 +113,7 @@ public class CoreOfTheSeaBlock extends Block {
                 if (!(world.getBlockState(new BlockPos(i, j+ pos.getY(), pos.getZ())).isOf(Blocks.PRISMARINE) ||
                         world.getBlockState(new BlockPos(i, j+ pos.getY(), pos.getZ())).isOf(Blocks.PRISMARINE_BRICKS) ||
                         world.getBlockState(new BlockPos(i, j+ pos.getY(), pos.getZ())).isOf(Blocks.DARK_PRISMARINE) ||
+                        world.getBlockState(new BlockPos(i, j+ pos.getY(), pos.getZ())).isOf(ModBlocks.SEA_CRYSTAL_BRICKS) ||
                         world.getBlockState(new BlockPos(i, j+ pos.getY(), pos.getZ())).isOf(Blocks.SEA_LANTERN))){
                     firstType = false;
                 }
@@ -124,6 +125,7 @@ public class CoreOfTheSeaBlock extends Block {
                 if (!(world.getBlockState(new BlockPos(pos.getX() + j, i, pos.getZ())).isOf(Blocks.PRISMARINE) ||
                         world.getBlockState(new BlockPos(pos.getX() + j, i, pos.getZ())).isOf(Blocks.PRISMARINE_BRICKS) ||
                         world.getBlockState(new BlockPos(pos.getX() + j, i, pos.getZ())).isOf(Blocks.DARK_PRISMARINE) ||
+                        world.getBlockState(new BlockPos(pos.getX() + j, i, pos.getZ())).isOf(ModBlocks.SEA_CRYSTAL_BRICKS) ||
                         world.getBlockState(new BlockPos(pos.getX() + j, i, pos.getZ())).isOf(Blocks.SEA_LANTERN))){
                     firstType = false;
                 }
@@ -139,6 +141,7 @@ public class CoreOfTheSeaBlock extends Block {
                     if (!(world.getBlockState(new BlockPos(pos.getX(), j+ pos.getY(), i)).isOf(Blocks.PRISMARINE) ||
                             world.getBlockState(new BlockPos(pos.getX(), j+ pos.getY(), i)).isOf(Blocks.PRISMARINE_BRICKS) ||
                             world.getBlockState(new BlockPos(pos.getX(), j+ pos.getY(), i)).isOf(Blocks.DARK_PRISMARINE) ||
+                            world.getBlockState(new BlockPos(pos.getX(), j+ pos.getY(), i)).isOf(ModBlocks.SEA_CRYSTAL_BRICKS) ||
                             world.getBlockState(new BlockPos(pos.getX(), j+ pos.getY(), i)).isOf(Blocks.SEA_LANTERN))){
                         player.sendMessage(Text.literal("Core of the sea needs to be surrounded by a circle!").withColor(6001584));
                         return false;
@@ -150,6 +153,7 @@ public class CoreOfTheSeaBlock extends Block {
                     if (!(world.getBlockState(new BlockPos(pos.getX() , i, pos.getZ() + j)).isOf(Blocks.PRISMARINE) ||
                             world.getBlockState(new BlockPos(pos.getX() , i, pos.getZ() + j)).isOf(Blocks.PRISMARINE_BRICKS) ||
                             world.getBlockState(new BlockPos(pos.getX() , i, pos.getZ() + j)).isOf(Blocks.DARK_PRISMARINE) ||
+                            world.getBlockState(new BlockPos(pos.getX() , i, pos.getZ() + j)).isOf(ModBlocks.SEA_CRYSTAL_BRICKS) ||
                             world.getBlockState(new BlockPos(pos.getX() , i, pos.getZ() + j)).isOf(Blocks.SEA_LANTERN))){
                         player.sendMessage(Text.literal("Core of the sea needs to be surrounded by a circle!").withColor(6001584));
                         return false;

@@ -24,9 +24,16 @@ public class ModBlocks {
 
 
     public static final  Block SEA_CRYSTAL_FORMATION = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_formation", new Item.Settings());
-    public static final  Block SEA_CRYSTAL_BRICK = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_brick", new Item.Settings());
-    public static final  Block SEA_CRYSTAL_STAIR = registerBlock(new StairsBlock(SEA_CRYSTAL_BRICK.getDefaultState(), Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_brick", new Item.Settings());
-    public static final  Block SEA_CRYSTAL_WALL = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_brick", new Item.Settings());
+
+    public static final  Block SEA_CRYSTAL_BRICKS = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks", new Item.Settings());
+
+    public static final  Block SEA_CRYSTAL_BRICKS_STAIRS = registerBlock(new StairsBlock(SEA_CRYSTAL_BRICKS.getDefaultState(), Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_stairs", new Item.Settings());
+    public static final  Block SEA_CRYSTAL_BRICKS_SLAB = registerBlock(new SlabBlock(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_slab", new Item.Settings());
+
+    public static final  Block SEA_CRYSTAL_BRICKS_WALL  = registerBlock(new WallBlock(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_wall", new Item.Settings());
+    public static final  Block SEA_CRYSTAL_BRICKS_DOOR = registerBlock(new DoorBlock(BlockSetType.OAK , Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_door", new Item.Settings());
+    public static final  Block SEA_CRYSTAL_BRICKS_TRAPDOOR = registerBlock(new TrapdoorBlock(BlockSetType.OAK , Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_trapdoor", new Item.Settings());
+
     public static final  Block SEA_STONE = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F, 6.5F).sounds(BlockSoundGroup.DEEPSLATE)), "sea_stone", new Item.Settings());
     public static final  Block DEEP_SEA_LANTERN = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 1.5F).luminance((state) -> 30) .sounds(BlockSoundGroup.AMETHYST_CLUSTER)), "deep_sea_lantern", new Item.Settings());
     public static final  Block DEEP_LANTERN = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 1.5F).luminance((state) -> 30) .sounds(BlockSoundGroup.AMETHYST_CLUSTER)), "deep_lantern", new Item.Settings());

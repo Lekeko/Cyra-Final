@@ -1,6 +1,7 @@
 package com.keko.items;
 
 import com.keko.CyraFinal;
+import com.keko.items.armor.ModArmorItem;
 import com.keko.items.tools.BuffFlask;
 import com.keko.items.tools.HealingFlask;
 import com.keko.items.tools.SeaCrystalStriders;
@@ -64,7 +65,7 @@ public class ModItems {
     public static final Item SEA_SHOOTER = registerItem(new SeaShooter(new Item.Settings()), "sea_shooter");
     public static final Item SEA_BOLT =  registerItem(new Item(new Item.Settings().maxCount(1)), "sea_bolt");
 
-    public static final Item SEA_CRYSTAL_HELMET = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.HELMET , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_helmet");
+    public static final Item SEA_CRYSTAL_HELMET = registerItem(new ModArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.HELMET , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_helmet");
     public static final Item SEA_CRYSTAL_CHESTPLATE = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.CHESTPLATE , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_chestplate");
     public static final Item SEA_CRYSTAL_LEGGINGS = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.LEGGINGS , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_leggings");
     public static final Item SEA_CRYSTAL_BOOTS = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.BOOTS , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_boots");
