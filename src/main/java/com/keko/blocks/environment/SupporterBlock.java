@@ -5,7 +5,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.IceBlock;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
@@ -25,6 +28,8 @@ public class SupporterBlock extends Block {
     @Override
     protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         world.scheduleBlockTick(pos, this, 100);
+        System.out.println(world);
+        world.playSound((PlayerEntity)null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         super.onBlockAdded(state, world, pos, oldState, notify);
     }
 
@@ -34,6 +39,9 @@ public class SupporterBlock extends Block {
         if (!world.isClient){
                 world.setBlockState(pos, Blocks.AIR.getDefaultState());
         }
+        world.spawnParticles(ModParticles.WATER_BOLT_PARTICLE_TYPE, pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f, 1,0,0, 0, 0);
+        world.playSound((PlayerEntity)null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_BEACON_DEACTIVATE, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+
         super.scheduledTick(state, world, pos, random);
     }
 

@@ -47,7 +47,8 @@ public class ModArmorMaterial{
                                                         Supplier<Ingredient> repairIngredient, float toughness,
                                                         float knockbackResistance, boolean dyeable) {
         List<ArmorMaterial.Layer> layers = List.of(
-                new ArmorMaterial.Layer(Identifier.of("enderite"), "", dyeable)
+                new ArmorMaterial.Layer(Identifier.of("enderite"), "", dyeable),
+                new ArmorMaterial.Layer(Identifier.of("sea_crystal"), "", dyeable)
         );
 
         var material = new ArmorMaterial(defensePoints, enchantability, equipSound, repairIngredient, layers,

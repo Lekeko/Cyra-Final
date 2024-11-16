@@ -9,10 +9,15 @@ import com.keko.items.weapons.SeaShooter;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
-public class ModItems {
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 
+public class ModItems {
+    public static final Set<Item> ITEMS = new HashSet<>();
 
 
 
@@ -72,12 +77,23 @@ public class ModItems {
     public static final Item SEA_CRYSTAL_AXE = registerItem(new AxeItem(ModToolMaterial.SEA_CRYSTAL, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.SEA_CRYSTAL, 7, -2.4F))), "sea_crystal_axe");
     public static final Item SEA_CRYSTAL_HOE = registerItem(new HoeItem(ModToolMaterial.SEA_CRYSTAL, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.SEA_CRYSTAL, -1, -1.8F))), "sea_crystal_hoe");
 
+    //PYRITE
+    public static final Item PYRITE_CHUNK = registerItem(new Item(new Item.Settings()), "pyrite_chunk");
+    public static final Item RESTORED_PYRITE = registerItem(new Item(new Item.Settings()), "restored_pyrite");
 
-    private static Item registerItem(Item item, String path) {
-        return Registry.register(Registries.ITEM, Identifier.of(CyraFinal.MOD_ID, path), item);
 
+
+    public static <T extends Item> T registerItem(T item, String path) {
+        T value =  Registry.register(Registries.ITEM, Identifier.of(CyraFinal.MOD_ID, path), item);
+        ITEMS.add(value);
+        return  value;
     }
 
     public static void registerModItems() {
+    }
+
+    public static void fillTab(ItemGroup.DisplayContext displayContext, ItemGroup.Entries entries) {
+        ITEMS.stream().sorted(Comparator.comparing(item -> Registries.ITEM.getKey(item) .map(RegistryKey::toString).orElseThrow())).forEach(item -> entries.add(new ItemStack(item)));
+
     }
 }

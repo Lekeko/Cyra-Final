@@ -1,0 +1,19 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cyra:item/sea_crystal_striders"
+  },
+
+  "display": {
+    "firstperson_lefthand": {
+      "rotation": [-79, 0, 45],
+      "translation": [-9, 4.75, 5],
+      "scale": [0.75, 0.75, 0.75]
+    },
+    "firstperson_righthand": {
+      "rotation": [-79, 0, -45],
+      "translation": [-9, 4.75, 5],
+      "scale": [0.75, 0.75, 0.75]
+    }
+  }
+}

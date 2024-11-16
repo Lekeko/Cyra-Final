@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cyra:item/sea_crystal_striders"
+    "layer0": "cyra:item/restored_pyrite"
   }
 }
