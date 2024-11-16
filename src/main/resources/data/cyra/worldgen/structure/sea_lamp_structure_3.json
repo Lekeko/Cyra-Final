@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:jigsaw",
+
+  "start_pool": "cyra:sea_lanterns/start_pool",
+
+  "size": 2,
+
+  "max_distance_from_center": 80,
+
+  "biomes": "#cyra:has_structure/sea_treasure_monument",
+
+  "step": "lakes",
+
+  "start_height": {
+    "type": "minecraft:uniform",
+    "min_inclusive": {
+      "absolute": -100
+    },
+    "max_inclusive": {
+      "absolute": -30
+    }
+  },
+
+  "project_start_to_heightmap": "OCEAN_FLOOR_WG",
+
+  "use_expansion_hack": false,
+
+  "spawn_overrides": {
+    "creature": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "minecraft:parrot",
+          "weight": 1,
+          "minCount": 1,
+          "maxCount": 4
+        }
+      ]
+    }
+  }
+}

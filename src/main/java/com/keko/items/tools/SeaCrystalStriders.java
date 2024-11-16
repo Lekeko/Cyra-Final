@@ -16,15 +16,14 @@ public class SeaCrystalStriders extends Item {
         super(settings.maxCount(1));
     }
 
-    double boost = 10.0d;
-    double bonusSideBoost = 2.0d;
+    double boost = 7.0d;
     double notRightDimensionDebuff = 4.0d;
-    float cooldown = 3.0f;
+    float cooldown = 5.0f;
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient && user.isSubmergedInWater()){
             Vec3d lookingDirection = user.getRotationVec(1.0f);
-            if (!(world.getRegistryKey() == ModDimensions.MURIEL_KAIA_LEVEL_KEY))
+            if (world.getRegistryKey() == ModDimensions.MURIEL_KAIA_LEVEL_KEY)
             user.setVelocity(
                         lookingDirection.x * boost,
                         lookingDirection.y * boost,
@@ -39,6 +38,9 @@ public class SeaCrystalStriders extends Item {
             user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(), (int) (cooldown * 20));
 
             user.velocityModified = true;
+
+            user.useRiptide(20, 6, this.getDefaultStack());
+            user.setSwimming(false);
         }
         return super.use(world, user, hand);
     }

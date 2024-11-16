@@ -3,7 +3,8 @@
   "package": "com.keko.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ElytraNerfMixin"
+    "ElytraNerfMixin",
+    "CyraRiptideMixin"
   ],
   "injectors": {
     "defaultRequire": 1

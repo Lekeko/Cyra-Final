@@ -29,6 +29,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public class CyraModClient implements ClientModInitializer {
+    public static final Identifier CYRA_TRIDENT_RIPTIDE = Identifier.of(CyraFinal.MOD_ID, "textures/entity/cyra_sea_strider_riptide.png");
+
 
     public static final EntityModelLayer SEA_BOLT = new EntityModelLayer(Identifier.of(CyraFinal.MOD_ID, "entity/sea_bolt"), "main");
 

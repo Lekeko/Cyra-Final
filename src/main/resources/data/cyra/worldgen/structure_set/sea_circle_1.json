@@ -1,0 +1,36 @@
+{
+  "structures": [
+    {
+      "structure": "cyra:sea_circle_1",
+      "weight": 1
+    },
+    {
+      "structure": "cyra:sea_circle_2",
+      "weight": 1
+    },
+    {
+      "structure": "cyra:sea_lamp_structure_1",
+      "weight": 1
+    },{
+      "structure": "cyra:sea_lamp_structure_2",
+      "weight": 1
+    },
+    {
+      "structure": "cyra:sea_lamp_structure_3",
+      "weight": 1
+    },
+    {
+      "structure": "cyra:sea_lamp_structure_4",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136475,
+
+    "spacing": 6,
+
+    "separation": 2,
+
+    "type": "minecraft:random_spread"
+  }
+}

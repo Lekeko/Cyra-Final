@@ -27,6 +27,7 @@ public class AlchemyTable extends BlockWithEntity implements BlockEntityProvider
         super(settings);
     }
 
+
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;

@@ -1,0 +1,67 @@
+{
+  "name": "cyra:sea_lanterns/start_pool",
+
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "cyra:sea_circle_1",
+        "override_liquid_settings": "apply_waterlogging",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "cyra:sea_circle_2",
+        "override_liquid_settings": "apply_waterlogging",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "cyra:sea_lamp_structure_1",
+        "override_liquid_settings": "apply_waterlogging",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "cyra:sea_lamp_structure_2",
+        "override_liquid_settings": "apply_waterlogging",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "cyra:sea_lamp_structure_3",
+        "override_liquid_settings": "apply_waterlogging",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "cyra:sea_lamp_structure_4",
+        "override_liquid_settings": "apply_waterlogging",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}
