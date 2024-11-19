@@ -2,6 +2,7 @@ package com.keko.items;
 
 import com.keko.CyraFinal;
 import com.keko.items.armor.ModArmorItem;
+import com.keko.items.bossItems.spawners.RottenNecklace;
 import com.keko.items.tools.BuffFlask;
 import com.keko.items.tools.HealingFlask;
 import com.keko.items.tools.SeaCrystalStriders;
@@ -32,6 +33,9 @@ public class ModItems {
 
     public static final Item HEALING_FLASK = registerItem(new HealingFlask(new Item.Settings().maxCount(1)), "healing_flask");
     public static final Item BUFF_FLASK = registerItem(new BuffFlask(new Item.Settings().maxCount(1)), "buff_flask");
+
+
+    public static final Item ROTTEN_NECKLACE = registerItem(new RottenNecklace(new Item.Settings().maxCount(1)), "rotten_necklace");
 
 
 

@@ -38,9 +38,9 @@ public class SeaCrystalStriders extends Item {
             user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(), (int) (cooldown * 20));
 
             user.velocityModified = true;
-
-            user.useRiptide(20, 6, this.getDefaultStack());
             user.setSwimming(false);
+            user.useRiptide(20, 6, this.getDefaultStack());
+
         }
         return super.use(world, user, hand);
     }

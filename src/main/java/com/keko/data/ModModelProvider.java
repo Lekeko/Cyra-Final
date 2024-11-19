@@ -77,6 +77,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ORB_OF_VITALITY, Models.GENERATED);
         itemModelGenerator.register(ModItems.PYRITE_CHUNK, Models.GENERATED);
         itemModelGenerator.register(ModItems.RESTORED_PYRITE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ROTTEN_NECKLACE, Models.GENERATED);
 
 
         //ARMOUR
