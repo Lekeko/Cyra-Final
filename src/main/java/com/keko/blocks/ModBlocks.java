@@ -6,6 +6,7 @@ import com.keko.blocks.environment.SupporterBlock;
 import com.keko.blocks.environment.dim1.ChainBlockGeneratorBlock;
 import com.keko.blocks.environment.dim1.CoreOfTheSeaBlock;
 import com.keko.blocks.environment.dim1.SeaCrystalCluster;
+import com.keko.blocks.environment.specialBlocks.ZombieLeaderSpawnerBlock;
 import com.keko.items.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
@@ -49,6 +50,7 @@ public class ModBlocks {
     public static final  Block CORE_OF_THE_SEA = registerBlock(new CoreOfTheSeaBlock(Block.Settings.create().strength(20.0F, 1200.0F).requiresTool().luminance((state) -> 20)), "core_of_the_sea", new Item.Settings());
     public static final  Block PRISMATIC_LEAVES = registerBlock(new LeavesBlock(Block.Settings.create().strength(5.2F, 10.0F).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((state) -> 15)), "prismatic_leaves", new Item.Settings());
     public static final Block ALCHEMY_TABLE = registerBlock(new AlchemyTable(AbstractBlock.Settings.copy(Blocks.BEACON)),"alchemy_table", new Item.Settings());
+    public static final Block ZOMBIE_LEADER_BLOCK = registerBlock(new ZombieLeaderSpawnerBlock(AbstractBlock.Settings.copy(Blocks.BEDROCK)),"zombie_leader_spawner_block", new Item.Settings());
 
 
     //dumb blocks
