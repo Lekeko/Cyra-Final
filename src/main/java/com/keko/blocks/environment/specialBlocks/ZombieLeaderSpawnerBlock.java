@@ -6,6 +6,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
@@ -15,7 +17,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class ZombieLeaderSpawnerBlock extends Block {
-    public final int ARENA_SIZE = 8;
+    public final int ARENA_SIZE = 10;
     public static int currentSizeBuilt = 1;
     public ZombieLeaderSpawnerBlock(Settings settings) {
         super(settings);
@@ -51,7 +53,7 @@ public class ZombieLeaderSpawnerBlock extends Block {
                 placeBlock(state, world, new BlockPos(pos.getX() + i, pos.getY() - 1, pos.getZ() - currentSizeBuilt));
             }
             currentSizeBuilt++;
-            world.scheduleBlockTick(pos, this, 20);
+            world.scheduleBlockTick(pos, this, 10);
         }else {
             //I DONT CARE HOW IT LOOKS
             placePillars(world, new BlockPos(pos.getX() - currentSizeBuilt, pos.getY() - 1, pos.getZ() - 1));
@@ -62,6 +64,19 @@ public class ZombieLeaderSpawnerBlock extends Block {
             placePillars(world, new BlockPos(pos.getX() + 1, pos.getY() - 1, pos.getZ() - currentSizeBuilt));
             placePillars(world, new BlockPos(pos.getX() - 1, pos.getY() - 1, pos.getZ() + currentSizeBuilt));
             placePillars(world, new BlockPos(pos.getX() + 1, pos.getY() - 1, pos.getZ() + currentSizeBuilt));
+            for (int i = -currentSizeBuilt; i <= currentSizeBuilt; i++) {
+                placeBlock(state, world, new BlockPos(pos.getX() + currentSizeBuilt, pos.getY() - 1, pos.getZ() + i), true);
+            }
+            for (int i = -currentSizeBuilt; i <= currentSizeBuilt; i++) {
+                placeBlock(state, world, new BlockPos(pos.getX() - currentSizeBuilt, pos.getY() - 1, pos.getZ() + i), true);
+            }
+
+            for (int i = -currentSizeBuilt; i <= currentSizeBuilt; i++) {
+                placeBlock(state, world, new BlockPos(pos.getX() + i, pos.getY() - 1, pos.getZ() + currentSizeBuilt), true);
+            }
+            for (int i = -currentSizeBuilt; i <= currentSizeBuilt; i++) {
+                placeBlock(state, world, new BlockPos(pos.getX() + i, pos.getY() - 1, pos.getZ() - currentSizeBuilt), true);
+            }
             currentSizeBuilt = 1;
 
         }
@@ -87,9 +102,15 @@ public class ZombieLeaderSpawnerBlock extends Block {
 
     private void placeBlock(BlockState state, ServerWorld world, BlockPos pos) {
 
-        int randomNumber = new java.util.Random().nextInt(5);
+        int randomNumber = new java.util.Random().nextInt(arenaBlocks.length);
 
         world.setBlockState(pos, arenaBlocks[randomNumber].getDefaultState());
+    }
+    private void placeBlock(BlockState state, ServerWorld world, BlockPos pos, boolean border) {
+
+        int randomNumber = new java.util.Random().nextInt(5);
+
+        world.setBlockState(pos, Blocks.CHISELED_STONE_BRICKS.getDefaultState());
     }
 
     @Override
@@ -98,12 +119,13 @@ public class ZombieLeaderSpawnerBlock extends Block {
             if (player.getMainHandStack().isOf(ModItems.ROTTEN_NECKLACE)){
                 player.getMainHandStack().decrementUnlessCreative(1, player);
                 beginSpawningSequence(player, world, state, pos);
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 20 * (ARENA_SIZE - 1), 30));
             }
         }
         return super.onUse(state, world, pos, player, hit);
     }
 
     private void beginSpawningSequence(PlayerEntity player, World world, BlockState state,  BlockPos pos) {
-        world.scheduleBlockTick(pos, this, 20);
+        world.scheduleBlockTick(pos, this, 10);
     }
 }
