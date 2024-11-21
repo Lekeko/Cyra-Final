@@ -1,5 +1,7 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
+
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "cyra:block/zombie_leader_spawner_block",

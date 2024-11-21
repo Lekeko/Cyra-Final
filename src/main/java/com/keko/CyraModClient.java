@@ -1,6 +1,10 @@
 package com.keko;
 
 import com.keko.blocks.ModBlocks;
+import com.keko.entities.ModEntities;
+import com.keko.entities.bosses.zombieLeader.ZombieLeaderEntity;
+import com.keko.entities.bosses.zombieLeader.client.ZombieLeaderModel;
+import com.keko.entities.bosses.zombieLeader.client.ZombieLeaderRenderer;
 import com.keko.entities.projectiles.seaBolt.BoltRenderer;
 import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.game.BuffPayload;
@@ -67,7 +71,6 @@ public class CyraModClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModProjectileEntities.SEA_BOLT_ENTITY_TYPE, ctx -> new BoltRenderer(ctx, Identifier.of(CyraFinal.MOD_ID, "textures/entity/sea_bolt.png"), ModModelLayer.SEA_BOLT));
         ParticleFactoryRegistry.getInstance().register(ModParticles.WATER_BOLT_PARTICLE_TYPE, WaterBoltParticle.Factory::new);
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUPPORTER, RenderLayer.getCutout());
-
-
+        EntityRendererRegistry.register(ModEntities.ZOMBIE_LEADER, ZombieLeaderRenderer::new);
     }
 }

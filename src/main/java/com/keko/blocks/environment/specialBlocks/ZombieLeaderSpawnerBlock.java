@@ -1,9 +1,9 @@
 package com.keko.blocks.environment.specialBlocks;
 
 import com.keko.items.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -14,13 +14,35 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class ZombieLeaderSpawnerBlock extends Block {
+public class ZombieLeaderSpawnerBlock extends BlockWithEntity implements BlockEntityProvider {
     public final int ARENA_SIZE = 10;
     public static int currentSizeBuilt = 1;
+    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
+
     public ZombieLeaderSpawnerBlock(Settings settings) {
         super(settings);
+    }
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+
+
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return null;
     }
 
     Block[] arenaBlocks = new Block[]{
@@ -38,6 +60,7 @@ public class ZombieLeaderSpawnerBlock extends Block {
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (currentSizeBuilt < ARENA_SIZE) {
+            world.setBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()), Blocks.CHISELED_STONE_BRICKS.getDefaultState());
 
             for (int i = -currentSizeBuilt; i <= currentSizeBuilt; i++) {
                 placeBlock(state, world, new BlockPos(pos.getX() + currentSizeBuilt, pos.getY() - 1, pos.getZ() + i));
@@ -45,7 +68,6 @@ public class ZombieLeaderSpawnerBlock extends Block {
             for (int i = -currentSizeBuilt; i <= currentSizeBuilt; i++) {
                 placeBlock(state, world, new BlockPos(pos.getX() - currentSizeBuilt, pos.getY() - 1, pos.getZ() + i));
             }
-
             for (int i = -currentSizeBuilt; i <= currentSizeBuilt; i++) {
                 placeBlock(state, world, new BlockPos(pos.getX() + i, pos.getY() - 1, pos.getZ() + currentSizeBuilt));
             }
@@ -127,5 +149,11 @@ public class ZombieLeaderSpawnerBlock extends Block {
 
     private void beginSpawningSequence(PlayerEntity player, World world, BlockState state,  BlockPos pos) {
         world.scheduleBlockTick(pos, this, 10);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return null;
     }
 }
