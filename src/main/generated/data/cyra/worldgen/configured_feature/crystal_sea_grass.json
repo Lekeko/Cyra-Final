@@ -1,0 +1,7 @@
+{
+  "type": "cyra:crystal_grass_feature",
+  "config": {
+    "blockID": "cyra:crystal_sea_grass",
+    "number": 10
+  }
+}

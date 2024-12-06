@@ -10,6 +10,7 @@ import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.game.BuffPayload;
 import com.keko.game.HealPayload;
 import com.keko.game.KeyBinds;
+import com.keko.game.SlamAttackpayload;
 import com.keko.helpers.InvSearch;
 import com.keko.items.ModItems;
 import com.keko.items.tools.BuffFlask;
@@ -21,6 +22,7 @@ import com.keko.screen.AlchemyTableScreen;
 import com.keko.screen.ModScreenHandlers;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -60,7 +62,13 @@ public class CyraModClient implements ClientModInitializer {
             });
         });
 
+        ClientPlayNetworking.registerGlobalReceiver(SlamAttackpayload.ID, (payload, context) -> {
+            context.client().execute(() -> {
 
+                ZombieLeaderEntity.setClientSlam(true, context.player());
+
+            });
+        });
 
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_CRYSTAL_CLUSTER, RenderLayer.getCutout());
@@ -71,6 +79,7 @@ public class CyraModClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModProjectileEntities.SEA_BOLT_ENTITY_TYPE, ctx -> new BoltRenderer(ctx, Identifier.of(CyraFinal.MOD_ID, "textures/entity/sea_bolt.png"), ModModelLayer.SEA_BOLT));
         ParticleFactoryRegistry.getInstance().register(ModParticles.WATER_BOLT_PARTICLE_TYPE, WaterBoltParticle.Factory::new);
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUPPORTER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRYSTAL_SEA_GRASS, RenderLayer.getCutout());
         EntityRendererRegistry.register(ModEntities.ZOMBIE_LEADER, ZombieLeaderRenderer::new);
     }
 }

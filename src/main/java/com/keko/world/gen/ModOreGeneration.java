@@ -11,6 +11,7 @@ public class ModOreGeneration {
         BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.ENDERITE_ORE_PLACED_KEY);
 
+
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.MURIEL_WATERS),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeature.SEA_CRYSTAL_CLUSTER_PLACED_KEY);
 

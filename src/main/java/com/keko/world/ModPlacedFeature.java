@@ -12,6 +12,7 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.keko.world.ModConfiguredFeatures.PRISMATIC_TREE_KEY;
 import static com.keko.world.ModConfiguredFeatures.SEA_CRYSTAL_CLUSTER_KEY;
@@ -24,6 +25,7 @@ public class ModPlacedFeature {
     public static final RegistryKey<PlacedFeature> MINIARITE_FORMATION = registerKey("miniarite_formation_placed");
     public static final RegistryKey<PlacedFeature> MURIANITE_FORMATION = registerKey("murianite_formation_placed");
     public static final RegistryKey<PlacedFeature> PYRITE_ORE = registerKey("pyrite_ore_placed");
+    public static final RegistryKey<PlacedFeature> CRYSTAL_SEA_GRASS_PLACED = registerKey("crystal_grass_feature");
 
     public static void boostrap(Registerable<PlacedFeature> context){
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -33,11 +35,26 @@ public class ModPlacedFeature {
 
 
         int offset = 10;
+
         register(context, SEA_CRYSTAL_CLUSTER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SEA_CRYSTAL_CLUSTER_KEY),
                 ModorePlacement.modifiersWithCount(1, HeightRangePlacementModifier.uniform(YOffset.fixed(200 - offset), YOffset.fixed(300 - offset))));
 
         register(context, LANTERN_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LANTERN_ORE_KEY),
                 ModorePlacement.modifiersWithCount(15, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(300))));
+
+        register(context, CRYSTAL_SEA_GRASS_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRYSTAL_SEA_GRASS_KEY),
+                ModorePlacement.modifiersWithCount(200, HeightRangePlacementModifier.uniform(YOffset.fixed(30 - offset), YOffset.fixed(300 - offset))));
+
+        register(
+                context,
+                PRISMATIC_TREE_PLACED,
+                configuredFeatureRegistryEntryLookup.getOrThrow(PRISMATIC_TREE_KEY),
+                VegetationPlacedFeatures.treeModifiers(
+                                PlacedFeatures.createCountExtraModifier(2, 0.1f, 2) // Base modifiers
+                        ).stream()
+                        .filter(modifier -> !(modifier instanceof SurfaceWaterDepthFilterPlacementModifier)) // Remove surface-only filters
+                        .collect(Collectors.toList()) // Convert back to a list
+        );
 
         register(context, MINIARITE_FORMATION, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MINIARITE_ORE),
                 ModorePlacement.modifiersWithCount(20, HeightRangePlacementModifier.uniform(YOffset.fixed(80 - offset), YOffset.fixed(200- offset))));

@@ -2,25 +2,34 @@ package com.keko.world;
 
 import com.keko.CyraFinal;
 import com.keko.blocks.ModBlocks;
+import com.keko.features.ModFeature;
+import com.keko.features.dim1.CrystalSeaGrassFeatureConfig;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.math.intprovider.WeightedListIntProvider;
+import net.minecraft.util.math.VerticalSurfaceType;
+import net.minecraft.util.math.intprovider.*;
+import net.minecraft.world.gen.ProbabilityConfig;
+import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.BushFoliagePlacer;
+import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
@@ -38,11 +47,13 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> MINIARITE_ORE = registerKey("miniarite_formation");
     public static final RegistryKey<ConfiguredFeature<?,?>> MURIANITE_ORE = registerKey("murianite_formation");
     public static final RegistryKey<ConfiguredFeature<?,?>> PYRITE_ORE_KEY = registerKey("pyrite_ore");
+    public static final RegistryKey<ConfiguredFeature<?,?>> CRYSTAL_SEA_GRASS_KEY = registerKey("crystal_sea_grass");
 
     public static void boostrap (Registerable<ConfiguredFeature<?, ?>> context){
         RuleTest endStoneReplaceables = new BlockMatchRuleTest(Blocks.END_STONE);
         RuleTest seaStoneReplaceables = new BlockMatchRuleTest(ModBlocks.SEA_STONE);
         RuleTest mirianiteReplaceables = new BlockMatchRuleTest(ModBlocks.SEA_MIRIANITE);
+        RuleTest waterReplaceables = new BlockMatchRuleTest(Blocks.WATER);
 
         List<OreFeatureConfig.Target> endEnderiteOres =
                 List.of(OreFeatureConfig.createTarget(endStoneReplaceables, ModBlocks.ENDERITE_ORE.getDefaultState()));
@@ -61,6 +72,8 @@ public class ModConfiguredFeatures {
 
         List<OreFeatureConfig.Target> mirianiteOrePyrite =
                 List.of(OreFeatureConfig.createTarget(seaStoneReplaceables, ModBlocks.PYRITE_ORE.getDefaultState()));
+        List<OreFeatureConfig.Target> CrystalGrass =
+                List.of(OreFeatureConfig.createTarget(waterReplaceables, ModBlocks.CRYSTAL_SEA_GRASS.getDefaultState()));
 
 
 
@@ -68,6 +81,7 @@ public class ModConfiguredFeatures {
         register(context, MINIARITE_ORE, Feature.ORE, new OreFeatureConfig(seaMirianFormation, 45));
         register(context, MURIANITE_ORE, Feature.ORE, new OreFeatureConfig(seaMurianiteFormation, 45));
         register(context, PYRITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(mirianiteOrePyrite, 6));
+        register(context, CRYSTAL_SEA_GRASS_KEY, ModFeature.CRYSTAL_GRASS_FEATURE, new CrystalSeaGrassFeatureConfig(10, Identifier.of(CyraFinal.MOD_ID, "crystal_sea_grass")));
 
         register(context, SEA_CRYSTAL_CLUSTER_KEY,Feature.GEODE,
                 new GeodeFeatureConfig(new GeodeLayerConfig(BlockStateProvider.of(Blocks.AIR),
@@ -85,16 +99,14 @@ public class ModConfiguredFeatures {
                         -18, 18, 0.075D, 1));
 
         register(context, LANTERN_ORE_KEY, Feature.SCATTERED_ORE, new OreFeatureConfig(prismarine, 60));
-        register(context, PRISMATIC_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                SimpleBlockStateProvider.of(Blocks.AMETHYST_BLOCK),
-                //new CherryTrunkPlacer(7, 1, 0, ConstantIntProvider.create(3), UniformIntProvider.create(2, 4), UniformIntProvider.create(-4, -3), UniformIntProvider.create(-1, 0)),
-                new StraightTrunkPlacer(6, 6, 6),
-                SimpleBlockStateProvider.of(ModBlocks.PRISMATIC_LEAVES),
-                new BlobFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(2), 4),
-                new TwoLayersFeatureSize(1, 0 ,2)).
-                dirtProvider(SimpleBlockStateProvider.of(ModBlocks.SEA_STONE)).
-                build()
-        );
+        register(context, PRISMATIC_TREE_KEY, Feature.HUGE_FUNGUS, new HugeFungusFeatureConfig(
+                Blocks.AMETHYST_BLOCK.getDefaultState(), // Stem block
+                ModBlocks.PRISMATIC_LEAVES.getDefaultState(), // Foliage block
+                ModBlocks.SEA_STONE.getDefaultState(), // Nylium or base block
+                ModBlocks.SEA_STONE.getDefaultState(), // Nylium or base block
+                BlockPredicate.matchingBlocks(ModBlocks.SEA_STONE), // Nylium or base block
+                false // Whether the structure generates with nether wart blocks on the ground
+        ));
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name){

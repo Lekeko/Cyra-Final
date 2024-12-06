@@ -20,12 +20,21 @@
     "size_vertical": 2
   },
   "noise_router": {
+
     "barrier": 0,
     "fluid_level_floodedness": 0,
     "fluid_level_spread": 0,
     "lava": 0,
     "temperature": 0,
-    "vegetation": 0,
+    "vegetation": {
+      "type": "minecraft:shifted_noise",
+      "noise": "minecraft:vegetation",
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0.0,
+      "shift_z": "minecraft:shift_z",
+      "xz_scale": 0.25,
+      "y_scale": 0.0
+    },
     "continents": 0,
     "erosion": 0,
     "depth": 0,

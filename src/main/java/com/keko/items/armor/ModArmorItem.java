@@ -24,10 +24,15 @@ public class ModArmorItem extends ArmorItem {
     }
 
     private void addStatusEffect(PlayerEntity player){
-        boolean hasPlayerEffect = player.hasStatusEffect(StatusEffects.DOLPHINS_GRACE);
+        if (!player.getWorld().isClient){
+            boolean hasPlayerEffect = player.hasStatusEffect(StatusEffects.DOLPHINS_GRACE);
+            int time = 0;
+            if (hasPlayerEffect)
+                 time = player.getStatusEffect(StatusEffects.DOLPHINS_GRACE).getDuration();
 
-        if (hasCorrectArmourOn(player) && !hasPlayerEffect){
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 200));
+            if (hasCorrectArmourOn(player) && time < 400) {
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 800));
+            }
         }
     }
 

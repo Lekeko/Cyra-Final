@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroup {
-    public static final ItemGroup RUBY_GROUP = Registry.register(Registries.ITEM_GROUP,
+    public static final ItemGroup CYRA_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(CyraFinal.MOD_ID, "cyra"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.cyra"))
                     .icon(() -> new ItemStack(ModItems.SEA_CRYSTAL_PICKAXE)).entries(ModItems::fillTab).build());

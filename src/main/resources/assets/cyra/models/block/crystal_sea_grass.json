@@ -1,0 +1,6 @@
+{
+  "parent": "block/template_seagrass",
+  "textures": {
+    "texture": "cyra:block/crystal_sea_grass"
+  }
+}
