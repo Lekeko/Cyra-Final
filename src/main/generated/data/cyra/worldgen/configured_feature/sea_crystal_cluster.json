@@ -51,7 +51,7 @@
     },
     "distribution_points": {
       "type": "minecraft:uniform",
-      "max_inclusive": 6,
+      "max_inclusive": 3,
       "min_inclusive": 2
     },
     "invalid_blocks_threshold": 1,
@@ -61,13 +61,13 @@
       "middle_layer": 2.5,
       "outer_layer": 3.5
     },
-    "max_gen_offset": 18,
-    "min_gen_offset": -18,
+    "max_gen_offset": 5,
+    "min_gen_offset": -5,
     "noise_multiplier": 0.075,
     "outer_wall_distance": {
       "type": "minecraft:uniform",
-      "max_inclusive": 8,
-      "min_inclusive": 3
+      "max_inclusive": 4,
+      "min_inclusive": 2
     },
     "placements_require_layer0_alternate": true,
     "point_offset": {

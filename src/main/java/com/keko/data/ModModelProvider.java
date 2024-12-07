@@ -29,6 +29,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEP_SEA_LANTERN);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEP_LANTERN);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_MIRIANITE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BIOLUMINESCENCE_LEAVES);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_MURIANITE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PYRITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_STONE_BRICK);

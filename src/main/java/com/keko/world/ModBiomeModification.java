@@ -12,6 +12,7 @@ import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.util.PlacedFeatureIndexer;
 
 import static com.keko.features.ModFeature.CRYSTAL_GRASS_FEATURE_ID;
+import static com.keko.features.ModFeature.CRYSTAL_TREE_FEATURE_ID;
 
 public class ModBiomeModification {
     public static void load(){
@@ -20,6 +21,12 @@ public class ModBiomeModification {
                 BiomeSelectors.all(),
                 GenerationStep.Feature.VEGETAL_DECORATION,
                 RegistryKey.of(RegistryKeys.PLACED_FEATURE, CRYSTAL_GRASS_FEATURE_ID)
+        );
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.all(),
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                RegistryKey.of(RegistryKeys.PLACED_FEATURE, CRYSTAL_TREE_FEATURE_ID)
         );
     }
 }

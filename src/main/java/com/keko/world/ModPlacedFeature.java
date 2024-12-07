@@ -21,7 +21,7 @@ public class ModPlacedFeature {
     public static final RegistryKey<PlacedFeature> ENDERITE_ORE_PLACED_KEY = registerKey("enderite_ore_placed");
     public static final RegistryKey<PlacedFeature> SEA_CRYSTAL_CLUSTER_PLACED_KEY = registerKey("sea_crystal_cluster_key");
     public static final RegistryKey<PlacedFeature> LANTERN_ORE_PLACED_KEY = registerKey("dim_sea_lantern_placed");
-    public static final RegistryKey<PlacedFeature> PRISMATIC_TREE_PLACED = registerKey("prismatic_tree_placed");
+    public static final RegistryKey<PlacedFeature> PRISMATIC_TREE_PLACED = registerKey("crystal_tree_feature");
     public static final RegistryKey<PlacedFeature> MINIARITE_FORMATION = registerKey("miniarite_formation_placed");
     public static final RegistryKey<PlacedFeature> MURIANITE_FORMATION = registerKey("murianite_formation_placed");
     public static final RegistryKey<PlacedFeature> PYRITE_ORE = registerKey("pyrite_ore_placed");
@@ -43,18 +43,10 @@ public class ModPlacedFeature {
                 ModorePlacement.modifiersWithCount(15, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(300))));
 
         register(context, CRYSTAL_SEA_GRASS_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRYSTAL_SEA_GRASS_KEY),
-                ModorePlacement.modifiersWithCount(200, HeightRangePlacementModifier.uniform(YOffset.fixed(30 - offset), YOffset.fixed(300 - offset))));
+                ModorePlacement.modifiersWithCount(5, HeightRangePlacementModifier.uniform(YOffset.fixed(30 - offset), YOffset.fixed(300 - offset))));
 
-        register(
-                context,
-                PRISMATIC_TREE_PLACED,
-                configuredFeatureRegistryEntryLookup.getOrThrow(PRISMATIC_TREE_KEY),
-                VegetationPlacedFeatures.treeModifiers(
-                                PlacedFeatures.createCountExtraModifier(2, 0.1f, 2) // Base modifiers
-                        ).stream()
-                        .filter(modifier -> !(modifier instanceof SurfaceWaterDepthFilterPlacementModifier)) // Remove surface-only filters
-                        .collect(Collectors.toList()) // Convert back to a list
-        );
+        register(context, PRISMATIC_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(PRISMATIC_TREE_KEY),
+                ModorePlacement.modifiersWithCount(5, HeightRangePlacementModifier.uniform(YOffset.fixed(30 - offset), YOffset.fixed(300 - offset))));
 
         register(context, MINIARITE_FORMATION, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MINIARITE_ORE),
                 ModorePlacement.modifiersWithCount(20, HeightRangePlacementModifier.uniform(YOffset.fixed(80 - offset), YOffset.fixed(200- offset))));

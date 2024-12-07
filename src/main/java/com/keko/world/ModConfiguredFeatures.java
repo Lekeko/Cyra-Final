@@ -3,39 +3,21 @@ package com.keko.world;
 import com.keko.CyraFinal;
 import com.keko.blocks.ModBlocks;
 import com.keko.features.ModFeature;
-import com.keko.features.dim1.CrystalSeaGrassFeatureConfig;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
+import com.keko.features.dim1.crystalTrees.CrystalTreesFeatureConfig;
+import com.keko.features.dim1.seaGrass.CrystalSeaGrassFeatureConfig;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
-import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.*;
-import net.minecraft.world.gen.ProbabilityConfig;
-import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
-import net.minecraft.world.gen.foliage.BushFoliagePlacer;
-import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
-import java.rmi.registry.Registry;
 import java.util.List;
 
 public class ModConfiguredFeatures {
@@ -43,7 +25,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> SEA_CRYSTAL_CLUSTER_KEY = registerKey("sea_crystal_cluster");
     public static final RegistryKey<ConfiguredFeature<?,?>> LANTERN_ORE_KEY = registerKey("dim_sea_lantern_ore");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> PRISMATIC_TREE_KEY =registerKey("prismatic_tree");
+    public static final RegistryKey<ConfiguredFeature<?,?>> PRISMATIC_TREE_KEY =registerKey("crystal_tree_feature");
     public static final RegistryKey<ConfiguredFeature<?,?>> MINIARITE_ORE = registerKey("miniarite_formation");
     public static final RegistryKey<ConfiguredFeature<?,?>> MURIANITE_ORE = registerKey("murianite_formation");
     public static final RegistryKey<ConfiguredFeature<?,?>> PYRITE_ORE_KEY = registerKey("pyrite_ore");
@@ -94,19 +76,12 @@ public class ModConfiguredFeatures {
                         new GeodeLayerThicknessConfig(1.7D, 1.2D, 2.5D, 3.5D),
                         new GeodeCrackConfig(0.25D, 1.5D, 1),
                         0.5D, 0.1D,
-                        true, UniformIntProvider.create(3, 8),
-                        UniformIntProvider.create(2, 6), UniformIntProvider.create(1, 2),
-                        -18, 18, 0.075D, 1));
+                        true, UniformIntProvider.create(2, 4),
+                        UniformIntProvider.create(2, 3), UniformIntProvider.create(1, 2),
+                        -5, 5, 0.075D, 1));
 
         register(context, LANTERN_ORE_KEY, Feature.SCATTERED_ORE, new OreFeatureConfig(prismarine, 60));
-        register(context, PRISMATIC_TREE_KEY, Feature.HUGE_FUNGUS, new HugeFungusFeatureConfig(
-                Blocks.AMETHYST_BLOCK.getDefaultState(), // Stem block
-                ModBlocks.PRISMATIC_LEAVES.getDefaultState(), // Foliage block
-                ModBlocks.SEA_STONE.getDefaultState(), // Nylium or base block
-                ModBlocks.SEA_STONE.getDefaultState(), // Nylium or base block
-                BlockPredicate.matchingBlocks(ModBlocks.SEA_STONE), // Nylium or base block
-                false // Whether the structure generates with nether wart blocks on the ground
-        ));
+        register(context, PRISMATIC_TREE_KEY, ModFeature.CRYSTAL_TREE_FEATURE, new CrystalTreesFeatureConfig(1, Identifier.of(CyraFinal.MOD_ID, "crystal_tree_feature")));
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name){

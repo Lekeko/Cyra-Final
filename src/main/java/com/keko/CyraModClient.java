@@ -80,6 +80,9 @@ public class CyraModClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.WATER_BOLT_PARTICLE_TYPE, WaterBoltParticle.Factory::new);
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUPPORTER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRYSTAL_SEA_GRASS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_CRYSTAL_SEA_GRASS_BOTTOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_CRYSTAL_SEA_GRASS_TOP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRYSTAL_SEA_WEED, RenderLayer.getCutout());
         EntityRendererRegistry.register(ModEntities.ZOMBIE_LEADER, ZombieLeaderRenderer::new);
     }
 }

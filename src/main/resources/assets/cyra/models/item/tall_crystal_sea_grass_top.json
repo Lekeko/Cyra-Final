@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "cyra:item/tall_crystal_sea_grass_top"
+	}
+}

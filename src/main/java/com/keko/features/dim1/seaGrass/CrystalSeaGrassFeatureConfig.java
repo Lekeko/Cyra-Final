@@ -1,4 +1,4 @@
-package com.keko.features.dim1;
+package com.keko.features.dim1.seaGrass;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
