@@ -5,6 +5,7 @@ import com.keko.blocks.blocksWithInterface.AlchemyTable;
 import com.keko.blocks.blocksWithInterface.PyriteFabricator;
 import com.keko.blocks.environment.SupporterBlock;
 import com.keko.blocks.environment.dim1.*;
+import com.keko.blocks.environment.dim1.furniture.PyriteLamp;
 import com.keko.blocks.environment.dim1.furniture.SeaCrystalBricksDoor;
 import com.keko.blocks.environment.dim1.furniture.SeaCrystalBricksTrapdoor;
 import com.keko.blocks.environment.specialBlocks.ZombieLeaderSpawnerBlock;
@@ -26,6 +27,7 @@ public class ModBlocks {
     public static final  Block ENDERITE_ORE = registerBlock(new Block(Block.Settings.create().strength(30.0F, 1200.0F).requiresTool()), "enderite_ore", new Item.Settings());
     public static final  Block SEA_CRYSTAL_CLUSTER = registerBlock(new SeaCrystalCluster(7.0F, 3.0F, Block.Settings.create().strength(20.0F, 1000.0F).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((state) -> 20).solid().nonOpaque()), "sea_crystal_cluster", new Item.Settings());
     public static final  Block PYRITE_ORE = registerBlock(new Block(Block.Settings.create().strength(40.0F, 1400.0F).requiresTool()), "pyrite_ore", new Item.Settings());
+    public static final  Block PYRITE_LAMP = registerBlock(new PyriteLamp(Block.Settings.create().strength(40.0F, 1400.0F).nonOpaque().luminance((state) -> 12)), "pyrite_lamp", new Item.Settings());
 
 
 

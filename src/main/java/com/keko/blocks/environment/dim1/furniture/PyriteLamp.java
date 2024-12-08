@@ -1,6 +1,5 @@
-package com.keko.blocks.environment.dim1;
+package com.keko.blocks.environment.dim1.furniture;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
@@ -12,30 +11,26 @@ import net.minecraft.item.Items;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class SeaWeedBlock extends Block implements Waterloggable {
+public class PyriteLamp extends Block implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = BooleanProperty.of("waterlogged");
 
-    public SeaWeedBlock(Settings settings) {
+
+    private static final VoxelShape SHAPE = Block.createCuboidShape(5, 5, 4, 11, 14, 11);
+
+    public PyriteLamp(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
+
     }
 
     @Override
-    protected MapCodec<? extends CoralParentBlock> getCodec() {
-        return null;
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
-        builder.add(WATERLOGGED);
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
     }
 
     @Override
@@ -66,16 +61,30 @@ public class SeaWeedBlock extends Block implements Waterloggable {
         return ItemStack.EMPTY;
     }
 
-
-
     @Override
-    public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        return true;
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
+        builder.add(WATERLOGGED);
     }
 
     @Override
-    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
-        return true;
+    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
+        return 1;
     }
 
+    @Override
+    protected boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
+        return false ;
+    }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        return this.getDefaultState().with(WATERLOGGED, fluidState.isOf(Fluids.WATER));
+    }
 }
