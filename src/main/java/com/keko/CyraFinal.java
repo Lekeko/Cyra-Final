@@ -27,6 +27,7 @@ import net.minecraft.util.Identifier;
 import org.joml.Matrix4f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import software.bernie.geckolib.animation.AnimationController;
 
 public class CyraFinal implements ModInitializer {
 
@@ -53,7 +54,6 @@ public class CyraFinal implements ModInitializer {
 
 
 		LOGGER.info("Skibidi toilet ohio rizz pomni gayat");
-
 
 		FabricDefaultAttributeRegistry.register(ModEntities.ZOMBIE_LEADER, ZombieLeaderEntity.setAtributes());
 

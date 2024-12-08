@@ -1,5 +1,7 @@
 package com.keko.blocks.environment.specialBlocks;
 
+import com.keko.entities.ModEntities;
+import com.keko.entities.bosses.zombieLeader.ZombieLeaderEntity;
 import com.keko.items.ModItems;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
@@ -9,6 +11,7 @@ import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -59,6 +62,7 @@ public class ZombieLeaderSpawnerBlock extends BlockWithEntity implements BlockEn
 
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+
         if (currentSizeBuilt < ARENA_SIZE) {
             world.setBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ()), Blocks.CHISELED_STONE_BRICKS.getDefaultState());
 
@@ -78,14 +82,14 @@ public class ZombieLeaderSpawnerBlock extends BlockWithEntity implements BlockEn
             world.scheduleBlockTick(pos, this, 10);
         }else {
             //I DONT CARE HOW IT LOOKS
-            placePillars(world, new BlockPos(pos.getX() - currentSizeBuilt, pos.getY() - 1, pos.getZ() - 1));
-            placePillars(world, new BlockPos(pos.getX() - currentSizeBuilt, pos.getY() - 1, pos.getZ() + 1));
-            placePillars(world, new BlockPos(pos.getX() + currentSizeBuilt, pos.getY() - 1, pos.getZ() - 1));
-            placePillars(world, new BlockPos(pos.getX() + currentSizeBuilt, pos.getY() - 1, pos.getZ() + 1));
-            placePillars(world, new BlockPos(pos.getX() - 1, pos.getY() - 1, pos.getZ() - currentSizeBuilt));
-            placePillars(world, new BlockPos(pos.getX() + 1, pos.getY() - 1, pos.getZ() - currentSizeBuilt));
-            placePillars(world, new BlockPos(pos.getX() - 1, pos.getY() - 1, pos.getZ() + currentSizeBuilt));
-            placePillars(world, new BlockPos(pos.getX() + 1, pos.getY() - 1, pos.getZ() + currentSizeBuilt));
+            placePillars(world, new BlockPos(pos.getX() - currentSizeBuilt, pos.getY() - 1, pos.getZ() - 1), null);
+            placePillars(world, new BlockPos(pos.getX() - currentSizeBuilt, pos.getY() - 1, pos.getZ() + 1), null);
+            placePillars(world, new BlockPos(pos.getX() + currentSizeBuilt, pos.getY() - 1, pos.getZ() - 1), null);
+            placePillars(world, new BlockPos(pos.getX() + currentSizeBuilt, pos.getY() - 1, pos.getZ() + 1), null);
+            placePillars(world, new BlockPos(pos.getX() - 1, pos.getY() - 1, pos.getZ() - currentSizeBuilt), null);
+            placePillars(world, new BlockPos(pos.getX() + 1, pos.getY() - 1, pos.getZ() - currentSizeBuilt), null);
+            placePillars(world, new BlockPos(pos.getX() - 1, pos.getY() - 1, pos.getZ() + currentSizeBuilt), null);
+            placePillars(world, new BlockPos(pos.getX() + 1, pos.getY() - 1, pos.getZ() + currentSizeBuilt) , pos);
             for (int i = -currentSizeBuilt; i <= currentSizeBuilt; i++) {
                 placeBlock(state, world, new BlockPos(pos.getX() + currentSizeBuilt, pos.getY() - 1, pos.getZ() + i), true);
             }
@@ -107,7 +111,7 @@ public class ZombieLeaderSpawnerBlock extends BlockWithEntity implements BlockEn
         super.scheduledTick(state, world, pos, random);
     }
 
-    private void placePillars(ServerWorld world, BlockPos pos) {
+    private void placePillars(ServerWorld world, BlockPos pos, BlockPos origin) {
         world.setBlockState(pos, Blocks.CHISELED_STONE_BRICKS.getDefaultState());
         world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 1 , pos.getZ()), Blocks.CHISELED_STONE_BRICKS.getDefaultState());
         world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2 , pos.getZ()), Blocks.CHISELED_STONE_BRICKS.getDefaultState());
@@ -119,7 +123,16 @@ public class ZombieLeaderSpawnerBlock extends BlockWithEntity implements BlockEn
         world.setTimeOfDay(currentTime + ticksToAdd);
         lightning.setPosition(pos.getX(), pos.getY() + 5, pos.getZ());
         world.spawnEntity(lightning);
+        if (origin != null)
+            spawnBoss(world, origin);
 
+    }
+
+    private void spawnBoss(ServerWorld world, BlockPos pos) {
+        ZombieLeaderEntity zombieLeaderEntity = new ZombieLeaderEntity(ModEntities.ZOMBIE_LEADER, world);
+        zombieLeaderEntity.setPos(pos.getX(), pos.getY(), pos.getZ());
+        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+        world.spawnEntity(zombieLeaderEntity);
     }
 
     private void placeBlock(BlockState state, ServerWorld world, BlockPos pos) {

@@ -36,8 +36,8 @@ public class CrystalSeaGrassFeature extends Feature<CrystalSeaGrassFeatureConfig
         int radius = 0;
 
         java.util.Random random1 = new java.util.Random();
-        radius = random1.nextInt(10) + 5;
-        int radius2 = radius + 5;
+        radius = random1.nextInt(5) + 2;
+        int radius2 = radius + 3;
 
         for (int y = 0; y < world.getHeight(); y++) {
             testPos = testPos.up();

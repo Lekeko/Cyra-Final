@@ -46,8 +46,8 @@ public class CrystalTreesFeature extends Feature<CrystalTreesFeatureConfig> {
 
     private void generateCrown(FeatureContext<CrystalTreesFeatureConfig> context, int height, BlockPos testPos, Random random, StructureWorldAccess world) {
         float r = 3;
-        for (float i = -r; i <= r; i+=0.1)
-            for (float j = -r; j <= r; j+=0.1){
+        for (float i = -r; i <= r; i+=1)
+            for (float j = -r; j <= r; j+=1){
                 float checker = i*i + j*j;
                 if (Math.ceil(checker) < r*r - 3){
                         if (testPos.getY() >= world.getTopY()) break;
@@ -62,15 +62,18 @@ public class CrystalTreesFeature extends Feature<CrystalTreesFeatureConfig> {
 
                             posDown = posDown.down();
                         }
-                }else if (Math.floor(checker) == r*r){
+                }else if (Math.floor(checker) > r*r - 2 && (Math.abs(i) + Math.abs(j) != r*2 )){
                         if (testPos.getY() >= world.getTopY()) break;
                         BlockPos pos = new BlockPos((int) (testPos.getX() + i), testPos.getY() - 1, (int) (testPos.getZ() + j));
                         world.setBlockState(pos, ModBlocks.BIOLUMINESCENCE_LEAVES.getDefaultState(), 0x10);
-                        pos = pos.down();
-                        world.setBlockState(pos, ModBlocks.BIOLUMINESCENCE_LEAVES.getDefaultState(), 0x10);
+                        if (random.nextBoolean()){
+                            pos = pos.down();
+                            world.setBlockState(pos, ModBlocks.BIOLUMINESCENCE_LEAVES.getDefaultState(), 0x10);
+                        }
 
                         int length = random.nextBetween(3, 5);
                         BlockPos posDown = pos.down();
+
 
                         for (int k = 1; k < length && world.getBlockState(posDown).isOf(Blocks.WATER); k++) {
 

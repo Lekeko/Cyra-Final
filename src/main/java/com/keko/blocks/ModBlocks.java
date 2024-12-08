@@ -25,8 +25,6 @@ public class ModBlocks {
     public static final  Block PYRITE_ORE = registerBlock(new Block(Block.Settings.create().strength(40.0F, 1400.0F).requiresTool()), "pyrite_ore", new Item.Settings());
 
 
-    public static final Block CRYSTAL_SAPLING = registerBlock(
-            new CrystalSaplingBlock(AbstractBlock.Settings.create()), "crystal_sapling", new Item.Settings());
 
     public static final  Block SEA_CRYSTAL_FORMATION = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_formation", new Item.Settings());
 

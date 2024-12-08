@@ -43,10 +43,10 @@ public class ModPlacedFeature {
                 ModorePlacement.modifiersWithCount(15, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(300))));
 
         register(context, CRYSTAL_SEA_GRASS_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRYSTAL_SEA_GRASS_KEY),
-                ModorePlacement.modifiersWithCount(5, HeightRangePlacementModifier.uniform(YOffset.fixed(30 - offset), YOffset.fixed(300 - offset))));
+                ModorePlacement.modifiersWithCount(26, HeightRangePlacementModifier.uniform(YOffset.fixed(30 - offset), YOffset.fixed(300 - offset))));
 
         register(context, PRISMATIC_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(PRISMATIC_TREE_KEY),
-                ModorePlacement.modifiersWithCount(5, HeightRangePlacementModifier.uniform(YOffset.fixed(30 - offset), YOffset.fixed(300 - offset))));
+                ModorePlacement.modifiersWithCount(10, HeightRangePlacementModifier.uniform(YOffset.fixed(30 - offset), YOffset.fixed(300 - offset))));
 
         register(context, MINIARITE_FORMATION, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MINIARITE_ORE),
                 ModorePlacement.modifiersWithCount(20, HeightRangePlacementModifier.uniform(YOffset.fixed(80 - offset), YOffset.fixed(200- offset))));

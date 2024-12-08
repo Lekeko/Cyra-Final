@@ -62,13 +62,6 @@ public class CyraModClient implements ClientModInitializer {
             });
         });
 
-        ClientPlayNetworking.registerGlobalReceiver(SlamAttackpayload.ID, (payload, context) -> {
-            context.client().execute(() -> {
-
-                ZombieLeaderEntity.setClientSlam(true, context.player());
-
-            });
-        });
 
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_CRYSTAL_CLUSTER, RenderLayer.getCutout());
