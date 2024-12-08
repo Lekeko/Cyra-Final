@@ -1,35 +1,21 @@
 package com.keko.entities.bosses.zombieLeader;
 
-import com.keko.game.SlamAttackpayload;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageType;
-import net.minecraft.entity.damage.DamageTypes;
+import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.entity.passive.CatEntity;
-import net.minecraft.entity.passive.OcelotEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
-import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -37,19 +23,32 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
 
-import java.util.Random;
-
 public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private static float distanceToTarget = -1;
     private long lastAttackTime = 0; // Track the last attack time
     private long slamAttackTime = 200;
     private long summonAttackTime = 300;
+    private final ServerBossBar bossBar;
 
 
     public ZombieLeaderEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
+        this.bossBar = (ServerBossBar) (new ServerBossBar(this.getDisplayName(), BossBar.Color.GREEN, BossBar.Style.PROGRESS));
     }
+
+    @Override
+    public void onStartedTrackingBy(ServerPlayerEntity player) {
+        super.onStartedTrackingBy(player);
+        this.bossBar.addPlayer(player);
+    }
+
+    @Override
+    public void onStoppedTrackingBy(ServerPlayerEntity player) {
+        super.onStoppedTrackingBy(player);
+        this.bossBar.removePlayer(player);
+    }
+
 
 
 
@@ -107,7 +106,7 @@ public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
-        if (slamAttackTime > 0)
+        if (slamAttackTime > 0 && isAttacking())
             slamAttackTime--;
 
         if (slamAttackTime < 50 && slamAttackTime > 40){
@@ -120,7 +119,7 @@ public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
         }
 
 
-        if (summonAttackTime > 0)
+        if (summonAttackTime >  0 &&  isAttacking())
             summonAttackTime--;
 
         if (summonAttackTime > 19 && summonAttackTime <= 21){
@@ -146,6 +145,7 @@ public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
         if (summonAttackTime == 0){
             summonArmy();
         }
+        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
 
     }
 

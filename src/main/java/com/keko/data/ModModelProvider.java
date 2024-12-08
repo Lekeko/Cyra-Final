@@ -26,6 +26,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SUPPORTER);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ENDERITE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_CRYSTAL_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PYRITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PYRITE_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEP_SEA_LANTERN);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEP_LANTERN);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_MIRIANITE);
@@ -64,6 +66,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SEA_CRYSTAL_HOE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.SEA_WAND, Models.HANDHELD);
 
+        itemModelGenerator.register(ModItems.PYRITE_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.PYRITE_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.PYRITE_HOE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.PYRITE_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.PYRITE_SWORD, Models.HANDHELD);
+
         //MISC
 
         itemModelGenerator.register(ModItems.HEALING_FLASK, Models.GENERATED);
@@ -77,6 +85,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ORB_OF_IMPETUOSITY, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORB_OF_VITALITY, Models.GENERATED);
         itemModelGenerator.register(ModItems.PYRITE_CHUNK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SHACKLE_OF_IMPRISONMENT, Models.HANDHELD);
         itemModelGenerator.register(ModItems.RESTORED_PYRITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.ROTTEN_NECKLACE, Models.GENERATED);
 
@@ -93,5 +102,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.SEA_CRYSTAL_LEGGINGS));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.SEA_CRYSTAL_BOOTS));
 
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PYRITE_HELMET));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PYRITE_CHESTPLATE));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PYRITE_LEGGINGS));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PYRITE_BOOTS));
     }
 }

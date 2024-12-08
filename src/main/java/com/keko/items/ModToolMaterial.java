@@ -12,25 +12,25 @@ import net.minecraft.registry.tag.TagKey;
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
-    ENDERITE(5,2431, 9.0F, 4.0F, 15, ModBlockTags.INCORRECT_FOR_ENDERITE_TOOL, () ->
+    ENDERITE(5,3500, 11.0F, 4.0F, 15, ModBlockTags.INCORRECT_FOR_ENDERITE_TOOL, () ->
             Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     ),
-    SEA_CRYSTAL(6, 3000, 10.0F, 5.2F, 15,  ModBlockTags.INCORRECT_FOR_SEA_CRYSTAL_TOOL, () ->
+    SEA_CRYSTAL(6, 3900, 13.0F, 5.2F, 15,  ModBlockTags.INCORRECT_FOR_SEA_CRYSTAL_TOOL, () ->
             Ingredient.ofItems(ModItems.SEA_CRYSTAL)
     ),
-    PYRITE(7, 3420, 11.5F, 5.9F, 15, ModBlockTags.INCORRECT_FOR_PYRITE_TOOL,() ->
+    PYRITE(7, 4200, 15.5F, 5.9F, 15, ModBlockTags.INCORRECT_FOR_PYRITE_TOOL,() ->
+         Ingredient.ofItems(ModItems.RESTORED_PYRITE)
+    ),
+    RAINBOW_PYRITE(8, 5000, 18.5F, 6.5F, 15, ModBlockTags.INCORRECT_FOR_RAINBOW_PYRITE_TOOL,() ->
          Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     ),
-    RAINBOW_PYRITE(8, 3850, 13.5F, 6.5F, 15, ModBlockTags.INCORRECT_FOR_RAINBOW_PYRITE_TOOL,() ->
+    BAUXITE(9, 6300, 21.5F, 7.2F, 15, ModBlockTags.INCORRECT_FOR_BAUXITE_TOOL,() ->
          Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     ),
-    BAUXITE(9, 4200, 15.5F, 7.2F, 15, ModBlockTags.INCORRECT_FOR_BAUXITE_TOOL,() ->
+    VULCANIUM(10, 7200, 24.5F, 8.1F, 15, ModBlockTags.INCORRECT_FOR_VULCANIUM_TOOL,() ->
          Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     ),
-    VULCANIUM(10, 5000, 17.5F, 8.1F, 15, ModBlockTags.INCORRECT_FOR_VULCANIUM_TOOL,() ->
-         Ingredient.ofItems(ModItems.ENDERITE_INGOT)
-    ),
-    CYRANIUM(11, 7350, 20.0F, 9.5F, 15, ModBlockTags.INCORRECT_FOR_CYRANIUM_TOOL,() ->
+    CYRANIUM(11, 9000, 30.0F, 9.5F, 15, ModBlockTags.INCORRECT_FOR_CYRANIUM_TOOL,() ->
          Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     );
 

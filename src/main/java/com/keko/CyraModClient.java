@@ -2,27 +2,27 @@ package com.keko;
 
 import com.keko.blocks.ModBlocks;
 import com.keko.entities.ModEntities;
-import com.keko.entities.bosses.zombieLeader.ZombieLeaderEntity;
-import com.keko.entities.bosses.zombieLeader.client.ZombieLeaderModel;
 import com.keko.entities.bosses.zombieLeader.client.ZombieLeaderRenderer;
 import com.keko.entities.projectiles.seaBolt.BoltRenderer;
 import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.game.BuffPayload;
 import com.keko.game.HealPayload;
 import com.keko.game.KeyBinds;
-import com.keko.game.SlamAttackpayload;
 import com.keko.helpers.InvSearch;
 import com.keko.items.ModItems;
 import com.keko.items.tools.BuffFlask;
 import com.keko.model.ModModelLayer;
 import com.keko.model.seaBolt.SeaBoltModel;
 import com.keko.particle.ModParticles;
+import com.keko.particle.custom.PyriteSlashParticle;
+import com.keko.particle.custom.PyriteStarParticle;
 import com.keko.particle.custom.WaterBoltParticle;
-import com.keko.screen.AlchemyTableScreen;
+import com.keko.screen.alchemyTableScreen.AlchemyTableScreen;
 import com.keko.screen.ModScreenHandlers;
+import com.keko.screen.pyriteFabricatorScreen.PyriteFabricatorScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -67,15 +67,20 @@ public class CyraModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_CRYSTAL_CLUSTER, RenderLayer.getCutout());
 
         HandledScreens.register(ModScreenHandlers.ALCHEMY_TABLE_SCREENHANDLER_SCREEN_HANDLER_TYPE, AlchemyTableScreen::new);
+        HandledScreens.register(ModScreenHandlers.PYRITE_FABRICATOR_SCREENHANDLER_SCREEN_HANDLER_TYPE, PyriteFabricatorScreen::new);
         KeyBinds.initializeKeyBinds();
         EntityModelLayerRegistry.registerModelLayer(SEA_BOLT, SeaBoltModel::getTexturedModelData);
         EntityRendererRegistry.register(ModProjectileEntities.SEA_BOLT_ENTITY_TYPE, ctx -> new BoltRenderer(ctx, Identifier.of(CyraFinal.MOD_ID, "textures/entity/sea_bolt.png"), ModModelLayer.SEA_BOLT));
         ParticleFactoryRegistry.getInstance().register(ModParticles.WATER_BOLT_PARTICLE_TYPE, WaterBoltParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.PYRITE_SLASH, PyriteSlashParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.PYRITE_STAR, PyriteStarParticle.Factory::new);
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUPPORTER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRYSTAL_SEA_GRASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_CRYSTAL_SEA_GRASS_BOTTOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_CRYSTAL_SEA_GRASS_TOP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRYSTAL_SEA_WEED, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_CRYSTAL_BRICKS_TRAPDOOR, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEA_CRYSTAL_BRICKS_DOOR, RenderLayer.getTranslucent());
         EntityRendererRegistry.register(ModEntities.ZOMBIE_LEADER, ZombieLeaderRenderer::new);
     }
 }

@@ -1,9 +1,12 @@
 package com.keko.blocks;
 
 import com.keko.CyraFinal;
-import com.keko.blocks.environment.AlchemyTable;
+import com.keko.blocks.blocksWithInterface.AlchemyTable;
+import com.keko.blocks.blocksWithInterface.PyriteFabricator;
 import com.keko.blocks.environment.SupporterBlock;
 import com.keko.blocks.environment.dim1.*;
+import com.keko.blocks.environment.dim1.furniture.SeaCrystalBricksDoor;
+import com.keko.blocks.environment.dim1.furniture.SeaCrystalBricksTrapdoor;
 import com.keko.blocks.environment.specialBlocks.ZombieLeaderSpawnerBlock;
 import com.keko.blocks.environment.dim1.SeaWeedBlock;
 import com.keko.items.ModItems;
@@ -29,15 +32,17 @@ public class ModBlocks {
     public static final  Block SEA_CRYSTAL_FORMATION = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_formation", new Item.Settings());
 
     public static final  Block SEA_CRYSTAL_BRICKS = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks", new Item.Settings());
+    public static final  Block PYRITE_BRICKS = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "pyrite_bricks", new Item.Settings());
     public static final  Block SEA_CRYSTAL_BLOCK = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_block", new Item.Settings());
     public static final  Block ENDERITE_BLOCK = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "enderite_block", new Item.Settings());
+    public static final  Block PYRITE_BLOCK = registerBlock(new Block(Block.Settings.create().strength(10.0F, 200.0F).requiresTool().luminance((state) -> 10)), "pyrite_block", new Item.Settings());
 
     public static final  Block SEA_CRYSTAL_BRICKS_STAIRS = registerBlock(new StairsBlock(SEA_CRYSTAL_BRICKS.getDefaultState(), Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_stairs", new Item.Settings());
     public static final  Block SEA_CRYSTAL_BRICKS_SLAB = registerBlock(new SlabBlock(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_slab", new Item.Settings());
 
     public static final  Block SEA_CRYSTAL_BRICKS_WALL  = registerBlock(new WallBlock(Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_wall", new Item.Settings());
-    public static final  Block SEA_CRYSTAL_BRICKS_DOOR = registerBlock(new DoorBlock(BlockSetType.OAK , Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_door", new Item.Settings());
-    public static final  Block SEA_CRYSTAL_BRICKS_TRAPDOOR = registerBlock(new TrapdoorBlock(BlockSetType.OAK , Block.Settings.create().strength(10.0F, 200.0F).requiresTool()), "sea_crystal_bricks_trapdoor", new Item.Settings());
+    public static final  Block SEA_CRYSTAL_BRICKS_DOOR = registerBlock(new SeaCrystalBricksDoor(BlockSetType.OAK , Block.Settings.create().strength(10.0F, 200.0F).requiresTool().nonOpaque()), "sea_crystal_bricks_door", new Item.Settings());
+    public static final  Block SEA_CRYSTAL_BRICKS_TRAPDOOR = registerBlock(new SeaCrystalBricksTrapdoor(BlockSetType.OAK , Block.Settings.create().strength(10.0F, 200.0F).requiresTool().nonOpaque()), "sea_crystal_bricks_trapdoor", new Item.Settings());
 
     public static final  Block SEA_STONE = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F, 6.5F).sounds(BlockSoundGroup.DEEPSLATE)), "sea_stone", new Item.Settings());
     public static final  Block BIOLUMINESCENCE_WOOD = registerBlock(new PillarBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_STEM)), "bioluminescence_wood", new Item.Settings());
@@ -60,6 +65,7 @@ public class ModBlocks {
     public static final  Block CORE_OF_THE_SEA = registerBlock(new CoreOfTheSeaBlock(Block.Settings.create().strength(20.0F, 1200.0F).requiresTool().luminance((state) -> 20)), "core_of_the_sea", new Item.Settings());
     public static final  Block PRISMATIC_LEAVES = registerBlock(new LeavesBlock(Block.Settings.create().strength(5.2F, 10.0F).nonOpaque().sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance((state) -> 15)), "prismatic_leaves", new Item.Settings());
     public static final Block ALCHEMY_TABLE = registerBlock(new AlchemyTable(AbstractBlock.Settings.copy(Blocks.BEACON)),"alchemy_table", new Item.Settings());
+    public static final Block PYRITE_FABRICATOR = registerBlock(new PyriteFabricator(AbstractBlock.Settings.copy(Blocks.BEACON)),"pyrite_fabricator", new Item.Settings());
     public static final Block ZOMBIE_LEADER_BLOCK = registerBlock(new ZombieLeaderSpawnerBlock(AbstractBlock.Settings.copy(Blocks.BEDROCK)),"zombie_leader_spawner_block", new Item.Settings());
 
 

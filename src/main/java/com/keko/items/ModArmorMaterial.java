@@ -42,13 +42,27 @@ public class ModArmorMaterial{
             5.5F,
             0.3F,
             false);
+
+    public static final RegistryEntry<ArmorMaterial> PYRITE = register("pyrite", Map.of(
+                    ArmorItem.Type.HELMET, 6,
+                    ArmorItem.Type.CHESTPLATE, 12,
+                    ArmorItem.Type.LEGGINGS, 9,
+                    ArmorItem.Type.BOOTS, 7
+            ),
+            15,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+            () -> Ingredient.ofItems(ModItems.RESTORED_PYRITE),
+            6F,
+            0.45F,
+            false);
+
+
     public static RegistryEntry<ArmorMaterial> register(String id, Map<ArmorItem.Type, Integer> defensePoints,
                                                         int enchantability, RegistryEntry<SoundEvent> equipSound,
                                                         Supplier<Ingredient> repairIngredient, float toughness,
                                                         float knockbackResistance, boolean dyeable) {
         List<ArmorMaterial.Layer> layers = List.of(
-                new ArmorMaterial.Layer(Identifier.of("enderite"), "", dyeable),
-                new ArmorMaterial.Layer(Identifier.of("sea_crystal"), "", dyeable)
+                new ArmorMaterial.Layer(Identifier.of(id), "", dyeable)
         );
 
         var material = new ArmorMaterial(defensePoints, enchantability, equipSound, repairIngredient, layers,

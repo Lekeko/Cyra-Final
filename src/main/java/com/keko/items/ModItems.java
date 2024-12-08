@@ -3,10 +3,8 @@ package com.keko.items;
 import com.keko.CyraFinal;
 import com.keko.items.armor.ModArmorItem;
 import com.keko.items.bossItems.spawners.RottenNecklace;
-import com.keko.items.tools.BuffFlask;
-import com.keko.items.tools.HealingFlask;
-import com.keko.items.tools.SeaCrystalStriders;
-import com.keko.items.tools.SeaWandItem;
+import com.keko.items.tools.*;
+import com.keko.items.tools.pyrite.PyriteHoe;
 import com.keko.items.weapons.SeaShooter;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -84,7 +82,19 @@ public class ModItems {
 
     //PYRITE
     public static final Item PYRITE_CHUNK = registerItem(new Item(new Item.Settings()), "pyrite_chunk");
+    public static final Item SHACKLE_OF_IMPRISONMENT = registerItem(new ShackleOfImprisonment(new Item.Settings()), "shackle_of_imprisonment");
     public static final Item RESTORED_PYRITE = registerItem(new Item(new Item.Settings()), "restored_pyrite");
+
+    public static final Item PYRITE_SWORD = registerItem(new SwordItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.PYRITE, 8, -1.4F)))), "pyrite_sword");
+    public static final Item PYRITE_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.PYRITE, 3, -1.8F)))), "pyrite_shovel");
+    public static final Item PYRITE_PICKAXE = registerItem(new PickaxeItem(ModToolMaterial.PYRITE, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.PYRITE, 4, -1.6F))), "pyrite_pickaxe");
+    public static final Item PYRITE_AXE = registerItem(new AxeItem(ModToolMaterial.PYRITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.PYRITE, 9, -2.1F))), "pyrite_axe");
+    public static final Item PYRITE_HOE = registerItem(new PyriteHoe(ModToolMaterial.PYRITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.PYRITE, 7, -1.1F))), "pyrite_hoe");
+
+    public static final Item PYRITE_HELMET = registerItem(new ArmorItem(ModArmorMaterial.PYRITE, ArmorItem.Type.HELMET , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "pyrite_helmet");
+    public static final Item PYRITE_CHESTPLATE = registerItem(new ArmorItem(ModArmorMaterial.PYRITE, ArmorItem.Type.CHESTPLATE , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "pyrite_chestplate");
+    public static final Item PYRITE_LEGGINGS = registerItem(new ArmorItem(ModArmorMaterial.PYRITE, ArmorItem.Type.LEGGINGS , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "pyrite_leggings");
+    public static final Item PYRITE_BOOTS = registerItem(new ArmorItem(ModArmorMaterial.PYRITE, ArmorItem.Type.BOOTS , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "pyrite_boots");
 
 
 

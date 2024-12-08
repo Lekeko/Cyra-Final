@@ -43,6 +43,8 @@ public class WaterBoltParticle extends SpriteBillboardParticle {
 
     }
 
+
+
     @Override
     public void move(double dx, double dy, double dz) {
         super.move(this.velocityX, this.velocityY, this.velocityZ);
@@ -69,7 +71,6 @@ public class WaterBoltParticle extends SpriteBillboardParticle {
     public void tick() {
         super.tick();
         fade();
-        rotationAngle += 0.04f;
         this.scale+= 0.01f;
         //this.angle = rotationAngle;
     }

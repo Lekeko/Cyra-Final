@@ -42,6 +42,17 @@ public class ModitemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.HOES)
                 .add(ModItems.SEA_CRYSTAL_HOE);
 
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(ModItems.PYRITE_SWORD);
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .add(ModItems.PYRITE_SHOVEL);
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(ModItems.PYRITE_AXE);
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(ModItems.PYRITE_PICKAXE);
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .add(ModItems.PYRITE_HOE);
+
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModItems.ENDERITE_HELMET);
         getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
@@ -59,5 +70,14 @@ public class ModitemTagProvider extends FabricTagProvider<Item> {
                 .add(ModItems.SEA_CRYSTAL_LEGGINGS);
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModItems.SEA_CRYSTAL_BOOTS);
+
+        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+                .add(ModItems.PYRITE_HELMET);
+        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+                .add(ModItems.PYRITE_CHESTPLATE);
+        getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+                .add(ModItems.PYRITE_LEGGINGS);
+        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+                .add(ModItems.PYRITE_BOOTS);
     }
 }

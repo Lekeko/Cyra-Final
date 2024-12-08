@@ -3,8 +3,9 @@
   "package": "com.keko.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "CyraRiptideMixin",
     "ElytraNerfMixin",
-    "CyraRiptideMixin"
+    "PyriteSwordSlashAttack"
   ],
   "injectors": {
     "defaultRequire": 1

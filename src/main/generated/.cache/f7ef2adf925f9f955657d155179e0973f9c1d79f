@@ -1,10 +1,10 @@
-// 1.21	2024-12-07T19:48:09.9255924	Cyra Final/Tags for minecraft:item
-7f5733bfc9e0a59267d2aad0174b2e16b61f3388 data\minecraft\tags\item\swords.json
-7655357d9a7d0eb828f700618e4ca848eb851587 data\minecraft\tags\item\head_armor.json
-76c6fa42945edef984f2edc8d8f8197a6f449226 data\minecraft\tags\item\shovels.json
-482c3618b87082167c94876b4a9d338d4620eb1f data\minecraft\tags\item\chest_armor.json
-59bc321374f7d6a375c43ced1434830b21b79fcc data\minecraft\tags\item\hoes.json
-0b455f76dc547a1312098415586711894475d48c data\minecraft\tags\item\leg_armor.json
-8b4b63b463df8e3fb186fd2bb36157bb30e70c24 data\minecraft\tags\item\pickaxes.json
-06b9a5a7eb272e22df5792f7653a6422bfaaa2a6 data\minecraft\tags\item\axes.json
-a7c0dcb09eeebd927c9eced9f4a3baa43e9b44f1 data\minecraft\tags\item\foot_armor.json
+// 1.21	2024-12-08T23:15:19.5590887	Cyra Final/Tags for minecraft:item
+069c700ca14a9d7be25205bacf8fe017448026c8 data\minecraft\tags\item\swords.json
+d46ea2899030d20b2a7c027b9c415819208cec9f data\minecraft\tags\item\head_armor.json
+d45dd4347e347241c890dcd0c829b229d8bdff2e data\minecraft\tags\item\shovels.json
+656ab8c12db62405421d3a485cba2097f151aa9d data\minecraft\tags\item\chest_armor.json
+0a0cad1f527d52057f07ed7e69ccc16d04709821 data\minecraft\tags\item\hoes.json
+9e26b3542d8fbd187b585d84ccffb9e98cb3e0d6 data\minecraft\tags\item\leg_armor.json
+14e03072b7a78ae678bc27260bfa2afc1f9a97b2 data\minecraft\tags\item\pickaxes.json
+4489ad189f09a423b54be7f79b460f9d68a77a87 data\minecraft\tags\item\axes.json
+d4746dd5c62bd3aeb466106096bdd122c5280236 data\minecraft\tags\item\foot_armor.json
