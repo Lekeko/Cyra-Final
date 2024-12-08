@@ -11,6 +11,7 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -21,8 +22,10 @@ import net.minecraft.entity.passive.OcelotEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -40,6 +43,8 @@ public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private static float distanceToTarget = -1;
     private long lastAttackTime = 0; // Track the last attack time
+    private long slamAttackTime = 200;
+    private long summonAttackTime = 300;
 
 
     public ZombieLeaderEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -91,7 +96,8 @@ public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
         controllers.add(new AnimationController<>(this, "controller", 0, this::predicate));
         AnimationController<ZombieLeaderEntity> controller = new AnimationController<>(this, "controller", 0, this::predicate);
         controller.triggerableAnim("zombie_leader.attack1", RawAnimation.begin().thenPlay("zombie_leader.attack1"));
-        controller.triggerableAnim("zombie_leader.attack1", RawAnimation.begin().thenPlay("zombie_leader.attack_slam"));
+        controller.triggerableAnim("zombie_leader.attack_slam", RawAnimation.begin().thenPlay("zombie_leader.attack_slam"));
+        controller.triggerableAnim("zombie_leader.summon_army", RawAnimation.begin().thenPlay("zombie_leader.summon_army"));
 
         // Add the controller to the registrar
         controllers.add(controller);
@@ -101,17 +107,98 @@ public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
+        if (slamAttackTime > 0)
+            slamAttackTime--;
 
-        if (this.getTarget() != null && this.squaredDistanceTo(this.getTarget()) < 2.0) {
-            if (this.getWorld().getTime() - lastAttackTime >= 20) {
-                triggerAnim("controller", "zombie_leader.attack1");
-                lastAttackTime = this.getWorld().getTime();
-            }
+        if (slamAttackTime < 50 && slamAttackTime > 40){
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 60, 100, true, false));
         }
+
+        if (slamAttackTime >= 10 && slamAttackTime <= 11){
+            triggerAnim("controller", "zombie_leader.attack_slam");
+
+        }
+
+
+        if (summonAttackTime > 0)
+            summonAttackTime--;
+
+        if (summonAttackTime > 19 && summonAttackTime <= 21){
+            triggerAnim("controller", "zombie_leader.summon_army");
+
+        }
+
+
+        if (this.getTarget() != null){
+            if (this.squaredDistanceTo(this.getTarget()) < 2.0) {
+                if (this.getWorld().getTime() - lastAttackTime >= 20) {
+                    triggerAnim("controller", "zombie_leader.attack1");
+                    lastAttackTime = this.getWorld().getTime();
+                }
+            }
+
+
+        }
+        if (slamAttackTime == 0){
+            damageAllOnGround();
+        }
+
+        if (summonAttackTime == 0){
+            summonArmy();
+        }
+
+    }
+
+    private void summonArmy() {
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
+        int minions = 3;
+
+        for (int i = 0; i < minions; i++){
+            ZombieEntity zombieEntity = new ZombieEntity(getWorld());
+            double xx = x + random.nextBetween(-3, 3);
+            double yy = y;
+            double zz = z + random.nextBetween(-3, 3);
+            zombieEntity.setPos(xx, yy, zz);
+            for (int j = 0; j < 30; j++){
+                java.util.Random random = new java.util.Random();
+                this.getWorld().addParticle(ParticleTypes.SOUL_FIRE_FLAME, true, xx, yy, zz,
+                        -1 + random.nextFloat() * 2,  -1 + random.nextFloat() * 2,  -1 + random.nextFloat() * 2);
+            }
+            getWorld().spawnEntity(zombieEntity);
+        }
+        summonAttackTime = 300 + random.nextBetween(50, 100);
 
 
     }
 
+    private void damageAllOnGround() {
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
+        double distanceToDamage = 10;
+
+        Box box = new Box(x + distanceToDamage, y + distanceToDamage / 3, z + distanceToDamage
+        ,                 x - distanceToDamage,y - distanceToDamage / 3, z - distanceToDamage );
+        if (!getWorld().isClient) {
+            for (PlayerEntity player : this.getWorld().getEntitiesByClass(PlayerEntity.class, box, Entity::isAlive)) {
+
+                if (player.isOnGround()) {
+                    player.damage(getWorld().getDamageSources().thrown(this, this), 9);
+                    player.setVelocity(0f, 1f, 0f);
+                    player.velocityModified = true;
+                }
+            }
+        }else for (double i = -distanceToDamage; i < distanceToDamage; i+=.90)
+                for (double j = -distanceToDamage; j < distanceToDamage; j+=.90){
+                    double absi = Math.abs(i);
+                    double absj = Math.abs(j);
+                    if (Math.pow(absi, 2) + Math.pow(absj, 2) <= distanceToDamage*distanceToDamage)
+                        getWorld().addParticle(ParticleTypes.SOUL_FIRE_FLAME, true, x + i, y, z + j, random.nextFloat() - .5 , random.nextFloat() , random.nextFloat() - .5);
+                }
+        slamAttackTime = 200 + random.nextBetween(50, 100);
+    }
 
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> tAnimationState) {
