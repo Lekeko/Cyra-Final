@@ -52,10 +52,9 @@ public class CrystalSeaGrassFeature extends Feature<CrystalSeaGrassFeatureConfig
                                     if (world.getBlockState(newPos).isOf(ModBlocks.SEA_STONE) && world.getBlockState(newPos.up()).isOf(Blocks.WATER)){
                                         world.setBlockState(newPos, ModBlocks.SEA_STONE_GRASS.getDefaultState(), 0x10);
 
-                                        if (random1.nextBoolean())
+                                        if (random1.nextInt(10) + 1 < 4)
                                             world.setBlockState(newPos.up(), ModBlocks.CRYSTAL_SEA_GRASS.getDefaultState(), 0x10);
-
-                                        if (random1.nextInt(10) + 1 < 4) {
+                                        else{
                                             world.setBlockState(newPos.up(), ModBlocks.TALL_CRYSTAL_SEA_GRASS_BOTTOM.getDefaultState(), 0x10);
                                             world.setBlockState(newPos.up().up(), ModBlocks.TALL_CRYSTAL_SEA_GRASS_TOP.getDefaultState(), 0x10);
                                         }

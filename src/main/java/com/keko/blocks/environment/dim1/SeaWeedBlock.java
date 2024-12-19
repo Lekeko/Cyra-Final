@@ -1,7 +1,9 @@
 package com.keko.blocks.environment.dim1;
 
+import com.keko.blocks.ModBlocks;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
@@ -16,6 +18,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,7 +27,21 @@ public class SeaWeedBlock extends Block implements Waterloggable {
 
     public SeaWeedBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, true));
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        if (world.isClient) return;
+        assert placer != null;
+        if (placer.isInCreativeMode()){
+            int length = world.random.nextBetween(10, 20);
+            for (int i = 0; i >= -length; i--){
+                world.setBlockState(new BlockPos(pos.getX(), pos.getY() + i, pos.getZ()), state.with(WATERLOGGED, false));
+            }
+        }
+
+        super.onPlaced(world, pos, state, placer, itemStack);
     }
 
     @Override
@@ -67,15 +84,25 @@ public class SeaWeedBlock extends Block implements Waterloggable {
     }
 
 
-
     @Override
-    public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        return true;
+    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
+        return 1;
     }
 
     @Override
-    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
-        return true;
+    protected boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
+        return false ;
+    }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        return this.getDefaultState().with(WATERLOGGED, fluidState.isOf(Fluids.WATER));
     }
 
 }

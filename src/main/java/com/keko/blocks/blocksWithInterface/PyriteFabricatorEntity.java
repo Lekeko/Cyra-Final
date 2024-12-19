@@ -43,6 +43,7 @@ public class PyriteFabricatorEntity extends BlockEntity implements ExtendedScree
     HashMap<Item, StatusEffectInstance> orb = new HashMap<Item, StatusEffectInstance>();
 
 
+
     protected final PropertyDelegate propertyDelegate;
     private StatusEffectInstance effect1;
     private StatusEffectInstance effect2;

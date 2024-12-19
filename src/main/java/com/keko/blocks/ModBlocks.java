@@ -48,7 +48,7 @@ public class ModBlocks {
 
     public static final  Block SEA_STONE = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F, 6.5F).sounds(BlockSoundGroup.DEEPSLATE)), "sea_stone", new Item.Settings());
     public static final  Block BIOLUMINESCENCE_WOOD = registerBlock(new PillarBlock(AbstractBlock.Settings.copy(Blocks.CRIMSON_STEM)), "bioluminescence_wood", new Item.Settings());
-    public static final  Block BIOLUMINESCENCE_LEAVES = registerBlock(new Block(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK).luminance((state) -> 4)), "bioluminescence_leaves", new Item.Settings());
+    public static final  Block BIOLUMINESCENCE_LEAVES = registerBlock(new Block(AbstractBlock.Settings.copy(Blocks.NETHER_WART_BLOCK)), "bioluminescence_leaves", new Item.Settings());
 
     public static final  Block SEA_STONE_GRASS = registerBlock(new Block(AbstractBlock.Settings.create().mapColor(MapColor.CYAN).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.5F, 6.5F).sounds(BlockSoundGroup.DEEPSLATE)), "sea_stone_grass", new Item.Settings());
 
