@@ -5,6 +5,7 @@ import com.keko.items.armor.ModArmorItem;
 import com.keko.items.bossItems.spawners.RottenNecklace;
 import com.keko.items.tools.*;
 import com.keko.items.tools.pyrite.PyriteHoe;
+import com.keko.items.weapons.PyritePrimordialCube;
 import com.keko.items.weapons.SeaShooter;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -34,6 +35,9 @@ public class ModItems {
 
 
     public static final Item ROTTEN_NECKLACE = registerItem(new RottenNecklace(new Item.Settings().maxCount(1)), "rotten_necklace");
+
+    //TEST
+    public static final Item FLASHLIGHT = registerItem(new FlashLight(new Item.Settings().maxCount(1)), "spyglass");
 
 
 
@@ -82,8 +86,10 @@ public class ModItems {
 
     //PYRITE
     public static final Item PYRITE_CHUNK = registerItem(new Item(new Item.Settings()), "pyrite_chunk");
+    public static final Item OLD_LORDS_FLAME = registerItem(new Item(new Item.Settings()), "old_lords_flame");
     public static final Item SHACKLE_OF_IMPRISONMENT = registerItem(new ShackleOfImprisonment(new Item.Settings()), "shackle_of_imprisonment");
     public static final Item RESTORED_PYRITE = registerItem(new Item(new Item.Settings()), "restored_pyrite");
+    public static final Item PYRITE_PRIMORDIAL_CUBE = registerItem(new PyritePrimordialCube(new Item.Settings()), "pyrite_primordial_cube1");
 
     public static final Item PYRITE_SWORD = registerItem(new SwordItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.PYRITE, 8, -1.4F)))), "pyrite_sword");
     public static final Item PYRITE_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.PYRITE, 3, -1.8F)))), "pyrite_shovel");

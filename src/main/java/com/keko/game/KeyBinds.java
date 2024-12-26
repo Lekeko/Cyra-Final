@@ -37,18 +37,6 @@ public class KeyBinds {
             "key.cyra.cyramod"
     ));
 
-    public static KeyBinding keyBindingDash1 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-            "key.cyra.dash1",
-            InputUtil.Type.KEYSYM,
-            GLFW.GLFW_KEY_D,
-            "key.cyra.cyramod"
-    ));
-    public static KeyBinding keyBindingDash2 = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-            "key.cyra.dash2",
-            InputUtil.Type.KEYSYM,
-            GLFW.GLFW_KEY_A,
-            "key.cyra.cyramod"
-    ));
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -85,13 +73,9 @@ public class KeyBinds {
             }
         });
 
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (keyBindingDash1.wasPressed()){
-                assert client.player != null;
-                client.player.addVelocity(5, 0, 0);
-                client.player.velocityModified = true;
-            }
-        });
+
+
+
     }
 
     public static void initializeKeyBinds(){

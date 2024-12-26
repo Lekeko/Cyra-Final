@@ -1,53 +1,64 @@
 package com.keko.items.tools;
 
-import com.keko.game.KeyBinds;
-import com.keko.items.ModItems;
-import net.minecraft.component.DataComponentTypes;
+import com.keko.ComponentTypes.ModDataComponentTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.tooltip.TooltipData;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stat.Stat;
 import net.minecraft.text.Text;
-import net.minecraft.util.Colors;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.*;
 
 public class BuffFlask extends Item {
 
-    ArrayList<StatusEffectInstance> effects = new ArrayList<>();
+
+    public static HashMap<Integer, StatusEffectInstance> effect = initializeEffects();
+
+    public static HashMap<Integer, StatusEffectInstance> initializeEffects(){
+        HashMap<Integer, StatusEffectInstance> effect = new HashMap<>();
+        effect.put(1, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
+        effect.put(2, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
+        effect.put(3, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
+        effect.put(4, new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 60 * 2, 2));
+        effect.put(5, new StatusEffectInstance(StatusEffects.STRENGTH, 20 * 60 * 2, 2));
+        return effect;
+    }
 
     public BuffFlask(Settings settings) {
         super(settings);
+        this.getDefaultStack().set(ModDataComponentTypes.EFFECT_BUFF_1, 0);
+        this.getDefaultStack().set(ModDataComponentTypes.EFFECT_BUFF_2, 0);
 
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (effects.size() > 0){
-            if (!world.isClient)
-            {
-                user.addStatusEffect(effects.get(0));
-                user.addStatusEffect(effects.get(1));
-                user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(), KeyBinds.cooldownBuff * 20);
+        ItemStack stack = user.getStackInHand(user.getActiveHand());
+        if (stack.get(ModDataComponentTypes.EFFECT_BUFF_1) != null && stack.get(ModDataComponentTypes.EFFECT_BUFF_2) != null){
+            user.setStatusEffect(effect.get(stack.get(ModDataComponentTypes.EFFECT_BUFF_1)), user);
+            user.setStatusEffect(effect.get(stack.get(ModDataComponentTypes.EFFECT_BUFF_2)), user);
 
-            }
+            effect.clear();
+
+            effect.put(1, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
+            effect.put(2, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
+            effect.put(3, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
+            effect.put(4, new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 60 * 2, 2));
+            effect.put(5, new StatusEffectInstance(StatusEffects.STRENGTH, 20 * 60 * 2, 2));
+            user.getItemCooldownManager().set(stack.getItem(), (int)(20 * 60 * 2.6));
 
         }else {
-            if (world.isClient)
-                user.sendMessage(Text.literal("The Buff Potion does not have any effects!").withColor(new Color(245, 165, 255, 255).getRGB()));
+            Objects.requireNonNull(user).sendMessage(Text.literal("The Buff Potion does not have any effects!").withColor(new Color(245, 165, 255, 255).getRGB()));
+
         }
+
         return super.use(world, user, hand);
     }
 
@@ -62,13 +73,10 @@ public class BuffFlask extends Item {
         super.usageTick(world, user, stack, remainingUseTicks);
     }
 
-    public void addEffect(StatusEffectInstance effectInstanece1, StatusEffectInstance effectInstance2) {
-        effects.clear();
-        effects.add(effectInstanece1);
-        effects.add(effectInstance2);
-    }
+
 
     public void useEffect(World world, PlayerEntity user, Hand hand){
-        use(world, user, hand);
+        ItemStack stack = user.getStackInHand(hand);
+
     }
 }

@@ -1,5 +1,6 @@
 package com.keko.blocks.blocksWithInterface;
 
+import com.keko.ComponentTypes.ModDataComponentTypes;
 import com.keko.blocks.ImplementedInventory;
 import com.keko.blocks.ModBlockEntity;
 import com.keko.items.ModItems;
@@ -35,14 +36,14 @@ public class AlchemyTableEntity extends BlockEntity implements ExtendedScreenHan
     private static final int INPUT_SLOT_2 = 1;
     private static final int INPUT_SLOT_3 = 2;
 
-     HashMap<Item, StatusEffectInstance> orb = new HashMap<Item, StatusEffectInstance>();
+     HashMap<Item, Integer> orb = new HashMap<>();
 
 
     public static boolean canCraft = false;
 
     protected final PropertyDelegate propertyDelegate;
-    private StatusEffectInstance effect1;
-    private StatusEffectInstance effect2;
+    private int effect1;
+    private int effect2;
 
 
     public AlchemyTableEntity(BlockPos pos, BlockState state) {
@@ -108,19 +109,18 @@ public class AlchemyTableEntity extends BlockEntity implements ExtendedScreenHan
 
 
         if (outputHaveBuffPotion()){
-            orb.put(ModItems.ORB_OF_IMPETUOSITY, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
-            orb.put(ModItems.ORB_OF_DAHY, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
-            orb.put(ModItems.ORB_OF_BOUND, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
-            orb.put(ModItems.ORB_OF_VITALITY, new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 60 * 2, 2));
-            orb.put(ModItems.ORB_OF_FORCE, new StatusEffectInstance(StatusEffects.STRENGTH, 20 * 60 * 2, 2));
+            orb.put(ModItems.ORB_OF_IMPETUOSITY, 1);
+            orb.put(ModItems.ORB_OF_DAHY,2);
+            orb.put(ModItems.ORB_OF_BOUND, 3);
+            orb.put(ModItems.ORB_OF_VITALITY, 4);
+            orb.put(ModItems.ORB_OF_FORCE, 5);
 
             if (firstSlotHasOrb() && secondSlotHasOrb()){
                 canCraft = true;
             }
             if (wantsToCraft){
-                ((BuffFlask)(this.getStack(INPUT_SLOT_3).getItem())).addEffect(
-                        effect1, effect2
-                );
+                this.getStack(INPUT_SLOT_3).set(ModDataComponentTypes.EFFECT_BUFF_1, effect1);
+                this.getStack(INPUT_SLOT_3).set(ModDataComponentTypes.EFFECT_BUFF_2, effect2);
 
 
                 wantsToCraft = false;

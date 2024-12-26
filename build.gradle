@@ -18,6 +18,11 @@ repositories {
 			includeGroup("software.bernie.geckolib")
 		}
 	}
+
+	maven {
+		name = 'BlameJared Maven (CrT / Bookshelf)'
+		url = 'https://maven.blamejared.com'
+	}
 }
 
 fabricApi {
@@ -33,6 +38,14 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
+
+	modImplementation("foundry.veil:veil-fabric-${project.minecraft_version}:${project.veil_version}") {
+		exclude group: "maven.modrinth"
+	}
+	include("foundry.veil:veil-fabric-${project.minecraft_version}:${project.veil_version}") {
+		exclude group: "maven.modrinth"
+	}
+
 }
 
 processResources {

@@ -1,0 +1,12 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "cyra:item/pyrite_primordial_cube1"
+  },
+  "overrides": [
+    { "predicate": { "cyra:variant": 0.0 }, "model": "cyra:item/pyrite_primordial_cube1" },
+    { "predicate": { "cyra:variant": 0.1 }, "model": "cyra:item/pyrite_primordial_cube2" },
+    { "predicate": { "cyra:variant": 0.2 }, "model": "cyra:item/pyrite_primordial_cube3" },
+    { "predicate": { "cyra:variant": 0.3 }, "model": "cyra:item/pyrite_primordial_cube4" }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "cube1": {
+    "sounds": [
+      "cyra:cube1"
+    ]
+  },
+  "cube2": {
+    "sounds": [
+      "cyra:cube2"
+    ]
+  },
+  "cube3": {
+    "sounds": [
+      "cyra:cube3"
+    ]
+  },
+  "cube4": {
+    "sounds": [
+      "cyra:cube4"
+    ]
+  }
+}
+

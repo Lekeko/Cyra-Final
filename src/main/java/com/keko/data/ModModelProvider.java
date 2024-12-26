@@ -35,7 +35,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_MURIANITE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PYRITE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEA_STONE_BRICK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.PRISMATIC_LEAVES);
 
         seaPool.stairs(ModBlocks.SEA_CRYSTAL_BRICKS_STAIRS);
         seaPool.slab(ModBlocks.SEA_CRYSTAL_BRICKS_SLAB);
@@ -85,8 +84,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ORB_OF_IMPETUOSITY, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORB_OF_VITALITY, Models.GENERATED);
         itemModelGenerator.register(ModItems.PYRITE_CHUNK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.OLD_LORDS_FLAME, Models.GENERATED);
         itemModelGenerator.register(ModItems.SHACKLE_OF_IMPRISONMENT, Models.HANDHELD);
         itemModelGenerator.register(ModItems.RESTORED_PYRITE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PYRITE_PRIMORDIAL_CUBE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.ROTTEN_NECKLACE, Models.GENERATED);
 
 
