@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "cyra:item/dazed_crystal_sea_weed"
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "cyra:item/electro_charge1"
+  },
+  "overrides": [
+    { "predicate": { "cyra:variant": 0.0 }, "model": "cyra:item/electro_charge1" },
+    { "predicate": { "cyra:variant": 0.01 }, "model": "cyra:item/electro_charge2" },
+    { "predicate": { "cyra:variant": 0.02 }, "model": "cyra:item/electro_charge3" },
+    { "predicate": { "cyra:variant": 0.03 }, "model": "cyra:item/electro_charge4" },
+    { "predicate": { "cyra:variant": 0.04 }, "model": "cyra:item/electro_charge5" },
+    { "predicate": { "cyra:variant": 0.05 }, "model": "cyra:item/electro_charge6" },
+    { "predicate": { "cyra:variant": 0.06 }, "model": "cyra:item/electro_charge7" },
+    { "predicate": { "cyra:variant": 0.07 }, "model": "cyra:item/electro_charge8" },
+    { "predicate": { "cyra:variant": 0.08 }, "model": "cyra:item/electro_charge9" },
+    { "predicate": { "cyra:variant": 0.09 }, "model": "cyra:item/electro_charge10" },
+    { "predicate": { "cyra:variant": 0.1}, "model": "cyra:item/electro_charge11" }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "raw": "Prologue  \t\tCould one fathom the very essence of life? Blessed by the everlasting fire that subjugates the reality within?  The blazing essence that gods have, feasting and devouring It, leaving the weak turn into just another story to be told.  Could a mere mortal experience just a bit of what gods truly breathe, live, love, cherish, and hate? \tTo ascend to a god form, you have to get rid of all of humanity in one's essence, letting them feel their  flesh and bones erode, showing them the everlasting light made from the truest flames of all, showing them how a  curse that disguises itself as a blessing can change the very perspective, how It can be the wish of promised death."
+                }
+              ],
+              "mode": "append"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "functions": []
+}

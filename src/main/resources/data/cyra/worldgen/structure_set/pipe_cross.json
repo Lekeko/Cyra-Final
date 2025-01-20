@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "cyra:pipe_cross",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136481,
+
+    "spacing": 60,
+
+    "separation": 2,
+
+    "type": "minecraft:random_spread"
+  }
+}

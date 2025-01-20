@@ -25,8 +25,7 @@ import software.bernie.geckolib.animation.*;
 
 public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    private static float distanceToTarget = -1;
-    private long lastAttackTime = 0; // Track the last attack time
+    private long lastAttackTime = 0;
     private long slamAttackTime = 200;
     private long summonAttackTime = 300;
     private final ServerBossBar bossBar;

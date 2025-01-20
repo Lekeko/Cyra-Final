@@ -19,7 +19,6 @@ public class TickingBlockEntity extends BlockEntity implements TickableBlockEnti
 
     @Override
     public void tick() {
-        System.out.println("AAAAAAAAA");
         assert world != null;
 
         generatePillar(world, pos, this.getCachedState());
@@ -32,7 +31,6 @@ public class TickingBlockEntity extends BlockEntity implements TickableBlockEnti
 
         for (int i = 1; i < distance ; i++){
             if (!world.getBlockState(new BlockPos(pos.getX(), pos.getY() + i, pos.getZ())).isOf(Blocks.WATER)) {
-                System.out.println("found " + world.getBlockState(new BlockPos(pos.getX(), pos.getY() + i, pos.getZ())));
                 break;
             }
             world.setBlockState(new BlockPos(pos.getX(), pos.getY() + i, pos.getZ()), ModBlocks.SEA_CRYSTAL_BRICKS_WALL.getDefaultState().with(Properties.WATERLOGGED, true));

@@ -14,7 +14,8 @@ public class CrystalTreesFeature extends Feature<CrystalTreesFeatureConfig> {
     public CrystalTreesFeature(Codec<CrystalTreesFeatureConfig> configCodec) {
         super(configCodec);
     }
-
+    int xOffset = 0;
+    int zOffset = 0;
 
     public boolean generate(FeatureContext<CrystalTreesFeatureConfig> context) {
         StructureWorldAccess world = context.getWorld();
@@ -33,7 +34,7 @@ public class CrystalTreesFeature extends Feature<CrystalTreesFeatureConfig> {
                 if (world.getBlockState(testPos.up()).isOf(Blocks.WATER)) {
 
                     generateTrunk(context, height, testPos, random, world);
-                    BlockPos coreCrown = new BlockPos(testPos.getX(), testPos.getY() + height, testPos.getZ());
+                    BlockPos coreCrown = new BlockPos(testPos.getX() + xOffset, testPos.getY() + height, testPos.getZ() + zOffset );
                     generateCrown(context, height, coreCrown, random, world);
 
                     return true;
@@ -100,7 +101,9 @@ public class CrystalTreesFeature extends Feature<CrystalTreesFeatureConfig> {
 
             BlockPos pos = new BlockPos(testPos.getX(), testPos.getY() + 1, testPos.getZ());
             if (random.nextBoolean() && !tilted) {
-                pos = new BlockPos(pos.getX() + random.nextBetween(-1, 1), pos.getY(), pos.getZ() + random.nextBetween(-1, 1));
+                xOffset = random.nextBetween(-1, 1);
+                zOffset = random.nextBetween(-1, 1);
+                pos = new BlockPos(pos.getX() + xOffset, pos.getY(), pos.getZ() + zOffset);
                 tilted = true;
             }
 

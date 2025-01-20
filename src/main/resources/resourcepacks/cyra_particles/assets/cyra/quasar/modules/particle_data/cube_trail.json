@@ -1,0 +1,19 @@
+{
+  "render_style": "CUBE",
+  "init_modules": [
+    "cyra:block_vel",
+    "cyra:cube_trail"
+  ],
+  "update_modules": [
+  ],
+  "collision_modules": [
+  ],
+  "forces": [
+    "cyra:force/gravity/test_gravity"
+  ],
+  "render_modules": [
+    "cyra:color/cube_trail",
+    "cyra:trail/cube_trail"
+  ],
+  "should_collide": false
+}

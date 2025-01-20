@@ -18,6 +18,77 @@
     "sounds": [
       "cyra:cube4"
     ]
+  },
+  "cube5": {
+    "sounds": [
+      "cyra:cube5"
+    ]
+  },
+  "cube6": {
+    "sounds": [
+      "cyra:cube6"
+    ]
+  },
+  "old_lord_tick": {
+    "sounds": [
+      "cyra:old_lord_tick"
+    ]
+  },
+  "eery": {
+    "sounds": [
+      "cyra:eery"
+    ]
+  },
+  "electro_charge": {
+    "sounds": [
+      "cyra:electro_charge"
+    ]
+  },
+  "old_lord_combo_hit": {
+    "sounds": [
+      "cyra:old_lord_combo_hit"
+    ]
+  },
+  "parry": {
+    "sounds": [
+      "cyra:parry"
+    ]
+  },
+  "charge_up": {
+    "sounds": [
+      "cyra:charge_up"
+    ]
+  },
+  "old_lord_spawn": {
+    "sounds": [
+      "cyra:old_lord_spawn"
+    ]
+  },
+  "void_ambiance": {
+    "sounds": [
+      "cyra:void_ambiance"
+    ]
+  },
+  "void_ambiance_monster": {
+    "sounds": [
+      "cyra:void_ambiance_monster"
+    ]
+  },
+  "muriel_music_1": {
+    "sounds": [
+      "cyra:muriel_music_1"
+    ],
+    "replace" : true
+  },
+  "compulsion_sword_blast": {
+    "sounds": [
+      "cyra:compulsion_sword_blast"
+    ]
+  },
+  "compulsion_axe": {
+    "sounds": [
+      "cyra:compulsion_axe"
+    ]
   }
 }
 

@@ -7,6 +7,8 @@
     { "predicate": { "cyra:variant": 0.0 }, "model": "cyra:item/pyrite_primordial_cube1" },
     { "predicate": { "cyra:variant": 0.1 }, "model": "cyra:item/pyrite_primordial_cube2" },
     { "predicate": { "cyra:variant": 0.2 }, "model": "cyra:item/pyrite_primordial_cube3" },
-    { "predicate": { "cyra:variant": 0.3 }, "model": "cyra:item/pyrite_primordial_cube4" }
+    { "predicate": { "cyra:variant": 0.3 }, "model": "cyra:item/pyrite_primordial_cube4" },
+    { "predicate": { "cyra:variant": 0.4 }, "model": "cyra:item/pyrite_primordial_cube5" },
+    { "predicate": { "cyra:variant": 0.5 }, "model": "cyra:item/pyrite_primordial_cube6" }
   ]
 }

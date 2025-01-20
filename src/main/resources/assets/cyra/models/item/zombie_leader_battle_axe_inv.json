@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cyra:item/zombie_leader_battle_axe_inv"
+  }
+}

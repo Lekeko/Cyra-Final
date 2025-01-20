@@ -18,11 +18,8 @@ public enum ModToolMaterial implements ToolMaterial {
     SEA_CRYSTAL(6, 3900, 13.0F, 5.2F, 15,  ModBlockTags.INCORRECT_FOR_SEA_CRYSTAL_TOOL, () ->
             Ingredient.ofItems(ModItems.SEA_CRYSTAL)
     ),
-    PYRITE(7, 4200, 15.5F, 5.9F, 15, ModBlockTags.INCORRECT_FOR_PYRITE_TOOL,() ->
+    PYRITE(7, 4200, 19.5F, 5.9F, 15, ModBlockTags.INCORRECT_FOR_PYRITE_TOOL,() ->
          Ingredient.ofItems(ModItems.RESTORED_PYRITE)
-    ),
-    RAINBOW_PYRITE(8, 5000, 18.5F, 6.5F, 15, ModBlockTags.INCORRECT_FOR_RAINBOW_PYRITE_TOOL,() ->
-         Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     ),
     BAUXITE(9, 6300, 21.5F, 7.2F, 15, ModBlockTags.INCORRECT_FOR_BAUXITE_TOOL,() ->
          Ingredient.ofItems(ModItems.ENDERITE_INGOT)

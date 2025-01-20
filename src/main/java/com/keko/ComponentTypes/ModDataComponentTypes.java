@@ -11,8 +11,14 @@ import java.util.function.UnaryOperator;
 
 public class ModDataComponentTypes {
     public static final ComponentType<Integer> VARIANT = register("variant", integerBuilder -> integerBuilder.codec(Codec.INT));
+    public static final ComponentType<Integer> RED_NUMBER = register("red_number", integerBuilder -> integerBuilder.codec(Codec.INT));
+    public static final ComponentType<Boolean> BURST_RED = register("burst_red", boolBuilder -> boolBuilder.codec(Codec.BOOL));
+    public static final ComponentType<Boolean> AXE_ATTACK = register("axe_attack", boolBuilder -> boolBuilder.codec(Codec.BOOL));
+    public static final ComponentType<Integer> ELECTRO_VARIANT = register("electro_variant", integerBuilder -> integerBuilder.codec(Codec.INT));
     public static final ComponentType<Integer> EFFECT_BUFF_1 = register("effect_buff_1", integerBuilder -> integerBuilder.codec(Codec.INT));
     public static final ComponentType<Integer> EFFECT_BUFF_2 = register("effect_buff_2", integerBuilder -> integerBuilder.codec(Codec.INT));
+    public static final ComponentType<Boolean> HAS_LIGHT = register("has_light", boolBuilder -> boolBuilder.codec(Codec.BOOL));
+    public static final ComponentType<Integer> LIGHT_ID = register("light_id", integerBuilder -> integerBuilder.codec(Codec.INT));
 
     public static void registerDataComponents() {
 

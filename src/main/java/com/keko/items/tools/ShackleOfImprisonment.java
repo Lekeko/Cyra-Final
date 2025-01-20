@@ -21,7 +21,6 @@ public class ShackleOfImprisonment extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        System.out.println(world.isClient);
 
             double x = user.getX();
             double y = user.getY();
@@ -47,7 +46,6 @@ public class ShackleOfImprisonment extends Item {
 
     private void spawnParticles(LivingEntity entity, PlayerEntity user, World world, double x, double y, double z) {
         int particles = 20;
-        System.out.println(world.isClient);
         for (int i = 0; i < particles; i++){
             double xx = x ;
             double yy = y ;

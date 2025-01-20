@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "cyra:block/bioluminescence_preassure_plate"
+    },
+    "powered=true": {
+      "model": "cyra:block/bioluminescence_preassure_plate_down"
+    }
+  }
+}

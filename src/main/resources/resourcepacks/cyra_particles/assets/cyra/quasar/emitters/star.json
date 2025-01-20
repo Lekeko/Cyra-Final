@@ -1,0 +1,11 @@
+{
+    "max_lifetime": 1,
+    "loop": false,
+    "rate": 11,
+    "count": 4,
+    "emitter_settings": {
+      "shape": "cyra:star",
+      "particle_settings": "cyra:star"
+    },
+    "particle_data": "cyra:star"
+  }

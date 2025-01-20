@@ -1,0 +1,18 @@
+{
+    "module": "trail",
+    "settings": [
+        {
+            "trailWidthModifier": 1,
+            "trailTexture": "veil:textures/special/blank.png",
+            "trailPointModifier": 0.3,
+            "trailFrequency": 1,
+            "trailLength": 4,
+            "trailColor": [
+                1,
+                0.45,
+                0.45,
+                1
+            ]
+        }
+    ]
+}

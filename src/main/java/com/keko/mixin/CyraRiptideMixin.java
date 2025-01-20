@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-import static com.keko.CyraModClient.CYRA_TRIDENT_RIPTIDE;
+import static com.keko.CyraModClient.SEA_STRIDER_RIPTIDE;
 
 @Mixin(TridentRiptideFeatureRenderer.class)
 
@@ -21,7 +21,7 @@ public class CyraRiptideMixin {
     @ModifyVariable(method = "render", at = @At("STORE"))
     private VertexConsumer CyraRiptideBecauseItLooksBetter(VertexConsumer orig, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, LivingEntity livingEntity) {
         if (livingEntity instanceof PlayerEntity && livingEntity.isUsingRiptide() && (livingEntity.getMainHandStack().getItem() == ModItems.SEA_CRYSTAL_STRIDERS )) {
-            return vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutoutNoCull(CYRA_TRIDENT_RIPTIDE));
+            return vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutoutNoCull(SEA_STRIDER_RIPTIDE));
         }
         return orig;
     }

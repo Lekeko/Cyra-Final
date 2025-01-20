@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cyra:item/skeleton_leader_battle_bow_inv"
+  }
+}

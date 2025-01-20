@@ -32,7 +32,6 @@ public class SupporterBlock extends Block {
     @Override
     protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         world.scheduleBlockTick(pos, this, 100);
-        System.out.println(world);
         world.playSound((PlayerEntity)null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
 
 
@@ -42,12 +41,12 @@ public class SupporterBlock extends Block {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
         for (int i = 0; i < 30; i++){
             java.util.Random random = new java.util.Random();
             world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, true, pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f,
                     random.nextFloat() - .5, random.nextFloat() - .5, random.nextFloat() - .5);
         }
-        super.onPlaced(world, pos, state, placer, itemStack);
     }
 
 

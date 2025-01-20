@@ -1,3 +1,6 @@
 {
-	"parent": "cyra:block/crystal_sea_weed"
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "cyra:item/crystal_sea_weed"
+	}
 }

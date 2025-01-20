@@ -1,0 +1,42 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"void_slug.crawl": {
+			"animation_length": 0.5,
+			"bones": {
+				"bone2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, -7.5, 0],
+							"easing": "linear"
+						},
+						"0.25": {
+							"vector": [0, 10, 0],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [0, -7.5, 0],
+							"easing": "linear"
+						}
+					}
+				},
+				"bone": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 10, 0],
+							"easing": "linear"
+						},
+						"0.25": {
+							"vector": [0, -7.5, 0],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [0, 10, 0],
+							"easing": "linear"
+						}
+					}
+				}
+			}
+		}
+	}
+}

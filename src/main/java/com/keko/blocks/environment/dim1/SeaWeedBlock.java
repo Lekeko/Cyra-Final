@@ -32,15 +32,6 @@ public class SeaWeedBlock extends Block implements Waterloggable {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        if (world.isClient) return;
-        assert placer != null;
-        if (placer.isInCreativeMode()){
-            int length = world.random.nextBetween(10, 20);
-            for (int i = 0; i >= -length; i--){
-                world.setBlockState(new BlockPos(pos.getX(), pos.getY() + i, pos.getZ()), state.with(WATERLOGGED, false));
-            }
-        }
-
         super.onPlaced(world, pos, state, placer, itemStack);
     }
 
@@ -53,6 +44,18 @@ public class SeaWeedBlock extends Block implements Waterloggable {
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(WATERLOGGED);
+    }
+
+    @Override
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (!world.isClient){
+            BlockPos checker = pos.down();
+            while (world.getBlockState(checker).isOf(this)){
+                world.setBlockState(checker, Blocks.AIR.getDefaultState());
+                checker = checker.down();
+            }
+        }
+        return super.onBreak(world, pos, state, player);
     }
 
     @Override

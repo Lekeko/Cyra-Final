@@ -1,0 +1,18 @@
+{
+  "render_style": "CUBE",
+  "init_modules": [
+    "cyra:block_vel",
+    "cyra:star"
+  ],
+  "update_modules": [
+  ],
+  "collision_modules": [
+  ],
+  "forces": [
+    "cyra:force/gravity/test_gravity"
+  ],
+  "render_modules": [
+    "cyra:color/star"
+  ],
+  "should_collide": false
+}

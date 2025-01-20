@@ -6,6 +6,7 @@ import com.keko.blocks.ModBlockEntity;
 import com.keko.items.ModItems;
 import com.keko.items.tools.BuffFlask;
 import com.keko.screen.alchemyTableScreen.AlchemyTableScreenhandler;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -37,7 +38,7 @@ public class AlchemyTableEntity extends BlockEntity implements ExtendedScreenHan
     private static final int INPUT_SLOT_3 = 2;
 
      HashMap<Item, Integer> orb = new HashMap<>();
-
+    private int time = 0;
 
     public static boolean canCraft = false;
 
@@ -116,15 +117,15 @@ public class AlchemyTableEntity extends BlockEntity implements ExtendedScreenHan
             orb.put(ModItems.ORB_OF_FORCE, 5);
 
             if (firstSlotHasOrb() && secondSlotHasOrb()){
-                canCraft = true;
-            }
-            if (wantsToCraft){
-                this.getStack(INPUT_SLOT_3).set(ModDataComponentTypes.EFFECT_BUFF_1, effect1);
-                this.getStack(INPUT_SLOT_3).set(ModDataComponentTypes.EFFECT_BUFF_2, effect2);
+                time++;
 
-
-                wantsToCraft = false;
-            }
+                if (time > 100){
+                    this.getStack(INPUT_SLOT_3).set(ModDataComponentTypes.EFFECT_BUFF_1, effect1);
+                    this.getStack(INPUT_SLOT_3).set(ModDataComponentTypes.EFFECT_BUFF_2, effect2);
+                    wantsToCraft = false;
+                    this.markDirty();
+                }
+            }else time = 0;
         }
     }
 

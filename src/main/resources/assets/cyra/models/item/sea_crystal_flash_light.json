@@ -1,0 +1,10 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cyra:item/sea_crystal_flash_light"
+  },
+  "overrides": [
+    { "predicate": { "cyra:variant": 0.0 }, "model": "cyra:item/sea_crystal_flash_light" },
+    { "predicate": { "cyra:variant": 0.1 }, "model": "cyra:item/sea_crystal_flash_light_empty" }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/pressure_plate_up",
+  "textures": {
+    "texture": "cyra:block/dazed_bioluminescence_planks"
+  }
+}

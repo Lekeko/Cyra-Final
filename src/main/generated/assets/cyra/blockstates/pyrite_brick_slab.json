@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cyra:block/pyrite_brick_slab"
+    },
+    "type=double": {
+      "model": "cyra:block/pyrite_bricks"
+    },
+    "type=top": {
+      "model": "cyra:block/pyrite_brick_slab_top"
+    }
+  }
+}

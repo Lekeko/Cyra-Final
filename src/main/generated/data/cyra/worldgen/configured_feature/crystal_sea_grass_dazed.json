@@ -1,0 +1,7 @@
+{
+  "type": "cyra:crystal_grass_dazed_feature",
+  "config": {
+    "blockID": "cyra:crystal_sea_grass_dazed",
+    "number": 10
+  }
+}

@@ -3,6 +3,8 @@ package com.keko.blocks;
 import com.keko.CyraFinal;
 import com.keko.blocks.blocksWithInterface.AlchemyTableEntity;
 import com.keko.blocks.blocksWithInterface.PyriteFabricatorEntity;
+import com.keko.blocks.environment.dim1.kyanite.KyaniteCrystalBlockEntity;
+import com.keko.blocks.environment.dim1.roseCrystal.RoseCrystalBlockEntity;
 import com.keko.blocks.environment.dim1.ticker.TickingBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -20,6 +22,16 @@ public class ModBlockEntity {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(CyraFinal.MOD_ID, "pyrite_fabricator_pl"),
                     BlockEntityType.Builder.create(PyriteFabricatorEntity::new,
                             ModBlocks.PYRITE_FABRICATOR).build());
+
+    public static final BlockEntityType<RoseCrystalBlockEntity> ROSE_CRYSTAL_BLOCK_ENTITY_BLOCK_ENTITY_TYPE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(CyraFinal.MOD_ID, "rose_crystal_block_pl"),
+                    BlockEntityType.Builder.create(RoseCrystalBlockEntity::new,
+                            ModBlocks.ROSE_CRYSTAL).build());
+
+    public static final BlockEntityType<KyaniteCrystalBlockEntity> KYANITE_CRYSTAL_BLOCK_ENTITY_BLOCK_ENTITY_TYPE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(CyraFinal.MOD_ID, "kyanite_crystal_block_pl"),
+                    BlockEntityType.Builder.create(KyaniteCrystalBlockEntity::new,
+                            ModBlocks.KYANITE_CRYSTAL).build());
 
     public static final BlockEntityType<TickingBlockEntity> EXAMPLE_TICKING_BLOCK_ENTITY = register("tick_normal_pillar",
             BlockEntityType.Builder.create(TickingBlockEntity::new, ModBlocks.CHAIN_BLOCK_GENERATOR_BLOCK)

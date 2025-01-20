@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cyra:block/pyrite_block_lamp"
+  }
+}

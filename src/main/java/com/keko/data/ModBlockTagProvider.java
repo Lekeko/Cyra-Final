@@ -17,5 +17,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
             getOrCreateTagBuilder(BlockTags.WALLS)
                     .add(ModBlocks.SEA_CRYSTAL_BRICKS_WALL);
+            getOrCreateTagBuilder(BlockTags.WALLS)
+                    .add(ModBlocks.PYRITE_BRICK_WALLS);
+        getOrCreateTagBuilder(BlockTags.FENCES)
+                .add(ModBlocks.BIOLUMINESCENCE_FENCE);
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+                .add(ModBlocks.BIOLUMINESCENCE_FENCE_GATE);
     }
 }

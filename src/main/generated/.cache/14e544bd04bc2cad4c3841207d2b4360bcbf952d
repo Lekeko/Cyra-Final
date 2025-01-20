@@ -1,2 +1,4 @@
-// 1.21	2024-12-21T14:55:55.0640558	Cyra Final/Tags for minecraft:block
-c6e5a94a28652bde2dfd7bf4195c8274a34e8e20 data\minecraft\tags\block\walls.json
+// 1.21	2025-01-16T12:14:04.0139878	Cyra Final/Tags for minecraft:block
+2a3cfee03a6a3f88650bc22c89385cefd01d48a3 data\minecraft\tags\block\walls.json
+5db7bce8cc3ff3c3f7f35c2f3c27cb2dd6fcf626 data\minecraft\tags\block\fences.json
+c2f3a5962737ec4e78106134736ea204c14aa2d9 data\minecraft\tags\block\fence_gates.json

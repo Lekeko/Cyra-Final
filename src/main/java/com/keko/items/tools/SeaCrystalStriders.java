@@ -16,8 +16,8 @@ public class SeaCrystalStriders extends Item {
         super(settings.maxCount(1));
     }
 
-    double boost = 7.0d;
-    double notRightDimensionDebuff = 4.0d;
+    double boost = 2.0d;
+    double notRightDimensionDebuff = 2.0d;
     float cooldown = 5.0f;
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {

@@ -1,0 +1,7 @@
+{
+  "type": "cyra:kyanite_crystal_feature",
+  "config": {
+    "blockID": "cyra:kyanite_crystal",
+    "number": 1
+  }
+}

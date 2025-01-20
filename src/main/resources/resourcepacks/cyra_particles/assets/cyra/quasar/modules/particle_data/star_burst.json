@@ -1,0 +1,17 @@
+{
+  "render_style": "BILLBOARD",
+  "init_modules": [
+    "cyra:star_burst"
+  ],
+  "update_modules": [
+  ],
+  "collision_modules": [
+  ],
+  "forces": [
+  ],
+  "render_modules": [
+    "cyra:color/star_burst",
+    "cyra:trail/star_burst"
+  ],
+  "should_collide": false
+}

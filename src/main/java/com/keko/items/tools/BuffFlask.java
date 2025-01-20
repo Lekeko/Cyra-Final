@@ -26,7 +26,7 @@ public class BuffFlask extends Item {
         effect.put(1, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
         effect.put(2, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
         effect.put(3, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
-        effect.put(4, new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 60 * 2, 2));
+        effect.put(4, new StatusEffectInstance(StatusEffects.REGENERATION, 20 * 60, 1));
         effect.put(5, new StatusEffectInstance(StatusEffects.STRENGTH, 20 * 60 * 2, 2));
         return effect;
     }
@@ -40,26 +40,52 @@ public class BuffFlask extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack stack = user.getStackInHand(user.getActiveHand());
-        if (stack.get(ModDataComponentTypes.EFFECT_BUFF_1) != null && stack.get(ModDataComponentTypes.EFFECT_BUFF_2) != null){
-            user.setStatusEffect(effect.get(stack.get(ModDataComponentTypes.EFFECT_BUFF_1)), user);
-            user.setStatusEffect(effect.get(stack.get(ModDataComponentTypes.EFFECT_BUFF_2)), user);
+        if (!world.isClient){
+            ItemStack stack = user.getStackInHand(user.getActiveHand());
+            if (stack.get(ModDataComponentTypes.EFFECT_BUFF_1) != null && stack.get(ModDataComponentTypes.EFFECT_BUFF_2) != null) {
+                user.setStatusEffect(effect.get(stack.get(ModDataComponentTypes.EFFECT_BUFF_1)), user);
+                user.setStatusEffect(effect.get(stack.get(ModDataComponentTypes.EFFECT_BUFF_2)), user);
 
-            effect.clear();
+                effect.clear();
 
-            effect.put(1, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
-            effect.put(2, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
-            effect.put(3, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
-            effect.put(4, new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 60 * 2, 2));
-            effect.put(5, new StatusEffectInstance(StatusEffects.STRENGTH, 20 * 60 * 2, 2));
-            user.getItemCooldownManager().set(stack.getItem(), (int)(20 * 60 * 2.6));
+                effect.put(1, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
+                effect.put(2, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
+                effect.put(3, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
+                effect.put(4, new StatusEffectInstance(StatusEffects.REGENERATION, 20 * 60, 1));
+                effect.put(5, new StatusEffectInstance(StatusEffects.STRENGTH, 20 * 60 * 2, 2));
+                user.getItemCooldownManager().set(stack.getItem(), (int) (20 * 60 * 2.6));
 
-        }else {
-            Objects.requireNonNull(user).sendMessage(Text.literal("The Buff Potion does not have any effects!").withColor(new Color(245, 165, 255, 255).getRGB()));
+            } else {
+                Objects.requireNonNull(user).sendMessage(Text.literal("The Buff Potion does not have any effects!").withColor(new Color(245, 165, 255, 255).getRGB()));
 
+            }
         }
 
         return super.use(world, user, hand);
+    }
+
+
+
+    public void use1(World world, PlayerEntity user, ItemStack stack){
+        if (!world.isClient){
+            if (stack.get(ModDataComponentTypes.EFFECT_BUFF_1) != null && stack.get(ModDataComponentTypes.EFFECT_BUFF_2) != null) {
+                user.setStatusEffect(effect.get(stack.get(ModDataComponentTypes.EFFECT_BUFF_1)), user);
+                user.setStatusEffect(effect.get(stack.get(ModDataComponentTypes.EFFECT_BUFF_2)), user);
+
+                effect.clear();
+
+                effect.put(1, new StatusEffectInstance(StatusEffects.HASTE, 20 * 60 * 2, 2));
+                effect.put(2, new StatusEffectInstance(StatusEffects.SPEED, 20 * 60 * 2, 2));
+                effect.put(3, new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20 * 60 * 2, 2));
+                effect.put(4, new StatusEffectInstance(StatusEffects.REGENERATION, 20 * 60 * 2, 2));
+                effect.put(5, new StatusEffectInstance(StatusEffects.STRENGTH, 20 * 60 * 2, 2));
+                user.getItemCooldownManager().set(stack.getItem(), (int) (20 * 60 * 2.6));
+
+            } else {
+                Objects.requireNonNull(user).sendMessage(Text.literal("The Buff Potion does not have any effects!").withColor(new Color(245, 165, 255, 255).getRGB()));
+
+            }
+        }
     }
 
     @Override

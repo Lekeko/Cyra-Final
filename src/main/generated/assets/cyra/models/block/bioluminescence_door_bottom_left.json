@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "cyra:block/bioluminescence_door_bottom",
+    "top": "cyra:block/bioluminescence_door_top"
+  }
+}

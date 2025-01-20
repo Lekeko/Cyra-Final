@@ -23,6 +23,7 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
 
+import java.awt.*;
 import java.awt.font.TextHitInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ import java.util.UUID;
 public class PCubeRenderer extends ProjectileEntityRenderer<PCube> {
 
     private final PCubeModel model;
-    private final int stripLength = 100;
+    private final int stripLength = 60;
     private final Map<UUID, ArrayList<Vec3d>> entityPositions = new HashMap<>();
     int tickTotal = 0;
 
@@ -77,9 +78,17 @@ public class PCubeRenderer extends ProjectileEntityRenderer<PCube> {
 
                 ArrayList<Vec3d> positions = entityPositions.get(entityUUID);
 
+                if (persistentProjectileEntity.color.getRed() == 255 && persistentProjectileEntity.color.getGreen() == 102 && persistentProjectileEntity.color.getBlue() == 25){
+                    float rotation = (MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true) + persistentProjectileEntity.age) * 10 + persistentProjectileEntity.degree;
 
-                if (positions != null && positions.size() >= 2) {
-                    for (int pose = 0; pose < positions.size() - 1; pose++) {
+                    matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation));
+                    matrixStack.translate(0,1,4);
+                    matrixStack.scale(1.2f,1.2f,1.2f);
+                }else
+                if (positions != null && positions.size() >= 15) {
+
+
+                    for (int pose = 12; pose < positions.size() - 1; pose++) {
 
                         Vec3d pos1 = positions.get(pose);
                         Vec3d pos2 = positions.get(pose + 1);
@@ -104,7 +113,7 @@ public class PCubeRenderer extends ProjectileEntityRenderer<PCube> {
                         buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v3.x, (float) (v3.y + 1.2), (float) v3.z).color(red, green, blue, 255);
                         buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v4.x, (float) (v4.y + 1.2), (float) v4.z).color(red, green, blue, 255);
                         if (trailWidth > 0.03) {
-                            trailWidth -= 0.04f;
+                            trailWidth -= 0.02f;
                         }
                     }
 
@@ -114,6 +123,7 @@ public class PCubeRenderer extends ProjectileEntityRenderer<PCube> {
                     trailWidth = maxTrailWidth;
                 }
 
+
                 VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumerProvider, this.model.getLayer(this.getTexture(persistentProjectileEntity)), true, false);
                 this.model.render(matrixStack, vertexConsumer, 255, OverlayTexture.DEFAULT_UV, red * 256 * 256 + green * 256 + blue);
 
@@ -121,6 +131,12 @@ public class PCubeRenderer extends ProjectileEntityRenderer<PCube> {
             }
         }
     }
+
+    @Override
+    protected float getShadowRadius(PCube entity) {
+        return 0;
+    }
+
 
 
 

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cyra:block/bioluminescence_slab"
+    },
+    "type=double": {
+      "model": "cyra:block/bioluminescence_planks"
+    },
+    "type=top": {
+      "model": "cyra:block/bioluminescence_slab_top"
+    }
+  }
+}

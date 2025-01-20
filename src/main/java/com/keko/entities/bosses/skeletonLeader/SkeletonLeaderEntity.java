@@ -1,5 +1,10 @@
 package com.keko.entities.bosses.skeletonLeader;
 
+import com.keko.packet.SkeletonLeaderTeleportPayload;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
@@ -16,12 +21,13 @@ import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import org.lwjgl.system.linux.Stat;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
@@ -33,7 +39,9 @@ import java.util.List;
 public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private int attackCooldown = 0;
-
+    int attack = 1;
+    private BlockPos TeleporPos;
+    private  PlayerEntity target;
     public SkeletonLeaderEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -62,7 +70,7 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(5, new WanderAroundGoal(this, 0.8));
-        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         super.initGoals();
@@ -79,13 +87,29 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
     }
 
     private void prepareNextAttack() {
-        int nextAttack = random.nextBetween(1, 20);
-
-        switch (nextAttack){
-            case 1, 16 -> prepareNormalAttack();
-            case 17 -> prepareSummonAttack();
-            case 18, 20 -> premareAirAttack();
+        int nextAttack = random.nextBetween(1, 100);
+        if (nextAttack >= 81 && nextAttack <= 90 && attack != 3) attack = 2;
+        switch (attack){
+            case 1 -> prepareNormalAttack();
+            case 2 -> premareAirAttack();
+            case 3 -> NormalAttack();
         }
+    }
+
+    private void NormalAttack() {
+        if (TeleporPos != null)
+        {
+            this.setPosition(Vec3d.of(TeleporPos));
+            int animation = random.nextBetween(1, 2);
+            this.setPitch(target.getPitch());
+            this.setYaw(target.getYaw());
+            triggerAnim("controller", ("skeleton_leader.attack" + animation));
+            spawnArrow(target);
+            attackCooldown = this.getWorld().getRandom().nextBetween(10, 20);
+        }
+        attack = 1;
+        TeleporPos = null;
+
     }
 
     private void premareAirAttack() {
@@ -101,6 +125,7 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
         }
 
         attackCooldown = this.getWorld().getRandom().nextBetween(30, 40);
+        attack = 1;
     }
 
     private void prepareSummonAttack() {
@@ -127,10 +152,9 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
 
     private void prepareNormalAttack() {
         int area_size = 20;
-
         Box areaOfSearch = new Box(this.getX() + area_size, this.getY() + area_size, this.getZ() + area_size, this.getX() - area_size, this.getY() - area_size, this.getZ() - area_size);
-        int x = this.getWorld().random.nextBetween(-6, 6);
-        int z = this.getWorld().random.nextBetween(-6, 6);
+
+
 
         List<PlayerEntity> players = (this.getWorld().getEntitiesByClass(PlayerEntity.class, areaOfSearch, Entity::isAlive));
 
@@ -138,18 +162,52 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
         BlockPos pos = null;
         if (!players.isEmpty()) {
             PlayerEntity player = players.getFirst();
-            pos = new BlockPos(player.getBlockX() + x, player.getBlockY(), player.getBlockZ() + z);
-            this.setPosition(Vec3d.of(pos));
-            int animation = random.nextBetween(1, 2);
-            this.setPitch(player.getPitch());
-            this.setYaw(player.getYaw());
-            triggerAnim("controller", ("skeleton_leader.attack" + animation));
-            spawnArrow(player);
 
+            pos = findTeleportablePos(player);
+            for (int i = 0; i < 10; i++){
+                java.util.Random random = new java.util.Random();
+                ServerPlayNetworking.send((ServerPlayerEntity) player, new SkeletonLeaderTeleportPayload(pos.getX(), pos.getY(), pos.getZ()));
+                getWorld().playSound(null, pos, SoundEvents.ENTITY_SKELETON_AMBIENT, SoundCategory.HOSTILE, 0.3421f, 1);
+            }
+
+            TeleporPos = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
+            target = player;
         }
         attackCooldown = this.getWorld().getRandom().nextBetween(10, 20);
+        attack = 3;
+
 
     }
+
+    private BlockPos findTeleportablePos(PlayerEntity player) {
+        int x,z;
+        BlockPos pos = player.getBlockPos();
+        int attempts = 0;
+
+        do {
+            x = random.nextBetween(-5, 5);
+            z= random.nextBetween(-5, 5);
+            pos = new BlockPos(player.getBlockX() + x, player.getBlockY(), player.getBlockZ() + z);
+            int maxDepth = 3;
+            if (getWorld().getBlockState(pos).isOf(Blocks.AIR))
+                while (getWorld().getBlockState(pos).isOf(Blocks.AIR) && maxDepth > 0){
+                pos= pos.down();
+                maxDepth--;
+                    if (getWorld().getBlockState(pos).isOf(Blocks.WATER) || getWorld().getBlockState(pos).isOf(Blocks.LAVA))
+                        break;
+                }
+
+            attempts ++;
+
+        }while (!getWorld().getBlockState(pos).isSolidBlock(getWorld().getChunkAsView(pos.getX() / 16, pos.getZ() / 16), pos) && attempts < 6);
+
+
+        return pos;
+
+
+    }
+
+
 
     private void spawnArrow(PlayerEntity player) {
         PersistentProjectileEntity persistentProjectileEntity = this.createArrowProjectile(7);

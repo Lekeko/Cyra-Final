@@ -1,0 +1,19 @@
+{
+  "name": "cyra:zombie_arena/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 4,
+      "element": {
+        "location": "cyra:zombie_arena",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+
+
+  ]
+}

@@ -12,6 +12,7 @@ public class ModParticles {
     public static final SimpleParticleType WATER_BOLT_PARTICLE_TYPE = FabricParticleTypes.simple();
     public static final SimpleParticleType PYRITE_SLASH = FabricParticleTypes.simple();
     public static final SimpleParticleType PYRITE_STAR = FabricParticleTypes.simple();
+    public static final SimpleParticleType PYRITE_BOOM = FabricParticleTypes.simple();
 
     public static void register(){
         Registry.register(Registries.PARTICLE_TYPE, Identifier.of(CyraFinal.MOD_ID, "water_bolt_particle"),
@@ -20,6 +21,8 @@ public class ModParticles {
                 PYRITE_SLASH);
         Registry.register(Registries.PARTICLE_TYPE, Identifier.of(CyraFinal.MOD_ID, "pyrite_star_particle"),
                 PYRITE_STAR);
+        Registry.register(Registries.PARTICLE_TYPE, Identifier.of(CyraFinal.MOD_ID, "pyrite_boom"),
+                PYRITE_BOOM);
     }
 
 }

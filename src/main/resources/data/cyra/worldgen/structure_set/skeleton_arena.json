@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "cyra:skeleton_arena",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1662136479,
+
+    "spacing": 60,
+
+    "separation": 2,
+
+    "type": "minecraft:random_spread"
+  }
+}

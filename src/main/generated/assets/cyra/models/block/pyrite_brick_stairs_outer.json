@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "cyra:block/pyrite_bricks",
+    "side": "cyra:block/pyrite_bricks",
+    "top": "cyra:block/pyrite_bricks"
+  }
+}

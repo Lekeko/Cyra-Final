@@ -22,16 +22,6 @@ public class AlchemyTableScreen extends HandledScreen<AlchemyTableScreenhandler>
 
     @Override
     protected void init() {
-        button1 = ButtonWidget.builder(Text.literal("Combine"), button -> {
-            if (button.active){
-                if (AlchemyTableEntity.canCraft){
-                    AlchemyTableEntity.wantsToCraft = true;
-                }
-            }
-        }) .dimensions(width / 2 - 29, height / 2 - 48, 50, 15)
-                .build();
-        addDrawableChild(button1);
-
         super.init();
     }
 

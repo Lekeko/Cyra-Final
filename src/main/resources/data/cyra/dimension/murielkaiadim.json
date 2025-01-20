@@ -4,8 +4,45 @@
     "type": "minecraft:noise",
     "settings": "cyra:murielkaiadim",
     "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "cyra:muriel_waters"
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "cyra:dazed_waters",
+          "parameters": {
+            "continentalness": 0.25,
+            "humidity": 0.5,
+            "temperature": 0.4,
+            "erosion": 0.2,
+            "weirdness": 0.2,
+            "depth": -0.1,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "cyra:void_waters",
+          "parameters": {
+            "continentalness": 0.3,
+            "humidity": 0.7,
+            "temperature": 0.1,
+            "erosion": 0,
+            "weirdness": 0.2,
+            "depth": -0.3,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "cyra:muriel_waters",
+          "parameters": {
+            "continentalness": 0.2,
+            "humidity": 0,
+            "temperature": 0.5,
+            "erosion": 0.3,
+            "weirdness": 0.2,
+            "depth": -0.4,
+            "offset": 0
+          }
+        }
+      ]
     }
   }
 }

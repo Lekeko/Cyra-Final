@@ -1,0 +1,28 @@
+{
+  "name": "cyra:palace/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 6,
+      "element": {
+        "location": "cyra:palace_arena",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+
+      "weight": 4,
+      "element": {
+        "location": "cyra:palace_forgery",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+
+  ]
+}

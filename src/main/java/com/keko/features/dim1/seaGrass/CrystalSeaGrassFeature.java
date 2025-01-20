@@ -1,10 +1,15 @@
 package com.keko.features.dim1.seaGrass;
 
 import com.keko.blocks.ModBlocks;
+import com.keko.entities.ModEntities;
+import com.keko.entities.normal.sea_rodent.SeaRodentEntity;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.SchoolingFishEntity;
 import net.minecraft.registry.Registries;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -43,24 +48,20 @@ public class CrystalSeaGrassFeature extends Feature<CrystalSeaGrassFeatureConfig
             testPos = testPos.up();
             if (world.getBlockState(testPos).isOf(ModBlocks.SEA_STONE)) {
                 if (world.getBlockState(testPos.up()).isOf(Blocks.WATER)) {
-                    for (int i = 0; i < radius2; i++)
-                        for (int j = 0; j < radius2; j++)
-                            for (int k = 0; k < radius2; k++){
-                                if (i*i + j*j <= radius * radius){
+                    for (int i = -radius2; i < radius2; i++)
+                        for (int j = -radius2; j < radius2; j++)
+                            for (int k = -radius2; k < radius2; k++){
+                                if (i*i + j*j + k * k<= radius2 * radius2){
                                     if (testPos.getY() >= world.getTopY()) break;
                                     BlockPos newPos = new BlockPos(testPos.getX() + i, testPos.getY() + j, testPos.getZ() + k);
+
                                     if (world.getBlockState(newPos).isOf(ModBlocks.SEA_STONE) && world.getBlockState(newPos.up()).isOf(Blocks.WATER)){
                                         world.setBlockState(newPos, ModBlocks.SEA_STONE_GRASS.getDefaultState(), 0x10);
-
-                                        if (random1.nextInt(10) + 1 < 4)
+                                        if (world.getRandom().nextBetween(1, 100) < 50)
                                             world.setBlockState(newPos.up(), ModBlocks.CRYSTAL_SEA_GRASS.getDefaultState(), 0x10);
-                                        else{
-                                            world.setBlockState(newPos.up(), ModBlocks.TALL_CRYSTAL_SEA_GRASS_BOTTOM.getDefaultState(), 0x10);
-                                            world.setBlockState(newPos.up().up(), ModBlocks.TALL_CRYSTAL_SEA_GRASS_TOP.getDefaultState(), 0x10);
-                                        }
                                     }
 
-                                }else if (i*i + j*j <= radius2 * radius2){
+                                }else if (i*i + j*j + k * k <= radius2 * radius2){
                                     BlockPos newPos = new BlockPos(testPos.getX() + i, testPos.getY() + j, testPos.getZ() + k);
                                     if (world.getBlockState(newPos).isOf(ModBlocks.SEA_STONE) && world.getBlockState(newPos.up()).isOf(Blocks.WATER)){
                                         world.setBlockState(newPos, ModBlocks.SEA_STONE_GRASS.getDefaultState(), 0x10);
@@ -68,6 +69,9 @@ public class CrystalSeaGrassFeature extends Feature<CrystalSeaGrassFeatureConfig
                                 }
 
                     }
+
+
+
                     return true;
                 }
             }

@@ -4,10 +4,15 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CyraRiptideMixin",
-    "ElytraNerfMixin",
+    "PlayerCharmMixin",
     "PyriteSwordSlashAttack"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  },
+  "client": [
+    "ItemRendererAccessor",
+    "ItemRendererMixin",
+    "ModelLoaderMixin"
+  ]
 }

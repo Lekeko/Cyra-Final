@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "cyra:block/bioluminescence_planks",
+    "side": "cyra:block/bioluminescence_planks",
+    "top": "cyra:block/bioluminescence_planks"
+  }
+}

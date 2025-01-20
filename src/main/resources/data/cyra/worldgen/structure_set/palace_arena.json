@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "cyra:palace_arena",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136479,
+
+    "spacing": 60,
+
+    "separation": 2,
+
+    "type": "minecraft:random_spread"
+  }
+}

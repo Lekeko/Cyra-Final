@@ -8,6 +8,8 @@ import net.minecraft.world.biome.Biome;
 
 public class ModBiomes {
     public static final RegistryKey<Biome> MURIEL_WATERS = register("muriel_waters");
+    public static final RegistryKey<Biome> DAZED_WATERS = register("dazed_waters");
+    public static final RegistryKey<Biome> VOID_WATERS = register("void_waters");
 
 
     public static void registerBiomes(){

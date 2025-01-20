@@ -130,7 +130,7 @@ public class ZombieLeaderSpawnerBlock extends BlockWithEntity implements BlockEn
 
     private void spawnBoss(ServerWorld world, BlockPos pos) {
         ZombieLeaderEntity zombieLeaderEntity = new ZombieLeaderEntity(ModEntities.ZOMBIE_LEADER, world);
-        zombieLeaderEntity.setPos(pos.getX(), pos.getY(), pos.getZ());
+        zombieLeaderEntity.setPos(pos.getX(), pos.getY() + 1, pos.getZ());
         world.setBlockState(pos, Blocks.AIR.getDefaultState());
         world.spawnEntity(zombieLeaderEntity);
     }

@@ -5,14 +5,17 @@ import com.keko.effects.custom.CompulsionStatusEffect;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 public class ModStatusEffects {
-    public static final StatusEffect COMPULSION;
+    public static RegistryEntry<StatusEffect> COMPULSION;
 
-    static {
-        COMPULSION = Registry.register(Registries.STATUS_EFFECT, Identifier.of(CyraFinal.MOD_ID, "compulsion_of_the_old_lord"), new CompulsionStatusEffect());
+    private static RegistryEntry<StatusEffect> register(String id) {
+        return Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(CyraFinal.MOD_ID, id), new CompulsionStatusEffect());
     }
 
-    public static void registerStatusEffects(){}
+    public static void registerStatusEffects(){
+        COMPULSION = register("compulsion_of_the_old_lord");
+    }
 }

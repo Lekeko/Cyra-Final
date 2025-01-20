@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "cyra:block/dazed_crystal_sea_weed"
+  }
+}

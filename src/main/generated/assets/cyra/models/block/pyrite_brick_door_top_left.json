@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "cyra:block/pyrite_brick_door_bottom",
+    "top": "cyra:block/pyrite_brick_door_top"
+  }
+}

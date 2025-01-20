@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "cyra:tree_of_light",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136474,
+
+    "spacing": 60,
+
+    "separation": 2,
+
+    "type": "minecraft:random_spread"
+  }
+}

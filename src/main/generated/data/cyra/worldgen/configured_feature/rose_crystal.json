@@ -1,0 +1,7 @@
+{
+  "type": "cyra:rose_crystal_feature",
+  "config": {
+    "blockID": "cyra:rose_crystal",
+    "number": 1
+  }
+}

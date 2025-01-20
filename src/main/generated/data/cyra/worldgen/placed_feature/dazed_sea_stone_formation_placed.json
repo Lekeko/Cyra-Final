@@ -1,0 +1,27 @@
+{
+  "feature": "cyra:sea_stone_dazed_formation",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 256
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 299
+        },
+        "min_inclusive": {
+          "absolute": 1
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

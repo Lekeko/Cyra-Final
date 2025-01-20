@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cyra:block/ancient_void_sea_stone_pyrite_ore"
+  }
+}

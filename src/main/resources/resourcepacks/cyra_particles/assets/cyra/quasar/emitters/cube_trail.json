@@ -1,0 +1,11 @@
+{
+  "max_lifetime": 1,
+  "loop": false,
+  "rate": 2,
+  "count": 4,
+  "emitter_settings": {
+    "shape": "cyra:cube_trail",
+    "particle_settings": "cyra:cube_trail"
+  },
+  "particle_data": "cyra:cube_trail"
+}

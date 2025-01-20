@@ -7,8 +7,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItem;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -18,13 +16,15 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CoreOfTheSeaBlock extends Block {
     public CoreOfTheSeaBlock(Settings settings) {
         super(settings);
     }
-
+    private final int radius = 8;
     ArrayList<Block> blocksOfPortal = new ArrayList<>();
 
     @Override
@@ -39,40 +39,53 @@ public class CoreOfTheSeaBlock extends Block {
                             if (world.getRegistryKey() == ModDimensions.MURIEL_KAIA_LEVEL_KEY) {
                                 ServerWorld overWorld = server.getWorld(World.OVERWORLD);
                                 if (overWorld != null) {
-                                    boolean doSetBlock = true;
-                                    BlockPos destPos = getDest(player.getBlockPos(), overWorld, false);
-                                    for (BlockPos checkPos : BlockPos.iterate(destPos.down(10).west(10).south(10), destPos.up(10).east(10).north(10))) {
-                                        if (overWorld.getBlockState(checkPos).getBlock() == ModBlocks.CORE_OF_THE_SEA) {
-                                            doSetBlock = false;
+                                    int i = 319;
+                                    for (i = 319; i >= -64; i--){
+                                        if (overWorld.getBlockState(new BlockPos(pos.getX(), i, pos.getZ())).isOf(ModBlocks.CORE_OF_THE_SEA)){
                                             break;
                                         }
                                     }
+                                    if (i > -64) {
+                                        serverPlayer.teleport(overWorld, pos.getX() + 1, i, pos.getZ(),
+                                                serverPlayer.bodyYaw, serverPlayer.prevPitch);
+                                        overWorld.setBlockState(new BlockPos(pos.getX(), i, pos.getZ()), ModBlocks.CORE_OF_THE_SEA.getDefaultState());
+                                    }
+                                    else
+                                    {
+                                        BlockPos posNew = new BlockPos(pos.getX(), 319, pos.getZ());
+                                        while (overWorld.getBlockState(posNew).isOf(Blocks.AIR))
+                                            posNew = posNew.down();
+                                        if (posNew.getY() > -64) {
+                                            overWorld.setBlockState(new BlockPos(posNew.getX(),  posNew.getY(), posNew.getZ()), ModBlocks.CORE_OF_THE_SEA.getDefaultState());
 
-                                    if (destPos.getY() > 310){
-                                        destPos = new BlockPos(destPos.getX(), 310, destPos.getZ());
+                                            serverPlayer.teleport(overWorld, posNew.getX() + 1, posNew.getY(), posNew.getZ(),
+                                                    serverPlayer.bodyYaw, serverPlayer.prevPitch);
+                                        }
+                                        else Objects.requireNonNull(serverPlayer).sendMessage(Text.literal("Teleporting position out of the world!").withColor(new Color(245, 165, 255, 255).getRGB()));
+
                                     }
 
-                                    if (doSetBlock) {
-                                        overWorld.setBlockState(destPos, ModBlocks.CORE_OF_THE_SEA.getDefaultState());
-                                    }
-                                    serverPlayer.teleport(overWorld, destPos.getX(), destPos.getY(), destPos.getZ(),
-                                            serverPlayer.bodyYaw, serverPlayer.prevPitch);
+
                                 }
                             } else {
                                 ServerWorld muriel = server.getWorld(ModDimensions.MURIEL_KAIA_LEVEL_KEY);
-                                if (muriel != null) {
-                                    BlockPos destPos = getDest(serverPlayer.getBlockPos(), muriel, true);
-                                    boolean doSetBlock = true;
-                                    for (BlockPos checkPos : BlockPos.iterate(destPos.down(10).west(10).south(10), destPos.up(10).east(10).north(10))) {
-                                        if (muriel.getBlockState(checkPos).getBlock() == ModBlocks.CORE_OF_THE_SEA) {
-                                            doSetBlock = false;
-                                            break;
-                                        }
+                                assert muriel != null;
+                                int i = 300;
+                                for (i = 300; i >= -64; i--){
+                                    if (muriel.getBlockState(new BlockPos(pos.getX(), i, pos.getZ())).isOf(ModBlocks.CORE_OF_THE_SEA)){
+                                        break;
                                     }
-                                    if (doSetBlock) {
-                                        muriel.setBlockState(destPos, ModBlocks.CORE_OF_THE_SEA.getDefaultState());
-                                    }
-                                    serverPlayer.teleport(muriel, destPos.getX(), destPos.getY(), destPos.getZ(),
+                                }
+                                if (i > -64) {
+                                    serverPlayer.teleport(muriel, pos.getX() + 1, i, pos.getZ(),
+                                            serverPlayer.bodyYaw, serverPlayer.prevPitch);
+                                    muriel.setBlockState(new BlockPos(pos.getX(), i, pos.getZ()), ModBlocks.CORE_OF_THE_SEA.getDefaultState());
+                                }else {
+                                    BlockPos posBuilder = new BlockPos(pos.getX(), 220, pos.getZ());
+                                    makeSPHERE(posBuilder, muriel);
+                                    makeFRAME(posBuilder, muriel);
+                                    muriel.setBlockState(new BlockPos(pos.getX(), 220, pos.getZ()), ModBlocks.CORE_OF_THE_SEA.getDefaultState());
+                                    serverPlayer.teleport(muriel, pos.getX() + 1, 220, pos.getZ(),
                                             serverPlayer.bodyYaw, serverPlayer.prevPitch);
                                 }
                             }
@@ -85,6 +98,48 @@ public class CoreOfTheSeaBlock extends Block {
 
         return super.onUse(state, world, pos, player, hit);
     }
+
+    private void makeFRAME(BlockPos pos, ServerWorld muriel) {
+        //CRY ME A RIVER ITS MORE EFFICIENT THIS WAY
+        muriel.setBlockState(new BlockPos(pos.getX() + 2, pos.getY() + 1, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+        muriel.setBlockState(new BlockPos(pos.getX() + 2, pos.getY(), pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+        muriel.setBlockState(new BlockPos(pos.getX() + 2, pos.getY() - 1, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+
+
+        muriel.setBlockState(new BlockPos(pos.getX() - 2, pos.getY() + 1, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+        muriel.setBlockState(new BlockPos(pos.getX() - 2, pos.getY(), pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+        muriel.setBlockState(new BlockPos(pos.getX() - 2, pos.getY() - 1, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+
+        muriel.setBlockState(new BlockPos(pos.getX() + 1, pos.getY() + 2, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+        muriel.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+        muriel.setBlockState(new BlockPos(pos.getX() - 1, pos.getY() + 2, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+
+        muriel.setBlockState(new BlockPos(pos.getX() + 1, pos.getY() - 2, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+        muriel.setBlockState(new BlockPos(pos.getX(), pos.getY() - 2, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+        muriel.setBlockState(new BlockPos(pos.getX() - 1, pos.getY() - 2, pos.getZ()), Blocks.PRISMARINE.getDefaultState() );
+
+    }
+
+    private void makeSPHERE(BlockPos pos, ServerWorld muriel) {
+        int radiusSquared = radius * radius;
+
+        for (int i = -radius; i <= radius; i++) {
+            for (int j = -radius; j <= radius; j++) {
+                for (int k = -radius; k <= radius; k++) {
+                    int distanceSquared = i * i + j * j + k * k;
+
+                    if (distanceSquared >= radiusSquared - 7 && distanceSquared <= radiusSquared + 7) {
+                        if (muriel.getBlockState(pos.add(i, j, k)).isOf(Blocks.WATER))
+                            muriel.setBlockState(pos.add(i, j, k), Blocks.GLASS.getDefaultState());
+                    } else if (distanceSquared < radiusSquared) {
+                        muriel.setBlockState(pos.add(i, j, k), Blocks.AIR.getDefaultState());
+                    }
+                }
+            }
+        }
+    }
+
+
     public static BlockPos getDest(BlockPos pos, World destWorld, boolean isInDimension) {
         double y = 61;
 

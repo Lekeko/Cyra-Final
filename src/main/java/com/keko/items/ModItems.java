@@ -1,16 +1,30 @@
 package com.keko.items;
 
 import com.keko.CyraFinal;
+import com.keko.entities.ModEntities;
+import com.keko.entities.projectiles.electroCharge.ElectroCharge;
+import com.keko.food.ModFoods;
 import com.keko.items.armor.ModArmorItem;
+import com.keko.items.bossItems.spawners.AncientTitFer;
+import com.keko.items.bossItems.spawners.GildedSpine;
+import com.keko.items.bossItems.spawners.JellyCrown;
 import com.keko.items.bossItems.spawners.RottenNecklace;
 import com.keko.items.tools.*;
+import com.keko.items.tools.pyrite.OldLordsFlameItem;
 import com.keko.items.tools.pyrite.PyriteHoe;
-import com.keko.items.weapons.PyritePrimordialCube;
-import com.keko.items.weapons.SeaShooter;
+import com.keko.items.weapons.*;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.Camera;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 import java.util.Comparator;
@@ -20,8 +34,6 @@ import java.util.Set;
 public class ModItems {
     public static final Set<Item> ITEMS = new HashSet<>();
 
-
-
     /*MISC*/
 
     public static final Item ORB_OF_BOUND = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_bound");
@@ -29,18 +41,40 @@ public class ModItems {
     public static final Item ORB_OF_FORCE = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_force");
     public static final Item ORB_OF_IMPETUOSITY = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_impetuosity");
     public static final Item ORB_OF_VITALITY = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_vitality");
+    public static final Item JELLY_PASTA = registerItem(new Item(new Item.Settings().maxCount(16).food(ModFoods.JELLY)), "jelly_pasta");
+
+    public static final Item DEPTH_CHARM_TIER_1 = registerItem(new Item(new Item.Settings().maxCount(1)), "DEPTH_CHARM_TIER_1".toLowerCase());
+    public static final Item DEPTH_CHARM_TIER_2 = registerItem(new Item(new Item.Settings().maxCount(1)), "DEPTH_CHARM_TIER_2".toLowerCase());
+    public static final Item DEPTH_CHARM_TIER_3 = registerItem(new Item(new Item.Settings().maxCount(1)), "DEPTH_CHARM_TIER_3".toLowerCase());
 
     public static final Item HEALING_FLASK = registerItem(new HealingFlask(new Item.Settings().maxCount(1)), "healing_flask");
     public static final Item BUFF_FLASK = registerItem(new BuffFlask(new Item.Settings().maxCount(1)), "buff_flask");
 
 
     public static final Item ROTTEN_NECKLACE = registerItem(new RottenNecklace(new Item.Settings().maxCount(1)), "rotten_necklace");
+    public static final Item GILDED_SPINE = registerItem(new GildedSpine(new Item.Settings().maxCount(1)), "gilded_spine");
+    public static final Item ANCIENT_TIT_FER = registerItem(new AncientTitFer(new Item.Settings().maxCount(1)), "ANCIENT_TIT_FER".toLowerCase());
+    public static final Item JELLY_CROWN = registerItem(new JellyCrown(new Item.Settings().maxCount(1)), "jelly_crown");
+    public static final Item ELECTRO_CHARGE = registerItem(new ElectroChargeWeapon(new Item.Settings().maxCount(16)), "electro_charge1");
+    public static final Item JELLY_TENTACLES = registerItem(new Item(new Item.Settings()), "jelly_tentacles");
+    public static final Item FLASHLIGHT = registerItem(new FlashLight(new Item.Settings().maxCount(1)), "sea_crystal_flash_light");
 
-    //TEST
-    public static final Item FLASHLIGHT = registerItem(new FlashLight(new Item.Settings().maxCount(1)), "spyglass");
+    //fishes :>
+
+    public static final Item DEEP_SALMON_BUCKET = registerItem(new EntityBucketItem(ModEntities.DEEP_SALMON, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, (new Item.Settings()).maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)), "deep_salmon_bucket");
+    public static final Item GROXION_BUCKET = registerItem(new EntityBucketItem(ModEntities.GROXION, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, (new Item.Settings()).maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)), "groxion_bucket");
+    public static final Item SEA_RODENT_BUCKET = registerItem(new EntityBucketItem(ModEntities.SEA_RODENT, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, (new Item.Settings()).maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)), "sea_rodent_bucket");
+    public static final Item STRIDELY_BUCKET = registerItem(new EntityBucketItem(ModEntities.STRIDELY, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, (new Item.Settings()).maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)), "stridely_bucket");
 
 
+    //O2 Tanks
+    public static final Item ENDERITE_OXYGEN_TANK = registerItem(new OxygenTank(new Item.Settings().maxDamage(10 * 60 * 20)), "ENDERITE_OXYGEN_TANK".toLowerCase());
+    public static final Item SEA_CRYSTAL_OXYGEN_TANK = registerItem(new OxygenTank(new Item.Settings().maxDamage(20 * 60 * 20)), "SEA_CRYSTAL_OXYGEN_TANK".toLowerCase());
+    public static final Item PYRITE_OXYGEN_TANK = registerItem(new OxygenTank(new Item.Settings().maxDamage(50 * 60 * 20)), "PYRITE_OXYGEN_TANK".toLowerCase());
 
+    //BOSS WEAPONS
+    public static final Item ZOMBIE_AXE = registerItem(new ZombieLeaderBattleAxeItem(ModToolMaterial.ENDERITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 6, -2.0F))), "zombie_leader_battle_axe");
+    public static final Item SKELETON_BOW = registerItem(new SkeletonLeaderBattleBowitem(new Item.Settings()), "skeleton_leader_battle_bow");
 
 
     /*enderite*/
@@ -86,10 +120,11 @@ public class ModItems {
 
     //PYRITE
     public static final Item PYRITE_CHUNK = registerItem(new Item(new Item.Settings()), "pyrite_chunk");
-    public static final Item OLD_LORDS_FLAME = registerItem(new Item(new Item.Settings()), "old_lords_flame");
+    public static final Item OLD_LORDS_FLAME = registerItem(new OldLordsFlameItem(new Item.Settings()), "old_lords_flame");
     public static final Item SHACKLE_OF_IMPRISONMENT = registerItem(new ShackleOfImprisonment(new Item.Settings()), "shackle_of_imprisonment");
     public static final Item RESTORED_PYRITE = registerItem(new Item(new Item.Settings()), "restored_pyrite");
     public static final Item PYRITE_PRIMORDIAL_CUBE = registerItem(new PyritePrimordialCube(new Item.Settings()), "pyrite_primordial_cube1");
+    public static final Item PYRITE_BULWARK = registerItem(new ShieldItem(new Item.Settings()), "PYRITE_BULWARK".toLowerCase());
 
     public static final Item PYRITE_SWORD = registerItem(new SwordItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.PYRITE, 8, -1.4F)))), "pyrite_sword");
     public static final Item PYRITE_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.PYRITE, 3, -1.8F)))), "pyrite_shovel");
@@ -111,6 +146,7 @@ public class ModItems {
     }
 
     public static void registerModItems() {
+
     }
 
     public static void fillTab(ItemGroup.DisplayContext displayContext, ItemGroup.Entries entries) {
