@@ -27,7 +27,7 @@ public class CompulsionAxe  extends PersistentProjectileEntity {
     @Override
     public void tick() {
         if (!getWorld().isClient){
-            if (age > 30) discard();
+            if (age > 60) discard();
             damageEnemies();
         }
 

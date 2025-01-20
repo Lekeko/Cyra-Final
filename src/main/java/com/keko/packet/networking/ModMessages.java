@@ -139,7 +139,7 @@ public class ModMessages {
                 double y = payload.y();
                 double z = payload.z();
                 for (int i = 0; i < 1000; i++)
-                    player.getWorld().addParticle(ParticleTypes.END_ROD, x,y - 3,z,
+                    player.getWorld().addParticle(ParticleTypes.END_ROD, x,y ,z,
                             (player.getWorld().random.nextFloat() - .5f ) * 10,
                             (player.getWorld().random.nextFloat() - .5f ) * 10,
                             (player.getWorld().random.nextFloat() - .5f ) * 10);

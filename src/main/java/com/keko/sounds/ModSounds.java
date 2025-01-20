@@ -24,6 +24,7 @@ public class ModSounds {
     public static final SoundEvent VOID_AMBIANCE_MONSTER = register("void_ambiance_monster");
     public static final SoundEvent MURIEL_MUSIC_1 = register("muriel_music_1");
     public static final SoundEvent COMPULSION_SWORD_BLAST = register("compulsion_sword_blast");
+    public static final SoundEvent COMPULSION_AXE = register("compulsion_axe");
 
     private static SoundEvent register(String path) {
         Identifier identifier = Identifier.of(CyraFinal.MOD_ID, path);

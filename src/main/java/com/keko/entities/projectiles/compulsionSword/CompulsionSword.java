@@ -61,19 +61,7 @@ public class CompulsionSword extends PersistentProjectileEntity {
         return true;
     }
 
-    @Override
-    protected void onBlockHit(BlockHitResult blockHitResult) {
-        if (!getWorld().isClient){
-            try {
-                ServerPlayNetworking.send((ServerPlayerEntity) this.getOwner(), new StarParticlesGeneralPayload(getX(), getY(), getZ()));
-            }catch (Exception ignored){}
-            spawnParticle(this.getOwner(), Identifier.of(CyraFinal.MOD_ID, "star_burst"), getX(), getY(), getZ());
-            getWorld().playSound(this, this.getBlockPos(), ModSounds.COMPULSION_SWORD_BLAST, SoundCategory.PLAYERS ,10, 1);
-            launchPlayers();
 
-            this.discard();
-        }
-    }
 
     @Override
     protected float getDragInWater() {
@@ -98,7 +86,7 @@ public class CompulsionSword extends PersistentProjectileEntity {
         try {
             ParticleSystemManager manager = VeilRenderSystem.renderer().getParticleManager();
             ParticleEmitter emitter = manager.createEmitter(id);
-            emitter.setPosition(x,y - 3,z);
+            emitter.setPosition(x,y,z);
             emitter.setParticleSettings(new ParticleSettings(5f, 0.0f, 0.05f,
                     100, 0f,
                     new Vector3f(
@@ -122,6 +110,11 @@ public class CompulsionSword extends PersistentProjectileEntity {
     }
 
     @Override
+    public boolean isNoClip() {
+        return true;
+    }
+
+    @Override
     protected @Nullable EntityHitResult getEntityCollision(Vec3d currentPosition, Vec3d nextPosition) {
         return null;
     }
@@ -141,9 +134,20 @@ public class CompulsionSword extends PersistentProjectileEntity {
             if (getOwner() == null)
                 discard();
 
-            if (getVelocity().y > -4)
-                this.setVelocity(this.getVelocity().add(0,-0.7f, 0));
+            this.setVelocity(this.getVelocity().add(0,-0.7f, 0));
             velocityModified = true;
+
+            if (this.getVelocity().y < -6){
+                try {
+                    ServerPlayNetworking.send((ServerPlayerEntity) this.getOwner(), new StarParticlesGeneralPayload(getX(), getY(), getZ()));
+                } catch (Exception ignored) {
+                }
+                spawnParticle(this.getOwner(), Identifier.of(CyraFinal.MOD_ID, "star_burst"), getX(), getY(), getZ());
+                getWorld().playSound(this, this.getBlockPos(), ModSounds.COMPULSION_SWORD_BLAST, SoundCategory.PLAYERS, 10, 1);
+                launchPlayers();
+
+                this.discard();
+            }
 
             if (age > 50) discard();
         }

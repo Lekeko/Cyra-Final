@@ -8,12 +8,15 @@ import com.keko.entities.projectiles.compulsionAxe.CompulsionAxeRendering;
 import com.keko.entities.projectiles.compulsionSword.CompulsionSword;
 import com.keko.helpers.Directional;
 import com.keko.items.ModItems;
+import net.minecraft.block.AirBlock;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -49,6 +52,8 @@ public class CompulsionEvents {
 
         CompulsionSword sword = new CompulsionSword(ModProjectileEntities.COMPULSION_SWORD_ENTITY_TYPE, world);
             Vec3d pos = Directional.rayCast(world, player, player.getRotationVec(1.0f), 40);
+            while (world.getBlockState(BlockPos.ofFloored(pos)).isOf(Blocks.AIR) || world.getBlockState(BlockPos.ofFloored(pos)).isOf(Blocks.WATER))
+                pos = pos.add(0,-1,0);
             pos = pos.add(0, 20, 0);
             sword.setVelocity(0,3,0);
             sword.setOwner(player);
