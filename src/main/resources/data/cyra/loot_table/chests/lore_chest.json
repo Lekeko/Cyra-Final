@@ -1,26 +1,91 @@
 {
-  "type": "minecraft:chest",
   "pools": [
     {
       "rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:written_book",
-          "functions": [
+          "name": "cyra:sea_support_block_wand",
+          "weight": 4,
+          "quality": 1,
+          "functions": [],
+          "conditions": [
             {
-              "function": "minecraft:set_written_book_pages",
-              "pages": [
-                {
-                  "raw": "Prologue  \t\tCould one fathom the very essence of life? Blessed by the everlasting fire that subjugates the reality within?  The blazing essence that gods have, feasting and devouring It, leaving the weak turn into just another story to be told.  Could a mere mortal experience just a bit of what gods truly breathe, live, love, cherish, and hate? \tTo ascend to a god form, you have to get rid of all of humanity in one's essence, letting them feel their  flesh and bones erode, showing them the everlasting light made from the truest flames of all, showing them how a  curse that disguises itself as a blessing can change the very perspective, how It can be the wish of promised death."
-                }
-              ],
-              "mode": "append"
+              "condition": "minecraft:random_chance",
+              "chance": 0.6
             }
           ]
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cyra:sea_crystal_striders",
+          "weight": 4,
+          "quality": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 0,
+                "max": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 5,
+          "quality": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                [
+                  "MurielKaya  \tEntry 4. \t It's fascinating, simply fascinating. The stones here are just like the corals above the barrier, colorful and beautiful with nice calming scenery to look at.  It seems that this place doesn't lack vegetation and fauna at all. These places are filled to the brim with colorful fish ",
+                  "and those crappy Jelly Fishes that sting like hell!  They are cyan, purple, green, and a nice folly red! They seem particularly interested in these crystals that emit light,",
+                  " and, after further analysis, it seems that these Crystals  are made from Rose Quartz and Kyanite, and the light that they emit can last up to 200 years! ",
+                  " \tThe plants here seem very strange and very different from the surface, bushes that emit light and dance, with trees that have traces of bioluminescence in them  and hanging vines. I wish that there was no need for",
+                  " Oxygen and those stupid charms to let us live under this immense pressure so that I could explore more of this land.  Everywhere you go, there is light on every wall,",
+                  "  ceiling, and floor making exploration not that largely uneasy. \tOn the top layer of this place, around 300 to 200 meters appears to be some kind of geodes that have blue-purple crystals in them that extend from a strange gooey surface. ",
+                  "These geodes are somewhat poor in materials, mostly getting like 4-5 crystals each, some don't even have crystals and look warned out, but there are so many of them it's  impossible to not stumble across one. With these crystals, ",
+                  "I was able to come up with some gizmo concepts to easily traverse this land, a Strider so you can launch yourself  in the direction you are facing, and a special tool that",
+                  " creates a magic platform, which disappears after a few seconds. I've made and presented them to my colleagues to see how they would use them and to no one's surprise, all of them went full frontal in every stone possible, ",
+                  "It was hilarious. \tIn the middle layer, around 200 - 100 meters, there is this rare yellow ore that glows and it's really hard to mine, especially when you have to swim to be stable. ",
+                  "This one seems to do nothing but emit a strange aura, for now, they serve as paper clippers for my documents. \tFor now, exploration below 100 is ill-advised! We don't",
+                  " have the technology to explore such tremendous pressure, yet.   \tBut the most fascinating of them all is what I call, the Tree Of Life.  This tree is around 70 m Tall from what I recall, It's like a brain! Every root is connected like",
+                  " synapses to this tree, It's like a living giant organism. \tBut as with every organism or world, there is corruption... Recently I've stumbled across this dark and eery place, It's pitch dark, no vision effects work here, ",
+                  "not even magic. There seem to be some ancient structures in there but I am not risking my life going there, I know it deep inside, there rests something, and it's not alone..."
+                ]
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Test Title",
+              "author": "Keko",
+              "generation": 0
+            }
+          ],
+          "conditions": []
+        }
+      ]
     }
-  ],
-  "functions": []
+  ]
 }
