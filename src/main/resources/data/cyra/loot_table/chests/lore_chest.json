@@ -51,39 +51,239 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:written_book",
-          "weight": 5,
+          "weight": 1,
           "quality": 1,
           "functions": [
             {
               "function": "minecraft:set_written_book_pages",
               "pages": [
-                [
-                  "MurielKaya  \tEntry 4. \t It's fascinating, simply fascinating. The stones here are just like the corals above the barrier, colorful and beautiful with nice calming scenery to look at.  It seems that this place doesn't lack vegetation and fauna at all. These places are filled to the brim with colorful fish ",
-                  "and those crappy Jelly Fishes that sting like hell!  They are cyan, purple, green, and a nice folly red! They seem particularly interested in these crystals that emit light,",
-                  " and, after further analysis, it seems that these Crystals  are made from Rose Quartz and Kyanite, and the light that they emit can last up to 200 years! ",
-                  " \tThe plants here seem very strange and very different from the surface, bushes that emit light and dance, with trees that have traces of bioluminescence in them  and hanging vines. I wish that there was no need for",
-                  " Oxygen and those stupid charms to let us live under this immense pressure so that I could explore more of this land.  Everywhere you go, there is light on every wall,",
-                  "  ceiling, and floor making exploration not that largely uneasy. \tOn the top layer of this place, around 300 to 200 meters appears to be some kind of geodes that have blue-purple crystals in them that extend from a strange gooey surface. ",
-                  "These geodes are somewhat poor in materials, mostly getting like 4-5 crystals each, some don't even have crystals and look warned out, but there are so many of them it's  impossible to not stumble across one. With these crystals, ",
-                  "I was able to come up with some gizmo concepts to easily traverse this land, a Strider so you can launch yourself  in the direction you are facing, and a special tool that",
-                  " creates a magic platform, which disappears after a few seconds. I've made and presented them to my colleagues to see how they would use them and to no one's surprise, all of them went full frontal in every stone possible, ",
-                  "It was hilarious. \tIn the middle layer, around 200 - 100 meters, there is this rare yellow ore that glows and it's really hard to mine, especially when you have to swim to be stable. ",
-                  "This one seems to do nothing but emit a strange aura, for now, they serve as paper clippers for my documents. \tFor now, exploration below 100 is ill-advised! We don't",
-                  " have the technology to explore such tremendous pressure, yet.   \tBut the most fascinating of them all is what I call, the Tree Of Life.  This tree is around 70 m Tall from what I recall, It's like a brain! Every root is connected like",
-                  " synapses to this tree, It's like a living giant organism. \tBut as with every organism or world, there is corruption... Recently I've stumbled across this dark and eery place, It's pitch dark, no vision effects work here, ",
-                  "not even magic. There seem to be some ancient structures in there but I am not risking my life going there, I know it deep inside, there rests something, and it's not alone..."
-                ]
+                {
+                  "raw": "MurielKaya  Entry 1. The deep sea, no one knew what was behind that rock, that stupid rock, everyone tried their best, wasted their lives, to discover more and more curses to bring upon this world..."
+                },
+                {
+                  "raw": "Now they are all dead, everyone died in that sea, the sea that took everyone from me, the sea that made me lose it all, and for what? A bit more power to butcher the undead? We should have confronted them just with what we had from the surface...  No one listened..."
+                }
               ],
               "mode": "replace_all"
             },
             {
               "function": "minecraft:set_book_cover",
-              "title": "Test Title",
-              "author": "Keko",
+              "title": "Entry 1",
+              "author": "Logan",
               "generation": 0
             }
           ],
-          "conditions": []
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 1,
+          "quality": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "raw": "MurielKaya  Entry 1. The deep sea, no one knew what was behind that rock, that stupid rock, everyone tried their best, wasted their lives, to discover more and more curses to bring upon this world..."
+                },
+                {
+                  "raw": "Now they are all dead, everyone died in that sea, the sea that took everyone from me, the sea that made me lose it all, and for what? A bit more power to butcher the undead? We should have confronted them just with what we had from the surface...  No one listened..."
+                }
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Entry 5",
+              "author": "Logan",
+              "generation": 0
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 1,
+          "quality": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "raw": " MurielKaya  Entry 3. The Muriel Kaya is the deepest sea ever to exist or be discovered. It's a devil with angel wings, a wolf in sheep's clothing.  Even though you have to travel 400.000 m straight down, it's filled with the finest materials, found only in the trenches. "
+                },
+                {
+                  "raw": "It could help us win this war once and for all. No more zombies and skeleton invasions every single night, we shall slay their heads once and for all!"
+                },
+                {
+                  "raw": "But this place... Something is there... When we arrived with The Device, I felt someone screaming and weeping, a sorrow  I had never felt before."
+                },
+                {
+                  "raw" : "Some of my crew said that they felt that same thing when we arrived, but others didn't, they were probably stunned by the scenery down here."
+                },
+                {
+                  "raw": "I'd rather die surrounded by the emptiness down there than serve a monster."
+                }
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Entry 3",
+              "author": "Arthur",
+              "generation": 0
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 1,
+          "quality": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "raw": "MurielKaya  Entry 4. \t It's fascinating, simply fascinating. The stones here are just like the corals above the barrier, colorful and beautiful with nice calming scenery to look at.  It seems that this place doesn't lack vegetation and fauna at all. "
+                },
+                {
+                  "raw": "These places are filled to the brim with colorful fish and those crappy Jelly Fishes that sting like hell!  They are cyan, purple, green, and a nice folly red! They seem particularly interested in these crystals that emit light, and, after further analysis, "
+                },
+                {
+                  "raw": "it seems that these Crystals  are made from Rose Quartz and Kyanite, and the light that they emit can last up to 200 years! "
+                },
+                {
+                  "raw": "\tThe plants here seem very strange and very different from the surface, bushes that emit light and dance, with trees that have traces of bioluminescence in them  and hanging vines."
+                },
+                {
+                  "raw": " I wish that there was no need for Oxygen and those stupid charms to let us live under this immense pressure so that I could explore more of this land. "
+                },
+                {
+                  "raw": "Everywhere you go, there is light on every wall, ceiling, and floor making exploration not that largely uneasy.\nOn the top layer around 300 to 200 meters appears to be some kind of geodes that have blue-purple crystals in them that extend from a strange gooey surface."
+                },
+                {
+                  "raw": " These geodes are somewhat poor in materials, mostly getting like 4-5 crystals each, some don't even have crystals and look warned out, but there are so many of them it's  impossible to not stumble across one. "
+                },
+                {
+                  "raw": "With these crystals, I was able to come up with some gizmo concepts to easily traverse this land, a Strider so you can launch yourself  in the direction you are facing, and a special tool that creates a magic platform, which disappears after a few seconds."
+                },
+                {
+                  "raw": " I've made and presented them to my colleagues to see how they would use them and to no one's surprise, all of them went full frontal in every stone possible, It was hilarious."
+                },
+                {
+                  "raw": "\tIn the middle layer, around 200 - 100 meters, there is this rare yellow ore that glows and it's really hard to mine, especially when you have to swim to be stable.  This one seems to do nothing but emit a strange aura,"
+                },
+                {
+                  "raw": " for now, they serve as paper clippers for my documents. \tFor now, exploration below 100 is ill-advised! We don't have the technology to explore such tremendous pressure, yet.  "
+                },
+                {
+                  "raw": " \tBut the most fascinating of them all is what I call, the Tree Of Life.  This tree is around 70 m Tall from what I recall, It's like a brain! Every root is connected like  synapses to this tree, It's like a living giant organism."
+                },
+                {
+                  "raw": " \tBut as with every organism or world, there is corruption... Recently I've stumbled across this dark and eery place, It's pitch dark, no vision effects work here,  not even magic. There seem to be some ancient structures in there but I am not risking my life going there,"
+                },
+                {
+                  "raw" : "I know it deep inside, there rests something, and it's not alone..."
+                }
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Entry 4",
+              "author": "Layla",
+              "generation": 0
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 1,
+          "quality": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "raw": "MurielKaya  Entry 5. That girl is completely insane. She made me go into that dark and weird place. Before going there,  Layla gave me a strange lamp to use there, it's made of Sea Crystals,"
+                },
+                {
+                  "raw": "but it's some sort of soul trapped within  that follows me wherever I go but doesn't want to leave the lamp if it's not in the depths. "
+                },
+                {
+                  "raw": "She said that there should be some sort of ancient ore that can power up pyrite... That girl has some serious problems, she's been  here for 8 months straight, researching and creating gadgets for us,"
+                },
+                {
+                  "raw": "like don't get me wrong, she's awesome!  But I'm more worried about her mental state, to be honest. No sunlight for such a long time can damage you  seriously, who knows for how long she's gonna last like this..."
+                },
+                {
+                  "raw": "Ok, she was right, there is some sort of ancient golden ore with interesting markings on it that's only  found in the deep of the 'void'. I managed to get some but I had to retreat immediately,"
+                },
+                {
+                  "raw": " my lamp started to freak  out and at the same time, a really strange creature noise almost bursts out my eardrums."
+                }
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Entry 1",
+              "author": "Logan",
+              "generation": 0
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.12
+            }
+          ]
         }
       ]
     }
