@@ -1,7 +1,9 @@
 package com.keko.world;
 
 import com.keko.entities.ModEntities;
+import com.keko.entities.normal.groxion.GroxionEntity;
 import com.keko.entities.normal.jellyfish.JellyFishEntity;
+import com.keko.entities.normal.stridely.StridelyEntity;
 import com.keko.world.biome.ModBiomes;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -90,9 +92,34 @@ public class ModBiomeModification {
             else return false;
         });
 
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(ModBiomes.DAZED_WATERS, ModBiomes.MURIEL_WATERS), SpawnGroup.CREATURE,
+                ModEntities.STRIDELY, 7, 1, 2);
+
+        SpawnRestriction.register(ModEntities.STRIDELY, SpawnLocationTypes.UNRESTRICTED, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (type, world, spawnReason, pos, random) -> {
+            if (world.getBlockState(pos).isOf(Blocks.WATER) && areThereJellyfishesQuestionMark(world, pos))
+                return true;
+            else return false;
+        });
+
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(ModBiomes.DAZED_WATERS, ModBiomes.MURIEL_WATERS), SpawnGroup.CREATURE,
+                ModEntities.GROXION, 7, 1, 2);
+
+        SpawnRestriction.register(ModEntities.GROXION, SpawnLocationTypes.UNRESTRICTED, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (type, world, spawnReason, pos, random) -> {
+            if (world.getBlockState(pos).isOf(Blocks.WATER) && areThereJellyfishesQuestionMark(world, pos))
+                return true;
+            else return false;
+        });
+
     }
 
     private static boolean areThereJellyfishesQuestionMark(ServerWorldAccess world, BlockPos pos) {
         return world.getEntitiesByClass(JellyFishEntity.class, new Box(pos.getX() + 50, pos.getY() + 50, pos.getZ() + 50, pos.getX() - 50, pos.getY() - 50, pos.getZ() - 50), Entity::isAlive).isEmpty();
+    }
+
+    private static boolean areTherefishes1QuestionMark(ServerWorldAccess world, BlockPos pos) {
+        return world.getEntitiesByClass(GroxionEntity.class, new Box(pos.getX() + 50, pos.getY() + 50, pos.getZ() + 50, pos.getX() - 50, pos.getY() - 50, pos.getZ() - 50), Entity::isAlive).isEmpty();
+    }
+    private static boolean areTherefishes2QuestionMark(ServerWorldAccess world, BlockPos pos) {
+        return world.getEntitiesByClass(StridelyEntity.class, new Box(pos.getX() + 50, pos.getY() + 50, pos.getZ() + 50, pos.getX() - 50, pos.getY() - 50, pos.getZ() - 50), Entity::isAlive).isEmpty();
     }
 }

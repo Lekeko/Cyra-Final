@@ -147,6 +147,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.PYRITE_CHUNK, Models.GENERATED);
         itemModelGenerator.register(ModItems.OLD_LORDS_FLAME, Models.GENERATED);
         itemModelGenerator.register(ModItems.SHACKLE_OF_IMPRISONMENT, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.OLD_LORDS_SPEAR, Models.HANDHELD);
         itemModelGenerator.register(ModItems.RESTORED_PYRITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.ROTTEN_NECKLACE, Models.GENERATED);
         itemModelGenerator.register(ModItems.GILDED_SPINE, Models.GENERATED);

@@ -364,17 +364,17 @@
 				},
 				"leg1": {
 					"rotation": {
-						"vector": [17.5, 0, 0],
+						"vector": ["linear", "linear", "linear"],
 						"easing": "linear"
 					}
 				},
 				"leg2": {
 					"rotation": {
-						"vector": [-12.5, 0, 0],
+						"vector": ["linear", "linear", "linear"],
 						"easing": "linear"
 					},
 					"position": {
-						"vector": [0, 2, -4],
+						"vector": ["linear", "linear", "linear"],
 						"easing": "linear"
 					}
 				},
@@ -494,7 +494,7 @@
 			"bones": {
 				"body": {
 					"rotation": {
-						"vector": [-5.76863, 29.8742, -2.88066],
+						"vector": ["linear", "linear", "linear"],
 						"easing": "linear"
 					},
 					"position": {
@@ -550,7 +550,7 @@
 				},
 				"arm1": {
 					"rotation": {
-						"vector": [-84.07764, -32.36121, -13.17805],
+						"vector": ["linear", "linear", "linear"],
 						"easing": "linear"
 					}
 				},
@@ -644,7 +644,7 @@
 						}
 					},
 					"position": {
-						"vector": [21, 0, -39],
+						"vector": ["linear", "linear", "linear"],
 						"easing": "linear"
 					}
 				},
@@ -857,6 +857,121 @@
 						},
 						"10.0": {
 							"vector": [0, 0, 0],
+							"easing": "linear"
+						}
+					}
+				}
+			}
+		},
+		"old_lord.spear_attack": {
+			"animation_length": 0.7917,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [-12.45243, 47.2195, -3.79415],
+							"easing": "linear"
+						},
+						"0.375": {
+							"vector": [-12.45243, 47.2195, -3.79415],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [-9.66325, -29.25089, 10.1682],
+							"easing": "linear"
+						}
+					}
+				},
+				"bone2": {
+					"rotation": {
+						"0.0": {
+							"vector": [30.4299, -38.71915, -14.27407],
+							"easing": "linear"
+						},
+						"0.375": {
+							"vector": [30.4299, -38.71915, -14.27407],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [23.5703, 8.79748, 9.71763],
+							"easing": "linear"
+						}
+					}
+				},
+				"arm1": {
+					"rotation": {
+						"0.0": {
+							"vector": [-62.5, 0, 0],
+							"easing": "linear"
+						},
+						"0.375": {
+							"vector": [-62.5, 0, 0],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [26.17935, -55.03389, -48.10617],
+							"easing": "linear"
+						}
+					}
+				},
+				"arm2": {
+					"rotation": {
+						"0.0": {
+							"vector": [-132.5, 0, 0],
+							"easing": "linear"
+						},
+						"0.375": {
+							"vector": [-132.5, 0, 0],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [-62.90961, 22.40972, -2.06754],
+							"easing": "linear"
+						}
+					}
+				},
+				"leg1": {
+					"rotation": {
+						"0.0": {
+							"vector": [35, 0, 0],
+							"easing": "linear"
+						},
+						"0.375": {
+							"vector": [35, 0, 0],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [17.5, 0, 0],
+							"easing": "linear"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 4, -9],
+							"easing": "linear"
+						},
+						"0.375": {
+							"vector": [0, 4, -9],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [0, 4, -2],
+							"easing": "linear"
+						}
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"0.0": {
+							"vector": [47.5, 0, 0],
+							"easing": "linear"
+						},
+						"0.375": {
+							"vector": [47.5, 0, 0],
+							"easing": "linear"
+						},
+						"0.5": {
+							"vector": [23.66235, 8.31087, -18.25612],
 							"easing": "linear"
 						}
 					}

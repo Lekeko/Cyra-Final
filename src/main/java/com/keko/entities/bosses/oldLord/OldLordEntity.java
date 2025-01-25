@@ -6,6 +6,7 @@ import com.keko.entities.bosses.skeletonLeader.SkeletonLeaderEntity;
 import com.keko.entities.projectiles.FOTOL.FistOfTheOldLord;
 import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.entities.projectiles.lordStar.LordStarEntity;
+import com.keko.entities.projectiles.oldLordsSpear.OldLordsSpearEntity;
 import com.keko.entities.projectiles.pyriteCube.PCube;
 import com.keko.packet.ParryOldLordPayload;
 import com.keko.particle.ModParticles;
@@ -54,6 +55,7 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
     protected int comboPhase = 0;
     protected boolean inCombo = false;
     protected boolean fistAttacking = false;
+    protected int spearAttack = 0;
     private final int FIST_NUMBER = 80;
     private int fists = 0;
     private BlockPos heartPos = null;
@@ -107,6 +109,7 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
         controller.triggerableAnim("old_lord.attack_combo_3", RawAnimation.begin().thenPlayAndHold("old_lord.attack_combo_3"));
         controller.triggerableAnim("old_lord.fists", RawAnimation.begin().thenPlay("old_lord.fists"));
         controller.triggerableAnim("old_lord.air_attack", RawAnimation.begin().thenPlay("old_lord.air_attack"));
+        controller.triggerableAnim("old_lord.spear_attack", RawAnimation.begin().thenPlay("old_lord.spear_attack"));
 
         controllers.add(controller);
     }
@@ -133,11 +136,18 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
             }
             attackTimer--;
             if (attackTimer <= 0) {
-                int randomAttack = getWorld().random.nextBetween(1, 100);
-                if (((randomAttack > 0 && randomAttack < 70) || inCombo) && !fistAttacking && !airattacks) {
+                int randomAttack = getWorld().getRandom().nextBetween(0,100);
+                if (((randomAttack > 0 && randomAttack < 50) || inCombo) && !fistAttacking && !airattacks) {
                     inCombo = true;
                     comboAttack();
                     randomAttack = 0;
+                }
+
+                if (((randomAttack > 50 && randomAttack < 70) || inCombo) && !fistAttacking && !airattacks && !inCombo) {
+                    throwSpear(false);
+                    randomAttack = 0;
+                    spearAttack = 20;
+
                 }
 
                 if ((randomAttack >= 70 && randomAttack < 87) && !airattacks && !inCombo) {
@@ -156,6 +166,13 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
             if (airattacks)
                 airAttack();
 
+            if (spearAttack > 0) {
+                spearAttack--;
+                if (spearAttack == 7)
+                    throwSpear(true);
+
+            }
+
             if (attackTimer < 30 && attackTimer > 20)
                 triggerAnim("controller", "old_lord.walk");
 
@@ -166,6 +183,39 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
 
 
         super.tick();
+    }
+
+    private void throwSpear(boolean actual) {
+        int area = 40;
+        Box box = new Box(getX() + area, this.getY() + area, this.getZ() + area, getX() - area, this.getY() - area, this.getZ() - area);
+        PlayerEntity target = null;
+        double distance = 9999;
+        for (PlayerEntity player : getWorld().getEntitiesByClass(PlayerEntity.class, box, PlayerEntity::isAlive)){
+            double testDistance =  Math.sqrt( Math.pow(player.getX() - getX(), 2) + Math.pow(player.getY() - getY(), 2) + Math.pow(player.getZ() - getZ(), 2));
+            if (testDistance < distance){
+                target = player;
+                distance = testDistance;
+            }
+        }
+
+        if (target != null){
+            if (!actual){
+                triggerAnim("controller", "old_lord.spear_attack");
+                System.out.println("JAP");            attackTimer = 40;
+                this.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, target.getPos());
+                this.setPos(target.getX() + getWorld().random.nextBetween(-5,5), target.getY() + 3, target.getZ() + getWorld().random.nextBetween(-5,5));
+
+
+            }else {
+                OldLordsSpearEntity spearEntity = new OldLordsSpearEntity(ModProjectileEntities.OLD_LORDS_SPEAR_ENTITY_ENTITY_TYPE, getWorld());
+                spearEntity.setPos(this.getX(), this.getY(), this.getZ());
+                spearEntity.setVelocity(target.getPos().subtract(this.getPos()).multiply(0.5f).add(0,1,0));
+                spearEntity.setOwner(this);
+                spearEntity.setDamage(20);
+                getWorld().spawnEntity(spearEntity);
+            }
+
+        }
     }
 
     private void checkPlayers() {

@@ -74,7 +74,7 @@ public class ModItems {
 
     //BOSS WEAPONS
     public static final Item ZOMBIE_AXE = registerItem(new ZombieLeaderBattleAxeItem(ModToolMaterial.ENDERITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 6, -2.0F))), "zombie_leader_battle_axe");
-    public static final Item SKELETON_BOW = registerItem(new SkeletonLeaderBattleBowitem(new Item.Settings()), "skeleton_leader_battle_bow");
+    public static final Item SKELETON_BOW = registerItem(new SkeletonLeaderBattleBowitem(new Item.Settings().maxCount(1)), "skeleton_leader_battle_bow");
 
 
     /*enderite*/
@@ -120,11 +120,12 @@ public class ModItems {
 
     //PYRITE
     public static final Item PYRITE_CHUNK = registerItem(new Item(new Item.Settings()), "pyrite_chunk");
-    public static final Item OLD_LORDS_FLAME = registerItem(new OldLordsFlameItem(new Item.Settings()), "old_lords_flame");
-    public static final Item SHACKLE_OF_IMPRISONMENT = registerItem(new ShackleOfImprisonment(new Item.Settings()), "shackle_of_imprisonment");
+    public static final Item OLD_LORDS_FLAME = registerItem(new OldLordsFlameItem(new Item.Settings().maxCount(1)), "old_lords_flame");
+    public static final Item SHACKLE_OF_IMPRISONMENT = registerItem(new ShackleOfImprisonment(new Item.Settings().maxCount(1)), "shackle_of_imprisonment");
     public static final Item RESTORED_PYRITE = registerItem(new Item(new Item.Settings()), "restored_pyrite");
     public static final Item PYRITE_PRIMORDIAL_CUBE = registerItem(new PyritePrimordialCube(new Item.Settings()), "pyrite_primordial_cube1");
-    public static final Item PYRITE_BULWARK = registerItem(new ShieldItem(new Item.Settings()), "PYRITE_BULWARK".toLowerCase());
+    public static final Item PYRITE_BULWARK = registerItem(new ShieldItem(new Item.Settings().maxCount(1)), "PYRITE_BULWARK".toLowerCase());
+    public static final Item OLD_LORDS_SPEAR = registerItem(new OldLordsSpearItem(new Item.Settings().maxCount(1)), "old_lords_spear".toLowerCase());
 
     public static final Item PYRITE_SWORD = registerItem(new SwordItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.PYRITE, 8, -1.4F)))), "pyrite_sword");
     public static final Item PYRITE_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.PYRITE, 3, -1.8F)))), "pyrite_shovel");

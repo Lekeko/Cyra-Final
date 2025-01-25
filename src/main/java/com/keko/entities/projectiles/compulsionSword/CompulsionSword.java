@@ -69,12 +69,12 @@ public class CompulsionSword extends PersistentProjectileEntity {
     }
 
     private void launchPlayers() {
-        int distance = 10;
+        int distance = 30;
         Box box = new Box(getX() + distance, getY() + distance, getZ() + distance, getX() - distance, getY() - distance, getZ() - distance);
         for (Entity entity : getEntityWorld().getEntitiesByClass(Entity.class, box, Entity::isAlive)){
             if (!(entity instanceof CompulsionSword)){
                 double length = this.distanceTo(entity);
-                entity.addVelocity(entity.getPos().subtract(this.getPos()).normalize().multiply((10 - length < 0 ? 0 : 10 - length)));
+                entity.addVelocity(entity.getPos().subtract(this.getPos()).normalize().multiply((distance - length < 0 ? 0 : distance - length)));
                 entity.velocityModified = true;
                 if (entity != this.getOwner())
                     entity.damage(getWorld().getDamageSources().generic(), (float) 40 / (entity instanceof PlayerEntity ? (float) ((PlayerEntity) entity).getArmor() / 3 : 1));
@@ -131,25 +131,32 @@ public class CompulsionSword extends PersistentProjectileEntity {
 
         }
         if (!this.getWorld().isClient){
+            System.out.println(age);
             if (getOwner() == null)
                 discard();
 
-            this.setVelocity(this.getVelocity().add(0,-0.7f, 0));
-            velocityModified = true;
+            if (age < 50){
+                this.setVelocity(this.getVelocity().multiply(0.8f));
+                velocityModified = true;
+            }else {
+                this.setVelocity(this.getVelocity().add(0, -1.1f, 0));
+                velocityModified = true;
+            }
 
-            if (this.getVelocity().y < -6){
+            if (this.getVelocity().y < -9){
                 try {
-                    ServerPlayNetworking.send((ServerPlayerEntity) this.getOwner(), new StarParticlesGeneralPayload(getX(), getY(), getZ()));
+                    for (PlayerEntity players : getWorld().getPlayers()){
+                        ServerPlayNetworking.send((ServerPlayerEntity) players, new StarParticlesGeneralPayload(getX(), getY(), getZ()));
+                    }
                 } catch (Exception ignored) {
                 }
-                spawnParticle(this.getOwner(), Identifier.of(CyraFinal.MOD_ID, "star_burst"), getX(), getY(), getZ());
+               // spawnParticle(this.getOwner(), Identifier.of(CyraFinal.MOD_ID, "star_burst"), getX(), getY(), getZ());
                 getWorld().playSound(this, this.getBlockPos(), ModSounds.COMPULSION_SWORD_BLAST, SoundCategory.PLAYERS, 10, 1);
                 launchPlayers();
 
                 this.discard();
             }
 
-            if (age > 50) discard();
         }
     }
 }

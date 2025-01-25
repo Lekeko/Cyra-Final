@@ -50,7 +50,7 @@ public class PCube extends PersistentProjectileEntity {
     double speed = .6;
     public  Color color;
     private boolean bouncerStart = false;
-    private final Light light = new PointLight().setBrightness(2).setColor(1, 1 ,1).setRadius(10);
+    private final Light light = new PointLight().setBrightness(1).setColor(1, 1 ,1).setRadius(10);
     private int variant;
     public int degree;
 
@@ -233,6 +233,8 @@ public class PCube extends PersistentProjectileEntity {
     }
 
     private void healer() {
+        if (age > 20)
+            discard();
     }
 
     private void spin() {

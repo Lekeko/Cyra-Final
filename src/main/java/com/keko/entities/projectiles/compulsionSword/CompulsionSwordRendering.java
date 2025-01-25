@@ -37,9 +37,10 @@ public class CompulsionSwordRendering extends ProjectileEntityRenderer<Compulsio
         VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumerProvider, this.model.getLayer(this.getTexture(persistentProjectileEntity)), true, false);
         matrixStack.translate(0, -5, 0);
         matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180.0F));
-        float rotation = (MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true) + persistentProjectileEntity.age) * 10;
+        float rotation = (MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true) + persistentProjectileEntity.age) * (persistentProjectileEntity.age);
 
         matrixStack.multiply(RotationAxis.NEGATIVE_Y.rotationDegrees(rotation));
+        matrixStack.translate(0, 0,0.1f);
 
         this.model.render(matrixStack, vertexConsumer, 255,  OverlayTexture.DEFAULT_UV, 16777215);
     }

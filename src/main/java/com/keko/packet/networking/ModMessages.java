@@ -18,6 +18,9 @@ import foundry.veil.Veil;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.light.Light;
 import foundry.veil.api.client.render.light.PointLight;
+import foundry.veil.api.quasar.data.ParticleSettings;
+import foundry.veil.api.quasar.particle.ParticleEmitter;
+import foundry.veil.api.quasar.particle.ParticleSystemManager;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
@@ -35,6 +38,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.joml.Vector3f;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -143,6 +147,8 @@ public class ModMessages {
                             (player.getWorld().random.nextFloat() - .5f ) * 10,
                             (player.getWorld().random.nextFloat() - .5f ) * 10,
                             (player.getWorld().random.nextFloat() - .5f ) * 10);
+                spawnParticle(player, Identifier.of(CyraFinal.MOD_ID, "star_burst"), x,y,z);
+
             });
         });
 
@@ -181,4 +187,21 @@ public class ModMessages {
 
     }
 
+
+    public static void spawnParticle(Entity entity, Identifier id, double x, double y, double z){
+        try {
+            ParticleSystemManager manager = VeilRenderSystem.renderer().getParticleManager();
+            ParticleEmitter emitter = manager.createEmitter(id);
+            emitter.setPosition(x,y,z);
+            emitter.setParticleSettings(new ParticleSettings(5f, 0.0f, 0.05f,
+                    100, 0f,
+                    new Vector3f(
+                            entity.getWorld().random.nextFloat() - .5f * 5f,
+                            entity.getWorld().random.nextFloat() - .5f * 5f,
+                            entity.getWorld().random.nextFloat() - .5f * 5f),
+                    true,false,false,true,false));
+            manager.addParticleSystem(emitter);
+        } catch (Exception ignored) {
+        }
+    }
 }

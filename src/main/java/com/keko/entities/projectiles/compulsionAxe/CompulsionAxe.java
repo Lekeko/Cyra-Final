@@ -1,11 +1,14 @@
 package com.keko.entities.projectiles.compulsionAxe;
 
+import com.keko.packet.StarParticlesGeneralPayload;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
@@ -33,6 +36,7 @@ public class CompulsionAxe  extends PersistentProjectileEntity {
 
         super.tick();
     }
+
 
     private void damageEnemies() {
         int distance = 6;

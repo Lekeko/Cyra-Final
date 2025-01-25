@@ -5,11 +5,16 @@ import com.keko.entities.ModEntities;
 import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.entities.projectiles.compulsionAxe.CompulsionAxe;
 import com.keko.entities.projectiles.compulsionAxe.CompulsionAxeRendering;
+import com.keko.entities.projectiles.compulsionScythe.CompulsionScythe;
 import com.keko.entities.projectiles.compulsionSword.CompulsionSword;
 import com.keko.helpers.Directional;
 import com.keko.items.ModItems;
+import com.keko.sounds.ModSounds;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Blocks;
+import net.minecraft.command.argument.EntityAnchorArgumentType;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -17,6 +22,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -29,11 +35,34 @@ public class CompulsionEvents {
             if (stack.isOf(ModItems.PYRITE_AXE))
                 swirlAround(player, world);
             if (stack.isOf(ModItems.PYRITE_HOE))
-                grabEnemies(player, world);
+                dashToEnemy(player, world);
         }
     }
 
-    private static void grabEnemies(PlayerEntity player, World world) {
+    private static void dashToEnemy(PlayerEntity player, World world) {
+        Vec3d pos = new Vec3d(player.getX(), player.getY() + 1.73, + player.getZ());
+        Entity target = null;
+        for (int i = 0; i < 20 && target == null; i++){
+            pos = pos.add(player.getRotationVec(1.0f).x, player.getRotationVec(1.0f).y, player.getRotationVec(1.0f).z);
+            int area = 4;
+            for (Entity entity : world.getEntitiesByClass(Entity.class, new Box((int) pos.x + area, (int) pos.y + area, (int) pos.z + area,(int) pos.x - area, (int) pos.y - area, (int) pos.z - area), Entity::isAlive)){
+                if (entity != player &&!( entity instanceof ItemEntity))
+                    target = entity;
+            }
+        }
+
+        if (target!= null)
+        {
+            world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), ModSounds.PARRY, SoundCategory.NEUTRAL, 1.5F, 1.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+
+            target.damage(world.getDamageSources().playerAttack(player), 15 -( target instanceof PlayerEntity ? ((PlayerEntity)target).getArmor()/4f : 0));
+
+            target.setVelocity(target.getPos().subtract(player.getPos()).normalize().multiply(player.distanceTo(target)/4f).add(0,1.2f,0));
+            target.velocityModified = true;
+            player.setVelocity(target.getPos().subtract(player.getPos()).normalize().multiply(player.distanceTo(target)/4f).add(0,1,0));
+            player.velocityModified = true;
+        }
+
 
     }
 

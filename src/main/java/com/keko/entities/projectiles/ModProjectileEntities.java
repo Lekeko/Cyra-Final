@@ -3,11 +3,13 @@ package com.keko.entities.projectiles;
 import com.keko.CyraFinal;
 import com.keko.entities.projectiles.FOTOL.FistOfTheOldLord;
 import com.keko.entities.projectiles.compulsionAxe.CompulsionAxe;
+import com.keko.entities.projectiles.compulsionScythe.CompulsionScythe;
 import com.keko.entities.projectiles.compulsionSword.CompulsionSword;
 import com.keko.entities.projectiles.electroCharge.Electro;
 import com.keko.entities.projectiles.electroCharge.ElectroCharge;
 import com.keko.entities.projectiles.electroCharge.ElectroDamager;
 import com.keko.entities.projectiles.lordStar.LordStarEntity;
+import com.keko.entities.projectiles.oldLordsSpear.OldLordsSpearEntity;
 import com.keko.entities.projectiles.pyriteCube.PCube;
 import com.keko.entities.projectiles.seaBolt.SeaBolt;
 import net.minecraft.entity.EntityType;
@@ -32,10 +34,20 @@ public class ModProjectileEntities {
             Identifier.of(CyraFinal.MOD_ID, "compulsion_sword"),
             EntityType.Builder.<CompulsionSword>create(CompulsionSword::new, SpawnGroup.MISC).dimensions(0.15f, 0.15f).build());
 
+    public static final EntityType<OldLordsSpearEntity> OLD_LORDS_SPEAR_ENTITY_ENTITY_TYPE = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier.of(CyraFinal.MOD_ID, "old_lords_spear"),
+            EntityType.Builder.<OldLordsSpearEntity>create(OldLordsSpearEntity::new, SpawnGroup.MISC).dimensions(0.51f, 0.51f).build());
+
     public static final EntityType<CompulsionAxe> COMPULSION_AXE_ENTITY_TYPE = Registry.register(
             Registries.ENTITY_TYPE,
             Identifier.of(CyraFinal.MOD_ID, "compulsion_axe"),
             EntityType.Builder.<CompulsionAxe>create(CompulsionAxe::new, SpawnGroup.MISC).dimensions(6f, 0.15f).build());
+
+    public static final EntityType<CompulsionScythe> COMPULSION_SCYTHE_ENTITY_TYPE = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier.of(CyraFinal.MOD_ID, "compulsion_scythe"),
+            EntityType.Builder.<CompulsionScythe>create(CompulsionScythe::new, SpawnGroup.MISC).dimensions(0.15f, 0.15f).build());
 
     public static final EntityType<LordStarEntity> LORD_STAR = Registry.register(
             Registries.ENTITY_TYPE,

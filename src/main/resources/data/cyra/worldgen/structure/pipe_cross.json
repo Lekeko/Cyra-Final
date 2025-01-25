@@ -9,7 +9,7 @@
 
   "biomes": "#cyra:has_structure/sea_treasure_monument",
 
-  "step": "surface_structures",
+  "step": "top_layer_modification",
 
   "start_height": {
     "type": "minecraft:uniform",
