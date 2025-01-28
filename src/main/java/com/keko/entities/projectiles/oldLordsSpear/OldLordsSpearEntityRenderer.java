@@ -40,6 +40,7 @@ public class OldLordsSpearEntityRenderer extends ProjectileEntityRenderer<OldLor
         matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(g, persistentProjectileEntity.prevPitch, persistentProjectileEntity.getPitch()) + 90.0F));
         matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-90));
         matrixStack.translate(0,-2,0);
+        matrixStack.scale(2,2,2);
         RenderSystem.disableCull();
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutout(getTexture(persistentProjectileEntity)));
         this.model.render(matrixStack, vertexConsumer, 255,  OverlayTexture.DEFAULT_UV, 16777215);

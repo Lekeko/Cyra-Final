@@ -189,7 +189,7 @@ public class PCube extends PersistentProjectileEntity {
 
 
 
-            if (timeAlive > (30 + (variant == 4 ? 100 : 0) + (variant == 5 ? 1000 : 0)))
+            if (timeAlive > (30 + (variant == 4 ? 100 : 0) + (variant == 5 ? 1000 : 0)) || !getOwner().isAlive())
                 this.discard();
 
 

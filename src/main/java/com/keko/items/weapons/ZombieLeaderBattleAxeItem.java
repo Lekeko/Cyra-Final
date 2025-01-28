@@ -30,16 +30,17 @@ public class ZombieLeaderBattleAxeItem extends AxeItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
-        if (!world.isClient)
+        if (!world.isClient && !user.getItemCooldownManager().isCoolingDown(this))
             if (stack.get(ModDataComponentTypes.AXE_ATTACK)) {
                 user.setVelocity(user.getRotationVec(1.0f).normalize().multiply(1.3f).add(0, -1, 0));
                 user.velocityModified = true;
-                System.out.println("SLAM");
+                user.fallDistance = 0;
+                if (!user.isCreative())
+                    user.getItemCooldownManager().set(this, 5 * 20);
             } else {
                 stack.set(ModDataComponentTypes.AXE_ATTACK, true);
                 user.setVelocity(user.getRotationVec(1.0f).normalize().multiply(0.3f).add(0, 2, 0));
                 user.velocityModified = true;
-                System.out.println("JUMP");
                 user.fallDistance = - 10;
             }
 
@@ -55,6 +56,10 @@ public class ZombieLeaderBattleAxeItem extends AxeItem {
         if (!world.isClient && entity.isOnGround() && stack.get(ModDataComponentTypes.AXE_ATTACK) == true && entity.getVelocity().getY() < 0) {
             damageArround(world, entity);
             stack.set(ModDataComponentTypes.AXE_ATTACK, false);
+            if (entity instanceof PlayerEntity)
+                if (!((PlayerEntity)entity).isCreative())
+                    ((PlayerEntity)entity).getItemCooldownManager().set(this, 5 * 20);
+
         }
 
         super.inventoryTick(stack, world, entity, slot, selected);

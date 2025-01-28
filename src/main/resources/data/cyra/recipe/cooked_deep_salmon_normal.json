@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 10.0,
+  "group": "campfire_deep_salmon",
+  "ingredient": {
+    "item": "cyra:deep_salmon"
+  },
+  "result": {
+    "id": "cyra:cooked_deep_salmon"
+  }
+}

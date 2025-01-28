@@ -10,6 +10,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -42,8 +44,24 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
     int attack = 1;
     private BlockPos TeleporPos;
     private  PlayerEntity target;
+    private final ServerBossBar bossBar;
+
     public SkeletonLeaderEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
+        this.bossBar = (ServerBossBar) (new ServerBossBar(this.getDisplayName(), BossBar.Color.WHITE, BossBar.Style.PROGRESS));
+
+    }
+
+    @Override
+    public void onStartedTrackingBy(ServerPlayerEntity player) {
+        super.onStartedTrackingBy(player);
+        this.bossBar.addPlayer(player);
+    }
+
+    @Override
+    public void onStoppedTrackingBy(ServerPlayerEntity player) {
+        super.onStoppedTrackingBy(player);
+        this.bossBar.removePlayer(player);
     }
 
     @Override
@@ -61,7 +79,7 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
 
     public static DefaultAttributeContainer.Builder setAtributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 300)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 700)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20f);
 
     }
@@ -79,6 +97,8 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
 
     @Override
     public void tick() {
+        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
+
         super.tick();
         attackCooldown--;
         if (!getWorld().isClient && attackCooldown <= 0){

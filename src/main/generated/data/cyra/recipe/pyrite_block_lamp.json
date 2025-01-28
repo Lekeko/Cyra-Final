@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "cyra:pyrite_chunk"
+    },
+    "2": {
+      "item": "cyra:deep_lantern"
+    }
+  },
+  "pattern": [
+    "222",
+    "212",
+    "222"
+  ],
+  "result": {
+    "count": 8,
+    "id": "cyra:pyrite_block_lamp"
+  }
+}

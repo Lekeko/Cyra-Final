@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "minecraft:stick"
+    },
+    "2": {
+      "item": "cyra:dazed_bioluminescence_planks"
+    }
+  },
+  "pattern": [
+    "121",
+    "121"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:dazed_bioluminescence_fence_gate"
+  }
+}

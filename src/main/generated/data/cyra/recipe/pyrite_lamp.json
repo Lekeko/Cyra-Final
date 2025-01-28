@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "minecraft:stick"
+    },
+    "2": {
+      "item": "cyra:pyrite_chunk"
+    }
+  },
+  "pattern": [
+    "2",
+    "1"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cyra:pyrite_lamp"
+  }
+}

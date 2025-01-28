@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:pyrite_bricks"
+    }
+  },
+  "pattern": [
+    " 2 ",
+    "222",
+    " 2 "
+  ],
+  "result": {
+    "count": 4,
+    "id": "cyra:chiseled_eye_pyrite_bricks"
+  }
+}

@@ -1,5 +1,6 @@
 package com.keko.events;
 
+import com.keko.ComponentTypes.ModDataComponentTypes;
 import com.keko.effects.ModStatusEffects;
 import com.keko.entities.ModEntities;
 import com.keko.entities.projectiles.ModProjectileEntities;
@@ -42,6 +43,8 @@ public class CompulsionEvents {
     private static void dashToEnemy(PlayerEntity player, World world) {
         Vec3d pos = new Vec3d(player.getX(), player.getY() + 1.73, + player.getZ());
         Entity target = null;
+        ItemStack stack = player.getStackInHand(player.getActiveHand());
+        if (stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) == null) stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, 1);
         for (int i = 0; i < 20 && target == null; i++){
             pos = pos.add(player.getRotationVec(1.0f).x, player.getRotationVec(1.0f).y, player.getRotationVec(1.0f).z);
             int area = 4;
@@ -51,7 +54,7 @@ public class CompulsionEvents {
             }
         }
 
-        if (target!= null)
+        if (target!= null && !player.getItemCooldownManager().isCoolingDown(stack.getItem()))
         {
             world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), ModSounds.PARRY, SoundCategory.NEUTRAL, 1.5F, 1.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
 
@@ -61,33 +64,54 @@ public class CompulsionEvents {
             target.velocityModified = true;
             player.setVelocity(target.getPos().subtract(player.getPos()).normalize().multiply(player.distanceTo(target)/4f).add(0,1,0));
             player.velocityModified = true;
+            stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) + 1);
+            if (stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) == 4){
+                stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, 1);
+                if (!player.isCreative())
+                    player.getItemCooldownManager().set(stack.getItem(), 6 * 20);
+            }
         }
 
 
     }
 
     private static void swirlAround(PlayerEntity player, World world) {
-        world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.NEUTRAL, 1.5F, 1.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+        ItemStack stack = player.getStackInHand(player.getActiveHand());
+        if (stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) == null) stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, 1);
 
-        CompulsionAxe axe = new CompulsionAxe(ModProjectileEntities.COMPULSION_AXE_ENTITY_TYPE, world);
-        axe.setOwner(player);
-        Vec3d pos = player.getPos();
-        axe.setPos(pos.x, pos.y, pos.z);
-        world.spawnEntity(axe);
+        if (!player.getItemCooldownManager().isCoolingDown(stack.getItem())){
+            world.playSound((PlayerEntity) null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.NEUTRAL, 1.5F, 1.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+
+            CompulsionAxe axe = new CompulsionAxe(ModProjectileEntities.COMPULSION_AXE_ENTITY_TYPE, world);
+            axe.setOwner(player);
+            Vec3d pos = player.getPos();
+            axe.setPos(pos.x, pos.y, pos.z);
+            world.spawnEntity(axe);
+            stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) + 1);
+            if (stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) == 3) {
+                stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, 1);
+                if (!player.isCreative())
+                    player.getItemCooldownManager().set(stack.getItem(), 6 * 20);
+            }
+        }
     }
 
     private static void summonSwordBig(PlayerEntity player, World world) {
         world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.NEUTRAL, 1.5F, 1.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
 
-        CompulsionSword sword = new CompulsionSword(ModProjectileEntities.COMPULSION_SWORD_ENTITY_TYPE, world);
+        if (!player.getItemCooldownManager().isCoolingDown(player.getStackInHand(player.getActiveHand()).getItem())) {
+            CompulsionSword sword = new CompulsionSword(ModProjectileEntities.COMPULSION_SWORD_ENTITY_TYPE, world);
             Vec3d pos = Directional.rayCast(world, player, player.getRotationVec(1.0f), 40);
             while (world.getBlockState(BlockPos.ofFloored(pos)).isOf(Blocks.AIR) || world.getBlockState(BlockPos.ofFloored(pos)).isOf(Blocks.WATER))
-                pos = pos.add(0,-1,0);
+                pos = pos.add(0, -1, 0);
             pos = pos.add(0, 20, 0);
-            sword.setVelocity(0,3,0);
+            sword.setVelocity(0, 3, 0);
             sword.setOwner(player);
             sword.setPos(pos.x, pos.y, pos.z);
             world.spawnEntity(sword);
+            if (!player.isCreative())
+                player.getItemCooldownManager().set(player.getStackInHand(player.getActiveHand()).getItem(), 15 * 20);
+        }
 
     }
 }

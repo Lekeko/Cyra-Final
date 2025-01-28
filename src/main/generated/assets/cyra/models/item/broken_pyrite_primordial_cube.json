@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cyra:item/broken_pyrite_primordial_cube"
+  }
+}

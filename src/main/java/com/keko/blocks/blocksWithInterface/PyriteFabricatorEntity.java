@@ -8,12 +8,14 @@ import com.keko.screen.pyriteFabricatorScreen.PyriteFabricatorScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
@@ -55,6 +57,11 @@ public class PyriteFabricatorEntity extends BlockEntity implements ExtendedScree
         list.put(ModItems.SEA_CRYSTAL_PICKAXE, ModItems.PYRITE_PICKAXE);
         list.put(ModItems.SEA_CRYSTAL_SWORD, ModItems.PYRITE_SWORD);
         list.put(ModItems.SEA_CRYSTAL_HOE, ModItems.PYRITE_HOE);
+        list.put(ModItems.DEPTH_CHARM_TIER_2, ModItems.DEPTH_CHARM_TIER_3);
+        list.put(ModItems.SEA_CRYSTAL_OXYGEN_TANK, ModItems.PYRITE_OXYGEN_TANK);
+        list.put(ModItems.BROKEN_PYRITE_PRIMORDIAL_CUBE, ModItems.PYRITE_PRIMORDIAL_CUBE);
+        list.put(ModItems.STRANGE_LOOKING_ROD, ModItems.OLD_LORDS_SPEAR);
+        list.put(Items.SHIELD, ModItems.PYRITE_BULWARK);
 
         list.put(ModItems.SEA_CRYSTAL_HELMET, ModItems.PYRITE_HELMET);
         list.put(ModItems.SEA_CRYSTAL_CHESTPLATE, ModItems.PYRITE_CHESTPLATE);
@@ -137,8 +144,11 @@ public class PyriteFabricatorEntity extends BlockEntity implements ExtendedScree
     private void beginTransformation() {
         progress++;
         if (progress > 100){
+            ItemStack result = list.get(this.getStack(INPUT_SLOT_1).getItem()).getDefaultStack();
+            ItemStack previous = this.getStack(INPUT_SLOT_1);
 
-            this.setStack(INPUT_SLOT_3, list.get(this.getStack(INPUT_SLOT_1).getItem()).getDefaultStack());
+            EnchantmentHelper.set(result, previous.getEnchantments());
+            this.setStack(INPUT_SLOT_3, result);
             this.setStack(INPUT_SLOT_1, ItemStack.EMPTY);
             this.getStack(INPUT_SLOT_2).decrement(1);
         }

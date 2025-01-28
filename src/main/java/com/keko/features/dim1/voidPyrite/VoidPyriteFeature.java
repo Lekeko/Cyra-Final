@@ -39,7 +39,7 @@ public class VoidPyriteFeature extends Feature<VoidPyriteConfig> {
 
         java.util.Random random1 = new java.util.Random();
         radius3 = random1.nextInt(4) + 2;
-        radius4 = random1.nextInt(3) + 1;
+        radius4 = 2;
 
         int choiche = world.getRandom().nextBetween(1,2);
 

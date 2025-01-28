@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:pyrite_bricks"
+    }
+  },
+  "pattern": [
+    "222"
+  ],
+  "result": {
+    "count": 6,
+    "id": "cyra:pyrite_brick_slab"
+  }
+}

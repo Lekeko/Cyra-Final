@@ -23,7 +23,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-public class SeaCrystalCluster extends AmethystBlock implements Waterloggable {
+public class SeaCrystalCluster extends Block implements Waterloggable {
     public static final MapCodec<SeaCrystalCluster> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return instance.group(Codec.FLOAT.fieldOf("height").forGetter((block) -> {
             return block.height;
@@ -86,12 +86,11 @@ public class SeaCrystalCluster extends AmethystBlock implements Waterloggable {
 
 
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if ((Boolean)state.get(WATERLOGGED)) {
+        if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
-        return direction == ((Direction)state.get(FACING)).getOpposite() && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
+        return state; }
 
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -115,6 +114,7 @@ public class SeaCrystalCluster extends AmethystBlock implements Waterloggable {
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{WATERLOGGED, FACING});
     }
+
 
     static {
         WATERLOGGED = Properties.WATERLOGGED;

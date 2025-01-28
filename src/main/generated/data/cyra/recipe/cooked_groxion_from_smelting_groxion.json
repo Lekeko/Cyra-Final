@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "group": "food_to_groxion",
+  "ingredient": {
+    "item": "cyra:groxion"
+  },
+  "result": {
+    "id": "cyra:cooked_groxion"
+  }
+}

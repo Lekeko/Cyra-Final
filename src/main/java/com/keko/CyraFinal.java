@@ -2,6 +2,7 @@ package com.keko;
 
 import com.keko.ComponentTypes.ModDataComponentTypes;
 import com.keko.blocks.ModBlockEntity;
+import com.keko.blocks.ModBlockTags;
 import com.keko.blocks.ModBlocks;
 import com.keko.effects.ModStatusEffects;
 import com.keko.entities.ModEntities;
@@ -29,6 +30,7 @@ import com.keko.parrySystem.ParryingHandler;
 import com.keko.particle.ModParticles;
 import com.keko.screen.ModScreenHandlers;
 import com.keko.sounds.ModSounds;
+import com.keko.util.ModLootTableModif;
 import com.keko.world.ModDimensions;
 import com.keko.world.biome.ModBiomes;
 import com.keko.world.gen.ModWorldGen;
@@ -58,7 +60,6 @@ public class CyraFinal implements ModInitializer {
 	int ticker = 0;
 	int spawnTicker = 0;
 	int ambianceTick = 0;
-	int musicTicks = 200;
 
 
 	@Override
@@ -81,9 +82,12 @@ public class CyraFinal implements ModInitializer {
 		ModParticles.register();
 		ModFeature.registerFeatures();
 		ModSounds.registerSounds();
+		ModBlockTags.register();
 
 		ModMessages.registerC2SPacket();
+
 		ModDataComponentTypes.registerDataComponents();
+		ModLootTableModif.modifu();
 
 		PlayerBlockBreakEvents.AFTER.register(
 				(world, player, pos, state, entity) -> {

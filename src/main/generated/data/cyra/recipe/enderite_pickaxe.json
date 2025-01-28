@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "minecraft:stick"
+    },
+    "2": {
+      "item": "cyra:enderite_ingot"
+    }
+  },
+  "pattern": [
+    "222",
+    " 1 ",
+    " 1 "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:enderite_pickaxe"
+  }
+}

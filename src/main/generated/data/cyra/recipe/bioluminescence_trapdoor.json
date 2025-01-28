@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:bioluminescence_planks"
+    }
+  },
+  "pattern": [
+    "222",
+    "222"
+  ],
+  "result": {
+    "count": 2,
+    "id": "cyra:bioluminescence_trapdoor"
+  }
+}

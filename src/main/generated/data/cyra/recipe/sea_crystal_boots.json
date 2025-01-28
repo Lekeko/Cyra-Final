@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:sea_crystal"
+    }
+  },
+  "pattern": [
+    "   ",
+    "2 2",
+    "2 2"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:sea_crystal_boots"
+  }
+}

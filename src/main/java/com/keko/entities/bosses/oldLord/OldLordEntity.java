@@ -24,6 +24,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.mob.HostileEntity;
@@ -61,12 +63,26 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
     private BlockPos heartPos = null;
     private final int STARS = 200;
     private int currentStars= 0;
+    private final ServerBossBar bossBar;
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private boolean airattacks = false;
 
     public OldLordEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
+        this.bossBar = (ServerBossBar) (new ServerBossBar(this.getDisplayName(), BossBar.Color.YELLOW, BossBar.Style.PROGRESS));
+    }
+
+    @Override
+    public void onStartedTrackingBy(ServerPlayerEntity player) {
+        super.onStartedTrackingBy(player);
+        this.bossBar.addPlayer(player);
+    }
+
+    @Override
+    public void onStoppedTrackingBy(ServerPlayerEntity player) {
+        super.onStoppedTrackingBy(player);
+        this.bossBar.removePlayer(player);
     }
 
     @Override
@@ -83,7 +99,7 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
 
     public static DefaultAttributeContainer.Builder setAtributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 1300)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 1500)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20f)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 13)
                 .add(EntityAttributes.GENERIC_ARMOR, 8)
@@ -120,6 +136,8 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
 
     @Override
     public void tick() {
+        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
+
         if (!getWorld().isClient){
             if (age % 20 == 0){
                 checkPlayers();

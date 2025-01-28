@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "cyra:ancient_void_sea_stone_pyrite_ore",
+    "cyra:pyrite_ore",
+    "cyra:void_sea_stone_pyrite_ore"
+  ]
+}

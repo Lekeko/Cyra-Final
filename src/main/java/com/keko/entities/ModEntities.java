@@ -70,6 +70,6 @@ public class ModEntities {
             EntityType.Builder.create(StridelyEntity::new, SpawnGroup.WATER_AMBIENT).dimensions(0.4f, 0.4f).build());
 
 
-
+    public static void registerEntities(){}
 
 }

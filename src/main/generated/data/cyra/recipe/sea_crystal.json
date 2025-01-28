@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:sea_crystal_fragment"
+    }
+  },
+  "pattern": [
+    " 2 ",
+    "222",
+    " 2 "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:sea_crystal"
+  }
+}

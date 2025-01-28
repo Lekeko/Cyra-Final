@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "smoker_sea_rodent",
+  "ingredient": {
+    "item": "cyra:sea_rodent"
+  },
+  "result": {
+    "id": "cyra:cooked_sea_rodent"
+  }
+}

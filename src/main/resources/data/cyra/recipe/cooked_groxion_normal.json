@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 1.0,
+  "group": "campfire_groxion",
+  "ingredient": {
+    "item": "cyra:groxion"
+  },
+  "result": {
+    "id": "cyra:cooked_groxion"
+  }
+}

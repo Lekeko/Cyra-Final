@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "smoker_stridely",
+  "ingredient": {
+    "item": "cyra:stridely"
+  },
+  "result": {
+    "id": "cyra:fried_stridely"
+  }
+}

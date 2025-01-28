@@ -22,7 +22,7 @@ public class VoidSlugEntity extends HostileEntity implements GeoEntity {
 
     public static DefaultAttributeContainer.Builder setAtributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 20)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 40)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.5f)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 1.2f)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.50f)

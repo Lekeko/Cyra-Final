@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_groxion": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cyra:groxion"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:cooked_groxion_from_smelting_groxion"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_groxion"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:cooked_groxion_from_smelting_groxion"
+    ]
+  }
+}

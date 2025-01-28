@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 1.0,
+  "group": "campfire_sea_rodent",
+  "ingredient": {
+    "item": "cyra:sea_rodent"
+  },
+  "result": {
+    "id": "cyra:cooked_sea_rodent"
+  }
+}

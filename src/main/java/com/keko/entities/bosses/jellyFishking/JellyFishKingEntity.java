@@ -13,11 +13,14 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Box;
@@ -51,13 +54,29 @@ public class JellyFishKingEntity extends WaterCreatureEntity implements GeoEntit
     Color color = new Color(68, 205, 255, 255);
     Light electrocutionLight = new PointLight().setBrightness(1).setRadius(6).setColor(color.getRed()/255f, color.getGreen()/255f, color.getBlue()/255f);
     private int lightDuration = 0;
+    private final ServerBossBar bossBar;
+
 
     public JellyFishKingEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
         this.random.setSeed((long)this.getId());
         this.thrustTimerSpeed = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
+        this.bossBar = (ServerBossBar) (new ServerBossBar(this.getDisplayName(), BossBar.Color.PURPLE, BossBar.Style.PROGRESS));
+
 
     }
+    @Override
+    public void onStartedTrackingBy(ServerPlayerEntity player) {
+        super.onStartedTrackingBy(player);
+        this.bossBar.addPlayer(player);
+    }
+
+    @Override
+    public void onStoppedTrackingBy(ServerPlayerEntity player) {
+        super.onStoppedTrackingBy(player);
+        this.bossBar.removePlayer(player);
+    }
+
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
     public static DefaultAttributeContainer.Builder setAtributes() {
@@ -89,6 +108,8 @@ public class JellyFishKingEntity extends WaterCreatureEntity implements GeoEntit
 
     @Override
     public void tick() {
+        this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
+
         this.setAir(300);
         if (!getWorld().isClient){
             attackTimer++;

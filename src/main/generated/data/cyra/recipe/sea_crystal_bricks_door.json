@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:sea_crystal_bricks"
+    }
+  },
+  "pattern": [
+    "22",
+    "22",
+    "22"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cyra:sea_crystal_bricks_door"
+  }
+}

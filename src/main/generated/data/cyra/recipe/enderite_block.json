@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:enderite_ingot"
+    }
+  },
+  "pattern": [
+    "222",
+    "222",
+    "222"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:enderite_block"
+  }
+}

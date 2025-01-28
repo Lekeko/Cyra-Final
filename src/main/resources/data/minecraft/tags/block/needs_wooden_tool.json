@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "cyra:bioluminescence_wood",
+    "cyra:bioluminescence_planks",
+    "cyra:bioluminescence_stairs",
+    "cyra:bioluminescence_slab",
+    "cyra:bioluminescence_pressure_plate",
+    "cyra:bioluminescence_button",
+    "cyra:bioluminescence_fence",
+    "cyra:bioluminescence_fence_gate",
+    "cyra:bioluminescence_door",
+    "cyra:bioluminescence_trapdoor",
+    "cyra:dazed_bioluminescence_wood",
+    "cyra:dazed_bioluminescence_planks",
+    "cyra:dazed_bioluminescence_stairs",
+    "cyra:dazed_bioluminescence_slab",
+    "cyra:dazed_bioluminescence_pressure_plate",
+    "cyra:dazed_bioluminescence_button",
+    "cyra:dazed_bioluminescence_fence",
+    "cyra:dazed_bioluminescence_fence_gate",
+    "cyra:dazed_bioluminescence_door",
+    "cyra:dazed_bioluminescence_trapdoor"
+  ]
+}

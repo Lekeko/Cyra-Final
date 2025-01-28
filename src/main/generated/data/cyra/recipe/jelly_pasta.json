@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "minecraft:bowl"
+    },
+    "2": {
+      "item": "cyra:jelly_tentacles"
+    }
+  },
+  "pattern": [
+    "2",
+    "1"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cyra:jelly_pasta"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:bioluminescence_planks"
+    }
+  },
+  "pattern": [
+    "22"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:bioluminescence_pressure_plate"
+  }
+}

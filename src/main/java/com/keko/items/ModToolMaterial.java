@@ -21,13 +21,13 @@ public enum ModToolMaterial implements ToolMaterial {
     PYRITE(7, 4200, 19.5F, 5.9F, 15, ModBlockTags.INCORRECT_FOR_PYRITE_TOOL,() ->
          Ingredient.ofItems(ModItems.RESTORED_PYRITE)
     ),
-    BAUXITE(9, 6300, 21.5F, 7.2F, 15, ModBlockTags.INCORRECT_FOR_BAUXITE_TOOL,() ->
+    BAUXITE(8, 6300, 21.5F, 7.2F, 15, ModBlockTags.INCORRECT_FOR_BAUXITE_TOOL,() ->
          Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     ),
-    VULCANIUM(10, 7200, 24.5F, 8.1F, 15, ModBlockTags.INCORRECT_FOR_VULCANIUM_TOOL,() ->
+    VULCANIUM(9, 7200, 24.5F, 8.1F, 15, ModBlockTags.INCORRECT_FOR_VULCANIUM_TOOL,() ->
          Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     ),
-    CYRANIUM(11, 9000, 30.0F, 9.5F, 15, ModBlockTags.INCORRECT_FOR_CYRANIUM_TOOL,() ->
+    CYRANIUM(10, 9000, 30.0F, 9.5F, 15, ModBlockTags.INCORRECT_FOR_CYRANIUM_TOOL,() ->
          Ingredient.ofItems(ModItems.ENDERITE_INGOT)
     );
 
@@ -54,6 +54,7 @@ public enum ModToolMaterial implements ToolMaterial {
     public int getDurability() {
         return this.itemDurability;
     }
+
 
     @Override
     public float getMiningSpeedMultiplier() {

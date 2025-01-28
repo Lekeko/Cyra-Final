@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "cyra:sea_crystal"
+    },
+    "2": {
+      "item": "cyra:sea_crystal_formation"
+    }
+  },
+  "pattern": [
+    "111",
+    "12 ",
+    "111"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:sea_shooter"
+  }
+}

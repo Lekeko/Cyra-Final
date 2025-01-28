@@ -41,6 +41,9 @@ public class ModItems {
     public static final Item ORB_OF_FORCE = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_force");
     public static final Item ORB_OF_IMPETUOSITY = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_impetuosity");
     public static final Item ORB_OF_VITALITY = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_vitality");
+    public static final Item ORB_OF_ZEPHYR = registerItem(new Item(new Item.Settings().maxCount(1)), "orb_of_zephyr");
+    public static final Item BROKEN_PYRITE_PRIMORDIAL_CUBE = registerItem(new Item(new Item.Settings().maxCount(1)), "broken_pyrite_primordial_cube");
+    public static final Item STRANGE_LOOKING_ROD = registerItem(new Item(new Item.Settings().maxCount(1)), "strange_looking_rod");
     public static final Item JELLY_PASTA = registerItem(new Item(new Item.Settings().maxCount(16).food(ModFoods.JELLY)), "jelly_pasta");
 
     public static final Item DEPTH_CHARM_TIER_1 = registerItem(new Item(new Item.Settings().maxCount(1)), "DEPTH_CHARM_TIER_1".toLowerCase());
@@ -65,6 +68,18 @@ public class ModItems {
     public static final Item GROXION_BUCKET = registerItem(new EntityBucketItem(ModEntities.GROXION, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, (new Item.Settings()).maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)), "groxion_bucket");
     public static final Item SEA_RODENT_BUCKET = registerItem(new EntityBucketItem(ModEntities.SEA_RODENT, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, (new Item.Settings()).maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)), "sea_rodent_bucket");
     public static final Item STRIDELY_BUCKET = registerItem(new EntityBucketItem(ModEntities.STRIDELY, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, (new Item.Settings()).maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)), "stridely_bucket");
+
+    //FISHES TO EAT NOOOOO
+    public static final Item DEEP_SALMON = registerItem(new Item(new Item.Settings().maxCount(64).food(ModFoods.DEEP_SALMON)), "deep_salmon");
+    public static final Item SEA_RODENT = registerItem(new Item(new Item.Settings().maxCount(64).food(ModFoods.SEA_RODENT)), "sea_rodent");
+    public static final Item GROXION = registerItem(new Item(new Item.Settings().maxCount(64).food(ModFoods.GROXION)), "groxion");
+    public static final Item STRIDELY = registerItem(new Item(new Item.Settings().maxCount(64).food(ModFoods.STRIDELY)), "stridely");
+    public static final Item COOKED_DEEP_SALMON = registerItem(new Item(new Item.Settings().maxCount(64).food(ModFoods.COOKED_DEEP_SALMON)), "cooked_deep_salmon");
+    public static final Item COOKED_SEA_RODENT = registerItem(new Item(new Item.Settings().maxCount(64).food(ModFoods.COOKED_SEA_RODENT)), "cooked_sea_rodent");
+    public static final Item COOKED_GROXION = registerItem(new Item(new Item.Settings().maxCount(64).food(ModFoods.COOKED_GROXION)), "cooked_groxion");
+    public static final Item FRIED_STRIDELY = registerItem(new Item(new Item.Settings().maxCount(64).food(ModFoods.FRIED_STRIDELY)), "fried_stridely");
+
+
 
 
     //O2 Tanks
@@ -103,7 +118,7 @@ public class ModItems {
     public static final Item SEA_CRYSTAL = registerItem(new Item(new Item.Settings()), "sea_crystal");
     public static final Item SEA_WAND = registerItem(new SeaWandItem(new Item.Settings()), "sea_support_block_wand");
     public static final Item SEA_SHOOTER = registerItem(new SeaShooter(new Item.Settings()), "sea_shooter");
-    public static final Item SEA_BOLT =  registerItem(new Item(new Item.Settings().maxCount(1)), "sea_bolt");
+    public static final Item SEA_BOLT =  registerItem(new Item(new Item.Settings().maxCount(64)), "sea_bolt");
 
     public static final Item SEA_CRYSTAL_HELMET = registerItem(new ModArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.HELMET , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_helmet");
     public static final Item SEA_CRYSTAL_CHESTPLATE = registerItem(new ArmorItem(ModArmorMaterial.SEA_CRYSTAL, ArmorItem.Type.CHESTPLATE , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "sea_crystal_chestplate");
@@ -125,7 +140,7 @@ public class ModItems {
     public static final Item RESTORED_PYRITE = registerItem(new Item(new Item.Settings()), "restored_pyrite");
     public static final Item PYRITE_PRIMORDIAL_CUBE = registerItem(new PyritePrimordialCube(new Item.Settings()), "pyrite_primordial_cube1");
     public static final Item PYRITE_BULWARK = registerItem(new ShieldItem(new Item.Settings().maxCount(1)), "PYRITE_BULWARK".toLowerCase());
-    public static final Item OLD_LORDS_SPEAR = registerItem(new OldLordsSpearItem(new Item.Settings().maxCount(1)), "old_lords_spear".toLowerCase());
+    public static final Item OLD_LORDS_SPEAR = registerItem(new OldLordsSpearItem(new Item.Settings().maxCount(1)), "old_lords_spear");
 
     public static final Item PYRITE_SWORD = registerItem(new SwordItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.PYRITE, 8, -1.4F)))), "pyrite_sword");
     public static final Item PYRITE_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.PYRITE, 3, -1.8F)))), "pyrite_shovel");

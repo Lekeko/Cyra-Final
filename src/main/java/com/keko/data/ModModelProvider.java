@@ -75,7 +75,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .trapdoor(ModBlocks.BIOLUMINESCENCE_TRAPDOOR)
                 .door(ModBlocks.BIOLUMINESCENCE_DOOR)
                 .fenceGate(ModBlocks.BIOLUMINESCENCE_FENCE_GATE)
-                .pressurePlate(ModBlocks.BIOLUMINESCENCE_PREASSURE_PLATE)
+                .pressurePlate(ModBlocks.BIOLUMINESCENCE_PRESSURE_PLATE)
                 .button(ModBlocks.BIOLUMINESCENCE_BUTTON)
                 .build());
 
@@ -86,7 +86,7 @@ public class ModModelProvider extends FabricModelProvider {
                 .trapdoor(ModBlocks.DAZED_BIOLUMINESCENCE_TRAPDOOR)
                 .door(ModBlocks.DAZED_BIOLUMINESCENCE_DOOR)
                 .fenceGate(ModBlocks.DAZED_BIOLUMINESCENCE_FENCE_GATE)
-                .pressurePlate(ModBlocks.DAZED_BIOLUMINESCENCE_PREASSURE_PLATE)
+                .pressurePlate(ModBlocks.DAZED_BIOLUMINESCENCE_PRESSURE_PLATE)
                 .button(ModBlocks.DAZED_BIOLUMINESCENCE_BUTTON)
                 .build());
 
@@ -120,10 +120,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SEA_WAND, Models.HANDHELD);
 
         itemModelGenerator.register(ModItems.PYRITE_SHOVEL, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.PYRITE_AXE, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.PYRITE_HOE, Models.HANDHELD);
         itemModelGenerator.register(ModItems.PYRITE_PICKAXE, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.PYRITE_SWORD, Models.HANDHELD);
 
         //MISC
 
@@ -139,6 +136,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ORB_OF_DAHY, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORB_OF_FORCE, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORB_OF_IMPETUOSITY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ORB_OF_ZEPHYR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STRANGE_LOOKING_ROD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BROKEN_PYRITE_PRIMORDIAL_CUBE, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORB_OF_VITALITY, Models.GENERATED);
         itemModelGenerator.register(ModItems.JELLY_PASTA, Models.GENERATED);
         itemModelGenerator.register(ModItems.DEPTH_CHARM_TIER_3, Models.GENERATED);
@@ -158,6 +158,14 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.DEEP_SALMON_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ModItems.STRIDELY_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ModItems.GROXION_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SEA_RODENT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DEEP_SALMON, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GROXION, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STRIDELY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COOKED_GROXION, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COOKED_SEA_RODENT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COOKED_DEEP_SALMON, Models.GENERATED);
+        itemModelGenerator.register(ModItems.FRIED_STRIDELY, Models.GENERATED);
 
 
         //ARMOUR

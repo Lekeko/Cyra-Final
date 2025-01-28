@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 20.0,
+  "ingredient": {
+    "item": "cyra:enderite_chunk"
+  },
+  "result": {
+    "id": "cyra:enderite_ingot"
+  }
+}

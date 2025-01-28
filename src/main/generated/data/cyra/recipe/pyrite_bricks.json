@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "cyra:pyrite_chunk"
+    },
+    "2": {
+      "item": "minecraft:stone_bricks"
+    }
+  },
+  "pattern": [
+    "222",
+    "212",
+    "222"
+  ],
+  "result": {
+    "count": 16,
+    "id": "cyra:pyrite_bricks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "group": "food_to_deep_salmon",
+  "ingredient": {
+    "item": "cyra:deep_salmon"
+  },
+  "result": {
+    "id": "cyra:cooked_deep_salmon"
+  }
+}

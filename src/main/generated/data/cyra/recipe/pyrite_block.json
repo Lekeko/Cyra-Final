@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:restored_pyrite"
+    }
+  },
+  "pattern": [
+    "222",
+    "222",
+    "222"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:pyrite_block"
+  }
+}

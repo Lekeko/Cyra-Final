@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 1.0,
+  "group": "campfire_stridely",
+  "ingredient": {
+    "item": "cyra:stridely"
+  },
+  "result": {
+    "id": "cyra:fried_stridely"
+  }
+}

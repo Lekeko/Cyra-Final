@@ -1,12 +1,16 @@
 package com.keko.blocks.environment.dim1;
 
 import com.keko.blocks.ModBlocks;
+import com.keko.helpers.InvSearch;
+import com.keko.items.ModItems;
 import com.keko.world.ModDimensions;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemStackSet;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -30,7 +34,7 @@ public class CoreOfTheSeaBlock extends Block {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient){
-            if(canTeleportPlayer(state, world, pos, player, hit)){
+            if(canTeleportPlayer(state, world, pos, player, hit) && isSafe(player)){
                 if (!player.isSneaking()) {
                     MinecraftServer server = world.getServer();
                     if (server != null) {
@@ -97,6 +101,23 @@ public class CoreOfTheSeaBlock extends Block {
         }
 
         return super.onUse(state, world, pos, player, hit);
+    }
+
+    private boolean isSafe(PlayerEntity player) {
+        ItemStack stack = InvSearch.getItemStackInInv(player, ModItems.DEPTH_CHARM_TIER_1);
+        if (stack == null) {
+            stack = InvSearch.getItemStackInInv(player, ModItems.DEPTH_CHARM_TIER_2);
+            if (stack == null) {
+                stack = InvSearch.getItemStackInInv(player, ModItems.DEPTH_CHARM_TIER_3);
+                if (stack == null) {
+                    if (player.getWorld().getRegistryKey() == ModDimensions.MURIEL_KAIA_LEVEL_KEY)
+                        return true;
+                    player.sendMessage(Text.literal("To enter, you need a depth charm!").withColor(6001584));
+                    return false;
+                }
+            }
+        }
+                return true;
     }
 
     private void makeFRAME(BlockPos pos, ServerWorld muriel) {

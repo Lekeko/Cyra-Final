@@ -47,8 +47,8 @@ public class PyritePrimordialCube extends Item {
         cooldownHashMap.put(2, 70);
         cooldownHashMap.put(3, 0);
         cooldownHashMap.put(4, 180);
-        cooldownHashMap.put(5, 20 * 60);
-        cooldownHashMap.put(6, 20 * 60 * 2);
+        cooldownHashMap.put(5, 20 * 40);
+        cooldownHashMap.put(6, 20 * 60);
         sound.add(ModSounds.CUBE_1);
         sound.add(ModSounds.CUBE_2);
         sound.add(ModSounds.CUBE_3);
@@ -109,22 +109,25 @@ public class PyritePrimordialCube extends Item {
 
                 }
             }else
-                if (itemStack.get(ModDataComponentTypes.VARIANT) == 4){
-                    itemStack.set(ModDataComponentTypes.BURST_RED, true);
+                if (!user.getItemCooldownManager().isCoolingDown(itemStack.getItem())){
+                    if (!user.isCreative())
+                        user.getItemCooldownManager().set(itemStack.getItem(), cooldownHashMap.get(itemStack.get(ModDataComponentTypes.VARIANT)));
 
-                }else
-                    if (itemStack.get(ModDataComponentTypes.VARIANT) == 5){
-                        spawnOrangeCube(world, user , colorHashMap.get(itemStack.get(ModDataComponentTypes.VARIANT)), itemStack, false);
-                    }else if (itemStack.get(ModDataComponentTypes.VARIANT) == 6){
-                            for (int i = 0; i < 20; i++){
-                                spawnCube(world, user , colorHashMap.get(itemStack.get(ModDataComponentTypes.VARIANT)), itemStack, false);
-                            }
-                            Box box = new Box(user.getX() + 30, user.getY() + 30, user.getZ() + 30, user.getX() - 30, user.getY() - 30, user.getZ() - 30);
-                            for (PlayerEntity players : world.getEntitiesByClass(PlayerEntity.class, box, PlayerEntity::isAlive))
+                    if (itemStack.get(ModDataComponentTypes.VARIANT) == 4) {
+                        itemStack.set(ModDataComponentTypes.BURST_RED, true);
+
+                    } else if (itemStack.get(ModDataComponentTypes.VARIANT) == 5) {
+                        spawnOrangeCube(world, user, colorHashMap.get(itemStack.get(ModDataComponentTypes.VARIANT)), itemStack, false);
+                    } else if (itemStack.get(ModDataComponentTypes.VARIANT) == 6) {
+                        for (int i = 0; i < 20; i++) {
+                            spawnCube(world, user, colorHashMap.get(itemStack.get(ModDataComponentTypes.VARIANT)), itemStack, false);
+                        }
+                        Box box = new Box(user.getX() + 30, user.getY() + 30, user.getZ() + 30, user.getX() - 30, user.getY() - 30, user.getZ() - 30);
+                        for (PlayerEntity players : world.getEntitiesByClass(PlayerEntity.class, box, PlayerEntity::isAlive))
                             players.heal(10);
-                        }else
-                            spawnCube(world, user , colorHashMap.get(itemStack.get(ModDataComponentTypes.VARIANT)), itemStack, false);
-
+                    } else
+                        spawnCube(world, user, colorHashMap.get(itemStack.get(ModDataComponentTypes.VARIANT)), itemStack, false);
+                }
         }
 
 

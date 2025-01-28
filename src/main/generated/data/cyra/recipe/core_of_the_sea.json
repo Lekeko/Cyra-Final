@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "2": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "222",
+    "212",
+    "222"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:core_of_the_sea"
+  }
+}

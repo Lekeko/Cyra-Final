@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:dazed_bioluminescence_planks"
+    }
+  },
+  "pattern": [
+    "2  ",
+    "22 ",
+    "222"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cyra:dazed_bioluminescence_stairs"
+  }
+}

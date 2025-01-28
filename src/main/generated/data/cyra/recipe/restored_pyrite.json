@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "multi_bench",
+  "key": {
+    "1": {
+      "item": "cyra:ancient_void_sea_stone_pyrite_ore"
+    },
+    "2": {
+      "item": "cyra:pyrite_chunk"
+    }
+  },
+  "pattern": [
+    " 2 ",
+    "212",
+    " 2 "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cyra:restored_pyrite"
+  }
+}

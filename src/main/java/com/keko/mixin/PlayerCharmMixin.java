@@ -28,15 +28,15 @@ public class PlayerCharmMixin {
                 player.getWorld().getBiome(player.getBlockPos()).matchesKey(ModBiomes.DAZED_WATERS)||
                 player.getWorld().getBiome(player.getBlockPos()).matchesKey(ModBiomes.MURIEL_WATERS))){
             if (player.getY() <= 300 && player.getY() > 200)
-                checkForCharm(1);
+                checkForCharm(1, false);
             if (player.getY() <= 200 && player.getY() > 100)
-                checkForCharm(2);
+                checkForCharm(2, true);
             if (player.getY() <= 100 && player.getY() > 0)
-                checkForCharm(3);
+                checkForCharm(3, true);
         }
 
         if ((player.getWorld().getBiome(player.getBlockPos()).matchesKey(ModBiomes.VOID_WATERS))){
-            checkForCharm(3);
+            checkForCharm(3, false);
             if (player.hasStatusEffect(StatusEffects.NIGHT_VISION)){
                 player.clearStatusEffects();
                 if (!player.getWorld().isClient)
@@ -55,7 +55,7 @@ public class PlayerCharmMixin {
     }
 
     @Unique
-    private void checkForCharm(int i) {
+    private void checkForCharm(int i, boolean shouldLaunch) {
         if (player.isSubmergedInWater())
             switch (i){
             case 1->
@@ -64,6 +64,7 @@ public class PlayerCharmMixin {
                 ItemStack stack2 = InvSearch.getItemStackInInv(player, ModItems.DEPTH_CHARM_TIER_2);
                 ItemStack stack3 = InvSearch.getItemStackInInv(player, ModItems.DEPTH_CHARM_TIER_3);
                 if (stack2 == null && stack3 == null && stack1 == null) {
+                    player.addVelocity(0, shouldLaunch? 2 : 0, 0);
                     player.damage(player.getWorld().getDamageSources().generic(), 4);
                 }
             }
@@ -71,14 +72,14 @@ public class PlayerCharmMixin {
                 ItemStack stack1 = InvSearch.getItemStackInInv(player, ModItems.DEPTH_CHARM_TIER_2);
                 ItemStack stack2 = InvSearch.getItemStackInInv(player, ModItems.DEPTH_CHARM_TIER_3);
                 if (stack1 == null && stack2 == null) {
-                    player.addVelocity(player.getVelocity().getX(), 2, player.getVelocity().z);
+                    player.addVelocity(0, shouldLaunch? 2 : 0, 0);
                     player.damage(player.getWorld().getDamageSources().generic(), 5);
                 }
             }
             case 3->{
                 ItemStack stack = InvSearch.getItemStackInInv(player, ModItems.DEPTH_CHARM_TIER_3);
                 if (stack == null) {
-                    player.addVelocity(player.getVelocity().getX(), 2, player.getVelocity().z);
+                    player.addVelocity(0, shouldLaunch? 2 : 0, 0);
                     player.damage(player.getWorld().getDamageSources().generic(), 6);
                 }
             }

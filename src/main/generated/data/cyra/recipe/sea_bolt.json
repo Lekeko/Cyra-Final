@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "cyra:sea_crystal"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "cyra:sea_bolt"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "multi_bench",
+  "key": {
+    "2": {
+      "item": "cyra:dazed_sea_stone"
+    }
+  },
+  "pattern": [
+    "22",
+    "22"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cyra:dazed_sea_stone_brick"
+  }
+}

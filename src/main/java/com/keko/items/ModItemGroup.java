@@ -14,7 +14,7 @@ public class ModItemGroup {
     public static final ItemGroup CYRA_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(CyraFinal.MOD_ID, "cyra"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.cyra"))
-                    .icon(() -> new ItemStack(ModItems.SEA_CRYSTAL_PICKAXE)).entries(ModItems::fillTab).build());
+                    .icon(() -> new ItemStack(ModItems.PYRITE_SWORD)).entries(ModItems::fillTab).build());
 
 
     public static void registerItemGroups() {
