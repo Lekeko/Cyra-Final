@@ -5,6 +5,7 @@ import com.keko.CyraFinal;
 import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.packet.CubeColorPayload;
 import com.keko.packet.DegreePayload;
+import com.keko.particle.ModParticles;
 import foundry.veil.Veil;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.light.AreaLight;
@@ -24,7 +25,9 @@ import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -209,6 +212,7 @@ public class PCube extends PersistentProjectileEntity {
                 if (entityHitResult.getEntity() != this.getOwner()) {
                     if (variant == 1) {
                         entityHitResult.getEntity().setVelocity(0, 1, 0);
+                        entityHitResult.getEntity().addVelocity(this.getVelocity());
                         entityHitResult.getEntity().velocityModified = true;
                     }
                 }
@@ -298,7 +302,7 @@ public class PCube extends PersistentProjectileEntity {
 
 
             double distanceX = Math.pow(Math.abs(entity.getX()) - Math.abs(this.getX()), 2);
-            double distanceY = Math.pow(Math.abs(entity.getY()) - Math.abs(this.getY()), 2);
+            double distanceY = Math.pow(Math.abs(entity.getY() + 1) - Math.abs(this.getY()), 2);
             double distanceZ = Math.pow(Math.abs(entity.getZ()) - Math.abs(this.getZ()), 2);
 
             double distance2 = Math.abs(20 - Math.sqrt(distanceX + distanceY + distanceZ));
@@ -371,9 +375,11 @@ public class PCube extends PersistentProjectileEntity {
         int radius = i;
         Box box = new Box(x + radius, y + radius, z + radius, x - radius, y - radius, z - radius);
         for (LivingEntity entity : getWorld().getEntitiesByClass(LivingEntity.class, box, LivingEntity::isAlive)) {
-            spawnParticlePos(entity.getPos(), Identifier.of("cyra:star_red"));
+            for (int m  =0 ; m < 20; m++)
+                spawnParticlePos(entity.getPos(), Identifier.of("cyra:star_red"));
             entity.damage(getWorld().getDamageSources().generic(), (float) 30 / (entity.getArmor() > 0 ? (float) entity.getArmor() / 10f : 1));
-
+            if (getWorld() instanceof ServerWorld)
+                ((ServerWorld) getWorld()).spawnParticles(ParticleTypes.END_ROD, x,y,z, 50, random.nextFloat() - .5f, random.nextFloat() - .5f, random.nextFloat() - .5f, 2);
             getWorld().playSound(null, x, y, z, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 10, 1);
         }
 
@@ -387,9 +393,9 @@ public class PCube extends PersistentProjectileEntity {
             emitter.setParticleSettings(new ParticleSettings(0.1f+ (id.toString().contains("red") ? 0.3f : 0), 0.1f + (id.toString().contains("red") ? 0.3f : 0), 0.05f,
                     20, 0f,
                     new Vector3f(
-                            this.getWorld().random.nextFloat() - .5f,
                             (this.getWorld().random.nextFloat() - .5f)  * 5f,
-                            this.getWorld().random.nextFloat() - .5f),
+                            (this.getWorld().random.nextFloat() - .5f)  * 5f,
+                            (this.getWorld().random.nextFloat() - .5f)  * 5f),
                     false,true,true,true,false));
             manager.addParticleSystem(emitter);
         } catch (Exception ignored) {

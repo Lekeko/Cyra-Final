@@ -108,10 +108,10 @@ public class PCubeRenderer extends ProjectileEntityRenderer<PCube> {
                         v3 = v3.subtract(cameraPos);
                         v4 = v4.subtract(cameraPos);
 
-                        buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v1.x, (float) (v1.y + 1.2), (float) v1.z).color(red, green, blue, 255);
-                        buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v2.x, (float) (v2.y + 1.2), (float) v2.z).color(red, green, blue, 255);
-                        buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v3.x, (float) (v3.y + 1.2), (float) v3.z).color(red, green, blue, 255);
-                        buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v4.x, (float) (v4.y + 1.2), (float) v4.z).color(red, green, blue, 255);
+                        buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v1.x, (float) (v1.y + 1.2), (float) v1.z).color(red, green, blue, 20);
+                        buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v2.x, (float) (v2.y + 1.2), (float) v2.z).color(red, green, blue, 20);
+                        buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v3.x, (float) (v3.y + 1.2), (float) v3.z).color(red, green, blue, 20);
+                        buffer.vertex(matrixStack.peek().getPositionMatrix(), (float) v4.x, (float) (v4.y + 1.2), (float) v4.z).color(red, green, blue, 20);
                         if (trailWidth > 0.03) {
                             trailWidth -= 0.02f;
                         }

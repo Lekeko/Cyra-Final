@@ -1,17 +1,17 @@
 {
 	"schemaVersion": 1,
 	"id": "cyra",
-	"version": "${version}",
-	"name": "Cyra Final",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"version": "1.0",
+	"name": "Cyra",
+	"description": "A Minecraft mod that reveals ocean misteries",
 	"authors": [
-		"Me!"
+		"Le_Keko"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/cyra/icon.png",
 	"environment": "*",
 	"entrypoints": {

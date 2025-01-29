@@ -12,6 +12,7 @@ public class ParticleRegisterMod {
         ParticleFactoryRegistry.getInstance().register(ModParticles.PYRITE_SLASH, PyriteSlashParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.PYRITE_STAR, PyriteStarParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.PYRITE_BOOM, PyriteBoomParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.RED_STAR, PyriteBoomParticle.Factory::new);
 
     }
 }

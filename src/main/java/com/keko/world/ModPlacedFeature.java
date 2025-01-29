@@ -47,7 +47,7 @@ public class ModPlacedFeature {
 
 
         register(context, VOID_PYRITE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.VOID_PYRITE_ORE_KEY),
-                ModorePlacement.modifiersWithCount(2, HeightRangePlacementModifier.uniform(YOffset.fixed(1), YOffset.fixed(290))));
+                ModorePlacement.modifiersWithCount(3, HeightRangePlacementModifier.uniform(YOffset.fixed(1), YOffset.fixed(290))));
 
 
         register(context, VOID_STRUCTURES, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.VOID_STRUCTURES_KEY),

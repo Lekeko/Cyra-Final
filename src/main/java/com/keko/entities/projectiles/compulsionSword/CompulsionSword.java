@@ -131,7 +131,6 @@ public class CompulsionSword extends PersistentProjectileEntity {
 
         }
         if (!this.getWorld().isClient){
-            System.out.println(age);
             if (getOwner() == null)
                 discard();
 

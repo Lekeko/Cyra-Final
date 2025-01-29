@@ -35,7 +35,6 @@ public class ModLootTableModif {
 
     public static void modifu(){
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
-            System.out.println(key.getValue());
 
             if (STRIDELY_ID.equals(key.getValue())){
                 LootPool.Builder poolBuilder = LootPool.builder()

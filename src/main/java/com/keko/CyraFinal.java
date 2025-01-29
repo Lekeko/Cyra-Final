@@ -83,9 +83,9 @@ public class CyraFinal implements ModInitializer {
 		ModFeature.registerFeatures();
 		ModSounds.registerSounds();
 		ModBlockTags.register();
-
-		ModMessages.registerC2SPacket();
-
+		try {
+			ModMessages.registerC2SPacket();
+		}catch (RuntimeException ignoredCuzDataGEn){}
 		ModDataComponentTypes.registerDataComponents();
 		ModLootTableModif.modifu();
 

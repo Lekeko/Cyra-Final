@@ -87,7 +87,7 @@ public class ModConfiguredFeatures {
 
 
         register(context, ENDERITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(endEnderiteOres, 4));
-        register(context, VOID_PYRITE_ORE_KEY, ModFeature.VOID_ORE_ID, new VoidPyriteConfig(1, Identifier.of(CyraFinal.MOD_ID, "void_ore")));
+        register(context, VOID_PYRITE_ORE_KEY, ModFeature.VOID_ORE_ID, new VoidPyriteConfig(3, Identifier.of(CyraFinal.MOD_ID, "void_ore")));
         register(context, MINIARITE_ORE, Feature.ORE, new OreFeatureConfig(seaMirianFormation, 45));
         register(context, MURIANITE_ORE, Feature.ORE, new OreFeatureConfig(seaMurianiteFormation, 45));
         register(context, DAZED_ORE, Feature.ORE, new OreFeatureConfig(dazedSeaStoneFromation, 64));

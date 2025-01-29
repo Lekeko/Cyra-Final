@@ -36,7 +36,7 @@ public class LightEntity extends PersistentProjectileEntity {
 
     public LightEntity(EntityType<? extends LightEntity> entityType, World world) {
         super(entityType, world);
-        light = new PointLight().setRadius(30f).setBrightness(0.7f).setColor((float) 122 / 255, (float) 255 / 255, (float) 255 / 255);
+        light = new PointLight().setRadius(60).setBrightness(1.2f).setColor((float) 122 / 255, (float) 255 / 255, (float) 255 / 255);
 
     }
 

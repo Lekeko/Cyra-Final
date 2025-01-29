@@ -2,11 +2,13 @@ package com.keko.entities.bosses.zombieLeader;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.boss.ServerBossBar;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
@@ -34,6 +36,18 @@ public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
     public ZombieLeaderEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.bossBar = (ServerBossBar) (new ServerBossBar(this.getDisplayName(), BossBar.Color.GREEN, BossBar.Style.PROGRESS));
+    }
+
+    @Override
+    public void onDeath(DamageSource damageSource) {
+        if (!getWorld().isClient){
+            for (int i = 0; i < 10; i++){
+                ExperienceOrbEntity entity = new ExperienceOrbEntity(getWorld(), getX(), getY(), getZ(), 200);
+                entity.setVelocity((random.nextFloat() - .5 ) *  1.3, (random.nextFloat() - .5 ) * 2, (random.nextFloat() - .5 ) * 1.3);
+                getWorld().spawnEntity(entity);
+            }
+        }
+        super.onDeath(damageSource);
     }
 
     @Override
@@ -65,7 +79,7 @@ public class ZombieLeaderEntity extends HostileEntity implements GeoEntity {
 
     public static DefaultAttributeContainer.Builder setAtributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 500)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 666)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.5f)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 1.0f)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.50f)

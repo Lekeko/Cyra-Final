@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -53,6 +54,18 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
     }
 
     @Override
+    public void onDeath(DamageSource damageSource) {
+        if (!getWorld().isClient){
+            for (int i = 0; i < 10; i++){
+                ExperienceOrbEntity entity = new ExperienceOrbEntity(getWorld(), getX(), getY(), getZ(), 400);
+                entity.setVelocity((random.nextFloat() - .5 ) *  1.3, (random.nextFloat() - .5 ) * 2, (random.nextFloat() - .5 ) * 1.3);
+                getWorld().spawnEntity(entity);
+            }
+        }
+        super.onDeath(damageSource);
+    }
+
+    @Override
     public void onStartedTrackingBy(ServerPlayerEntity player) {
         super.onStartedTrackingBy(player);
         this.bossBar.addPlayer(player);
@@ -79,7 +92,7 @@ public class SkeletonLeaderEntity extends HostileEntity implements GeoEntity {
 
     public static DefaultAttributeContainer.Builder setAtributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 700)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 800)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20f);
 
     }

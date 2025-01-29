@@ -21,6 +21,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -99,7 +100,7 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
 
     public static DefaultAttributeContainer.Builder setAtributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 1500)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 2200)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.20f)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 13)
                 .add(EntityAttributes.GENERIC_ARMOR, 8)
@@ -203,6 +204,19 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
         super.tick();
     }
 
+
+    @Override
+    public void onDeath(DamageSource damageSource) {
+        if (!getWorld().isClient){
+            for (int i = 0; i < 10; i++){
+                ExperienceOrbEntity entity = new ExperienceOrbEntity(getWorld(), getX(), getY(), getZ(), 1500);
+                entity.setVelocity((random.nextFloat() - .5 ) *  1.3, (random.nextFloat() - .5 ) * 2, (random.nextFloat() - .5 ) * 1.3);
+                getWorld().spawnEntity(entity);
+            }
+        }
+        super.onDeath(damageSource);
+    }
+
     private void throwSpear(boolean actual) {
         int area = 40;
         Box box = new Box(getX() + area, this.getY() + area, this.getZ() + area, getX() - area, this.getY() - area, this.getZ() - area);
@@ -219,7 +233,8 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
         if (target != null){
             if (!actual){
                 triggerAnim("controller", "old_lord.spear_attack");
-                System.out.println("JAP");            attackTimer = 40;
+
+                attackTimer = 40;
                 this.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, target.getPos());
                 this.setPos(target.getX() + getWorld().random.nextBetween(-5,5), target.getY() + 3, target.getZ() + getWorld().random.nextBetween(-5,5));
 

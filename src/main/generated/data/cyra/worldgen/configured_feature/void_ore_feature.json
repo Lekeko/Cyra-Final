@@ -2,6 +2,6 @@
   "type": "cyra:void_ore_feature",
   "config": {
     "blockID": "cyra:void_ore",
-    "number": 1
+    "number": 3
   }
 }

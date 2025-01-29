@@ -1,8 +1,8 @@
-// 1.21	2025-01-28T23:58:11.132815	Cyra Final/Tags for minecraft:item
+// 1.21	2025-01-29T11:12:12.7583162	Cyra/Tags for minecraft:item
 4489ad189f09a423b54be7f79b460f9d68a77a87 data\minecraft\tags\item\axes.json
 069c700ca14a9d7be25205bacf8fe017448026c8 data\minecraft\tags\item\swords.json
-14e03072b7a78ae678bc27260bfa2afc1f9a97b2 data\minecraft\tags\item\pickaxes.json
 d4746dd5c62bd3aeb466106096bdd122c5280236 data\minecraft\tags\item\foot_armor.json
+14e03072b7a78ae678bc27260bfa2afc1f9a97b2 data\minecraft\tags\item\pickaxes.json
 0a0cad1f527d52057f07ed7e69ccc16d04709821 data\minecraft\tags\item\hoes.json
 d46ea2899030d20b2a7c027b9c415819208cec9f data\minecraft\tags\item\head_armor.json
 d45dd4347e347241c890dcd0c829b229d8bdff2e data\minecraft\tags\item\shovels.json

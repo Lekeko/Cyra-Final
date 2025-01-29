@@ -39,7 +39,7 @@ public class VoidPyriteFeature extends Feature<VoidPyriteConfig> {
 
         java.util.Random random1 = new java.util.Random();
         radius3 = random1.nextInt(4) + 2;
-        radius4 = 2;
+        radius4 = 1;
 
         int choiche = world.getRandom().nextBetween(1,2);
 
@@ -62,7 +62,7 @@ public class VoidPyriteFeature extends Feature<VoidPyriteConfig> {
                         for (int j = -radius4; j < radius4; j++)
                             for (int k = -radius4; k < radius4; k++)
                                 if (i*i + j*j + k * k<= radius4 * radius4){
-                                    if (world.getRandom().nextBetween(1, 100) < 80 && world.getBlockState(new BlockPos(testPos.getX() + i, testPos.getY() + j, testPos.getZ() + k)).isOf(ModBlocks.VOID_STONE))
+                                    if (world.getRandom().nextBetween(1, 100) < 50 && world.getBlockState(new BlockPos(testPos.getX() + i, testPos.getY() + j, testPos.getZ() + k)).isOf(ModBlocks.VOID_STONE))
                                         world.setBlockState(new BlockPos(testPos.getX() + i, testPos.getY() + j, testPos.getZ() + k), ModBlocks.ANCIENT_PYRITE_ORE.getDefaultState(), 10);
                                 }
                 }

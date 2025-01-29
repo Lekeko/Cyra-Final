@@ -96,20 +96,20 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.VOID_STONE);
         addDrop(ModBlocks.TILES_PYRITE_BRICKS);
         addDrop(ModBlocks.ANCIENT_PYRITE_ORE);
-        addDrop(ModBlocks.VOID_PYRITE_ORE, specialOreDrops(ModBlocks.VOID_PYRITE_ORE, ModItems.PYRITE_CHUNK, 1, 1));
-        addDrop(ModBlocks.PYRITE_ORE, specialOreDrops(ModBlocks.PYRITE_ORE, ModItems.PYRITE_CHUNK, 1, 1));
+        addDrop(ModBlocks.VOID_PYRITE_ORE, specialOreDrops(ModBlocks.VOID_PYRITE_ORE, ModItems.PYRITE_CHUNK, 1f, 1f));
+        addDrop(ModBlocks.PYRITE_ORE, specialOreDrops(ModBlocks.PYRITE_ORE, ModItems.PYRITE_CHUNK, 1f, 1f));
 
-        addDrop(ModBlocks.SEA_CRYSTAL_CLUSTER, specialOreDrops(ModBlocks.SEA_CRYSTAL_CLUSTER, ModItems.SEA_CRYSTAL_FRAGMENT, 2, 4));
+        addDrop(ModBlocks.SEA_CRYSTAL_CLUSTER, specialOreDrops(ModBlocks.SEA_CRYSTAL_CLUSTER, ModItems.SEA_CRYSTAL_FRAGMENT, 3f, 5f));
         addDrop(ModBlocks.SEA_CRYSTAL_FORMATION, ModBlocks.SEA_CRYSTAL_FORMATION);
     }
 
-    public LootTable.Builder specialOreDrops(Block drop, Item item, int min, int max){
+    public LootTable.Builder specialOreDrops(Block drop, Item item, float min, float max){
         return BlockLootTableGenerator.drops(drop , super.createSilkTouchCondition()  ,(LootPoolEntry.Builder)this.applyExplosionDecay(drop,
                 ((LeafEntry.Builder)
                         ItemEntry.builder(item)
                                 .apply(SetCountLootFunction
                                         .builder(UniformLootNumberProvider
-                                                .create(1.0f, 2.0f))))
+                                                .create(min, max))))
                       ));
     }
 }

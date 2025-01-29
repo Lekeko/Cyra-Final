@@ -10,15 +10,20 @@ import com.keko.entities.projectiles.compulsionScythe.CompulsionScythe;
 import com.keko.entities.projectiles.compulsionSword.CompulsionSword;
 import com.keko.helpers.Directional;
 import com.keko.items.ModItems;
+import com.keko.packet.StarParticlesGeneralPayload;
+import com.keko.packet.StarParticlesScythePayload;
 import com.keko.sounds.ModSounds;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -49,7 +54,7 @@ public class CompulsionEvents {
             pos = pos.add(player.getRotationVec(1.0f).x, player.getRotationVec(1.0f).y, player.getRotationVec(1.0f).z);
             int area = 4;
             for (Entity entity : world.getEntitiesByClass(Entity.class, new Box((int) pos.x + area, (int) pos.y + area, (int) pos.z + area,(int) pos.x - area, (int) pos.y - area, (int) pos.z - area), Entity::isAlive)){
-                if (entity != player &&!( entity instanceof ItemEntity))
+                if (entity != player &&!( entity instanceof ItemEntity) && !( entity instanceof ExperienceOrbEntity))
                     target = entity;
             }
         }
@@ -57,7 +62,7 @@ public class CompulsionEvents {
         if (target!= null && !player.getItemCooldownManager().isCoolingDown(stack.getItem()))
         {
             world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), ModSounds.PARRY, SoundCategory.NEUTRAL, 1.5F, 1.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
-
+            ServerPlayNetworking.send((ServerPlayerEntity) player, new StarParticlesScythePayload(player.getX(), player.getY(), player.getZ()));
             target.damage(world.getDamageSources().playerAttack(player), 15 -( target instanceof PlayerEntity ? ((PlayerEntity)target).getArmor()/4f : 0));
 
             target.setVelocity(target.getPos().subtract(player.getPos()).normalize().multiply(player.distanceTo(target)/4f).add(0,1.2f,0));

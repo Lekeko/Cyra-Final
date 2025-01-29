@@ -36,8 +36,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import org.joml.Vector3f;
 
 import java.awt.*;
@@ -56,6 +58,7 @@ public class ModMessages {
     public static final Identifier PARRY_OLD_LORD = Identifier.of(CyraFinal.MOD_ID, "parry_old_lord_tp");
     public static final Identifier AXE_PARTICLES = Identifier.of(CyraFinal.MOD_ID, "axe_particles_tp");
     public static final Identifier STARS = Identifier.of(CyraFinal.MOD_ID, "stars_tp");
+    public static final Identifier STARS_SCYTHE = Identifier.of(CyraFinal.MOD_ID, "stars_scythe_tp");
 
     public static void registerC2SPacket() {
         PayloadTypeRegistry.playC2S().register(HealPayload.ID, HealPayload.CODEC);
@@ -148,6 +151,27 @@ public class ModMessages {
                             (player.getWorld().random.nextFloat() - .5f ) * 10,
                             (player.getWorld().random.nextFloat() - .5f ) * 10);
                 spawnParticle(player, Identifier.of(CyraFinal.MOD_ID, "star_burst"), x,y,z);
+
+            });
+        });
+
+        PayloadTypeRegistry.playS2C().register(StarParticlesScythePayload.ID, StarParticlesScythePayload.CODEC);
+        ClientPlayNetworking.registerGlobalReceiver(StarParticlesScythePayload.ID, (payload, context) -> {
+            context.client().execute(() -> {
+
+                ClientPlayerEntity player = context.player();
+                double d = (double)(-MathHelper.sin(player.getYaw() * ((float)Math.PI / 180F)));
+                double e = (double)MathHelper.cos(player.getYaw() * ((float)Math.PI / 180F));
+                player.getWorld().addParticle(ModParticles.PYRITE_SLASH, player.getX() + d, player.getBodyY((double)0.5F), player.getZ() + e, 0, d, (double)0.0F);
+
+                double x = payload.x();
+                double y = payload.y();
+                double z = payload.z();
+                for (int i = 0; i < 50; i++)
+                    player.getWorld().addParticle(ModParticles.PYRITE_STAR, x,y ,z,
+                            (player.getWorld().random.nextFloat() - .5f ) * 20,
+                            (player.getWorld().random.nextFloat() - 5.5f ) * 2,
+                            (player.getWorld().random.nextFloat() - .5f ) * 20);
 
             });
         });

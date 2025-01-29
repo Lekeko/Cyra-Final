@@ -8,6 +8,7 @@ import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.light.Light;
 import foundry.veil.api.client.render.light.PointLight;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
@@ -15,6 +16,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.boss.ServerBossBar;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
@@ -69,6 +71,18 @@ public class JellyFishKingEntity extends WaterCreatureEntity implements GeoEntit
     public void onStartedTrackingBy(ServerPlayerEntity player) {
         super.onStartedTrackingBy(player);
         this.bossBar.addPlayer(player);
+    }
+
+    @Override
+    public void onDeath(DamageSource damageSource) {
+        if (!getWorld().isClient){
+            for (int i = 0; i < 10; i++){
+                ExperienceOrbEntity entity = new ExperienceOrbEntity(getWorld(), getX(), getY(), getZ(), 200);
+                entity.setVelocity((random.nextFloat() - .5 ) *  1.3, (random.nextFloat() - .5 ) * 2, (random.nextFloat() - .5 ) * 1.3);
+                getWorld().spawnEntity(entity);
+            }
+        }
+        super.onDeath(damageSource);
     }
 
     @Override
