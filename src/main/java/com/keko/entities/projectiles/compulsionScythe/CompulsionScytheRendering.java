@@ -35,11 +35,13 @@ public class CompulsionScytheRendering extends ProjectileEntityRenderer<Compulsi
     public void render(CompulsionScythe persistentProjectileEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         matrixStack.push();
         float rotation = (MinecraftClient.getInstance().getRenderTickCounter().getTickDelta(true) + persistentProjectileEntity.age) * 60;
+        matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
+        matrixStack.multiply(RotationAxis.NEGATIVE_Y.rotationDegrees(rotation));
         if (persistentProjectileEntity.getOwner() != null)
-            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(g, persistentProjectileEntity.getOwner().prevYaw, persistentProjectileEntity.getOwner().getYaw())));
+            matrixStack.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(persistentProjectileEntity.getOwner().getYaw()));
 
-
-        matrixStack.scale(6,1,6);
+        matrixStack.scale(3,3,3);
+        matrixStack.translate(0,-1.5,0);
         RenderSystem.disableCull();
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutout(getTexture(persistentProjectileEntity)));
         this.model.render(matrixStack, vertexConsumer, 255,  OverlayTexture.DEFAULT_UV, 16777215);

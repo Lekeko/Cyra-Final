@@ -25,6 +25,7 @@ import com.keko.features.ModFeature;
 import com.keko.items.ModArmorMaterial;
 import com.keko.items.ModItemGroup;
 import com.keko.items.ModItems;
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import com.keko.packet.networking.ModMessages;
 import com.keko.parrySystem.ParryingHandler;
 import com.keko.particle.ModParticles;
@@ -34,6 +35,7 @@ import com.keko.util.ModLootTableModif;
 import com.keko.world.ModDimensions;
 import com.keko.world.biome.ModBiomes;
 import com.keko.world.gen.ModWorldGen;
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -83,6 +85,7 @@ public class CyraFinal implements ModInitializer {
 		ModFeature.registerFeatures();
 		ModSounds.registerSounds();
 		ModBlockTags.register();
+		MidnightConfig.init(MOD_ID, MidnightConfigCyra.class);
 		try {
 			ModMessages.registerC2SPacket();
 		}catch (RuntimeException ignoredCuzDataGEn){}

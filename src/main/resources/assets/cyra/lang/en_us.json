@@ -1,4 +1,9 @@
 {
+  "key.cyra.cyramod" : "Cyra",
+  "key.cyra.buff" : "Buff Flask",
+  "key.cyra.heal" : "Healing Flask",
+
+
   "entity.cyra.zombie_leader": "Zombie Leader",
   "entity.cyra.skeleton_leader": "Skeleton Leader",
   "entity.cyra.old_lord": "Old Lord",
@@ -8,6 +13,16 @@
   "entity.cyra.deep_salmon": "Deep Salon",
   "entity.cyra.groxion": "Groxion",
   "entity.cyra.stridely": "Stridely",
+
+
+  "cyra.midnightconfig.cooldown_cube_purple":"Cooldown for purple variant",
+  "cyra.midnightconfig.cooldown_cube_red":"Cooldown for red variant",
+  "cyra.midnightconfig.cooldown_cube_orange":"Cooldown for orange variant",
+  "cyra.midnightconfig.cooldown_cube_green":"Cooldown for green variant",
+  "cyra.midnightconfig.cooldown_comp_1":"Cooldown for Compulsion Sword",
+  "cyra.midnightconfig.cooldown_comp_2":"Cooldown for Compulsion Axe" ,
+  "cyra.midnightconfig.cooldown_comp_3":"Cooldown for Compulsion Scythe" ,
+
 
 
 

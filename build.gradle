@@ -23,6 +23,9 @@ repositories {
 		name = 'BlameJared Maven (CrT / Bookshelf)'
 		url = 'https://maven.blamejared.com'
 	}
+	maven {
+		url = "https://api.modrinth.com/maven"
+	}
 }
 
 fabricApi {
@@ -45,6 +48,9 @@ dependencies {
 	include("foundry.veil:veil-fabric-${project.minecraft_version}:${project.veil_version}") {
 		exclude group: "maven.modrinth"
 	}
+
+	modImplementation include ("maven.modrinth:midnightlib:${project.midnightlib_version}")
+
 
 }
 

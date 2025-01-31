@@ -25,6 +25,8 @@ public class CompulsionScythe extends PersistentProjectileEntity {
         light = new PointLight().setRadius(4f).setBrightness(0.03f).setColor((float) 255 / 255, (float) 255 / 255, (float) 200 / 255);
 
     }
+
+
     @Override
     public void onRemoved() {
         if (this.getWorld().isClient){
@@ -60,9 +62,9 @@ public class CompulsionScythe extends PersistentProjectileEntity {
                 wasAdded = true;
             }
 
-        }
+        }else if (age>7) discard();
 
-        if (!getWorld().isClient && getOwner() == null) discard();;
+        if (!getWorld().isClient && getOwner() == null) discard();
 
     }
 

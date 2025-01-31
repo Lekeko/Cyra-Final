@@ -4,6 +4,7 @@ import com.keko.ComponentTypes.ModDataComponentTypes;
 import com.keko.entities.projectiles.pyriteCube.PCube;
 import com.keko.entities.testVeilRenderEntity.cubeEntity.CubeEntity;
 import com.keko.helpers.Directional;
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import com.keko.sounds.ModSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -44,11 +45,11 @@ public class PyritePrimordialCube extends Item {
         colorHashMap.put(5, new Color(255, 102, 25, 255));
         colorHashMap.put(6, new Color(113, 217, 41, 255));
         cooldownHashMap.put(1, 0);
-        cooldownHashMap.put(2, 70);
+        cooldownHashMap.put(2, MidnightConfigCyra.cooldown_cube_purple);
         cooldownHashMap.put(3, 0);
-        cooldownHashMap.put(4, 180);
-        cooldownHashMap.put(5, 20 * 40);
-        cooldownHashMap.put(6, 20 * 60);
+        cooldownHashMap.put(4, MidnightConfigCyra.cooldown_cube_red);
+        cooldownHashMap.put(5, MidnightConfigCyra.cooldown_cube_orange);
+        cooldownHashMap.put(6, MidnightConfigCyra.cooldown_cube_green);
         sound.add(ModSounds.CUBE_1);
         sound.add(ModSounds.CUBE_2);
         sound.add(ModSounds.CUBE_3);
@@ -70,6 +71,8 @@ public class PyritePrimordialCube extends Item {
             stack.set(ModDataComponentTypes.RED_NUMBER, 0);
         }
 
+        updateCooldownMap();
+
         if (!world.isClient){
             if (stack.get(ModDataComponentTypes.BURST_RED) != null && stack.get(ModDataComponentTypes.RED_NUMBER) != null) {
                 if (stack.get(ModDataComponentTypes.BURST_RED) && stack.get(ModDataComponentTypes.RED_NUMBER) < RED_CUBES) {
@@ -86,6 +89,16 @@ public class PyritePrimordialCube extends Item {
 
 
         super.inventoryTick(stack, world, entity, slot, selected);
+    }
+
+    private void updateCooldownMap() {
+        cooldownHashMap.clear();
+        cooldownHashMap.put(1, 0);
+        cooldownHashMap.put(2, MidnightConfigCyra.cooldown_cube_purple);
+        cooldownHashMap.put(3, 0);
+        cooldownHashMap.put(4, MidnightConfigCyra.cooldown_cube_red);
+        cooldownHashMap.put(5, MidnightConfigCyra.cooldown_cube_orange);
+        cooldownHashMap.put(6, MidnightConfigCyra.cooldown_cube_green);
     }
 
     @Override

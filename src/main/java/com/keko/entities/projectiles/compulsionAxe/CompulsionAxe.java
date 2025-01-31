@@ -18,6 +18,11 @@ public class CompulsionAxe  extends PersistentProjectileEntity {
     }
 
     @Override
+    protected float getDragInWater() {
+        return 1f;
+    }
+
+    @Override
     protected ItemStack getDefaultItemStack() {
         return Items.DIAMOND.getDefaultStack();//in your dreams ;3
     }

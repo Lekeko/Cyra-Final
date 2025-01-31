@@ -10,6 +10,7 @@ import com.keko.entities.projectiles.compulsionScythe.CompulsionScythe;
 import com.keko.entities.projectiles.compulsionSword.CompulsionSword;
 import com.keko.helpers.Directional;
 import com.keko.items.ModItems;
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import com.keko.packet.StarParticlesGeneralPayload;
 import com.keko.packet.StarParticlesScythePayload;
 import com.keko.sounds.ModSounds;
@@ -54,7 +55,7 @@ public class CompulsionEvents {
             pos = pos.add(player.getRotationVec(1.0f).x, player.getRotationVec(1.0f).y, player.getRotationVec(1.0f).z);
             int area = 4;
             for (Entity entity : world.getEntitiesByClass(Entity.class, new Box((int) pos.x + area, (int) pos.y + area, (int) pos.z + area,(int) pos.x - area, (int) pos.y - area, (int) pos.z - area), Entity::isAlive)){
-                if (entity != player &&!( entity instanceof ItemEntity) && !( entity instanceof ExperienceOrbEntity))
+                if (entity != player &&!( entity instanceof ItemEntity) && !( entity instanceof ExperienceOrbEntity) && !( entity instanceof CompulsionScythe))
                     target = entity;
             }
         }
@@ -65,6 +66,11 @@ public class CompulsionEvents {
             ServerPlayNetworking.send((ServerPlayerEntity) player, new StarParticlesScythePayload(player.getX(), player.getY(), player.getZ()));
             target.damage(world.getDamageSources().playerAttack(player), 15 -( target instanceof PlayerEntity ? ((PlayerEntity)target).getArmor()/4f : 0));
 
+            CompulsionScythe scythe = new CompulsionScythe(ModProjectileEntities.COMPULSION_SCYTHE_ENTITY_TYPE, world);
+            scythe.setPos(player.getX(), player.getY() - 1, player.getZ());
+            scythe.setOwner(player);
+            world.spawnEntity(scythe);
+
             target.setVelocity(target.getPos().subtract(player.getPos()).normalize().multiply(player.distanceTo(target)/4f).add(0,1.2f,0));
             target.velocityModified = true;
             player.setVelocity(target.getPos().subtract(player.getPos()).normalize().multiply(player.distanceTo(target)/4f).add(0,1,0));
@@ -73,7 +79,7 @@ public class CompulsionEvents {
             if (stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) == 4){
                 stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, 1);
                 if (!player.isCreative())
-                    player.getItemCooldownManager().set(stack.getItem(), 6 * 20);
+                    player.getItemCooldownManager().set(stack.getItem(), MidnightConfigCyra.cooldown_comp_3);
             }
         }
 
@@ -96,7 +102,7 @@ public class CompulsionEvents {
             if (stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) == 3) {
                 stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, 1);
                 if (!player.isCreative())
-                    player.getItemCooldownManager().set(stack.getItem(), 6 * 20);
+                    player.getItemCooldownManager().set(stack.getItem(), MidnightConfigCyra.cooldown_comp_2);
             }
         }
     }
@@ -115,7 +121,7 @@ public class CompulsionEvents {
             sword.setPos(pos.x, pos.y, pos.z);
             world.spawnEntity(sword);
             if (!player.isCreative())
-                player.getItemCooldownManager().set(player.getStackInHand(player.getActiveHand()).getItem(), 15 * 20);
+                player.getItemCooldownManager().set(player.getStackInHand(player.getActiveHand()).getItem(), MidnightConfigCyra.cooldown_comp_1);
         }
 
     }
