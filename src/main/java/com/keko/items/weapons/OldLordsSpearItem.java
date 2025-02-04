@@ -2,6 +2,7 @@ package com.keko.items.weapons;
 
 import com.keko.entities.projectiles.ModProjectileEntities;
 import com.keko.entities.projectiles.oldLordsSpear.OldLordsSpearEntity;
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import com.keko.sounds.ModSounds;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,7 +23,7 @@ public class OldLordsSpearItem extends Item {
 
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
-        if (!world.isClient && !user.isSubmergedInWater()){
+        if (!world.isClient && !user.isSubmergedInWater() && !user.isFallFlying()){
             user.addVelocity(0,0.07f,0);
             user.velocityModified = true;
         }
@@ -65,7 +66,9 @@ public class OldLordsSpearItem extends Item {
                     1.5f * velocityMultiplier,
                     1.0f
             );
-            user.addVelocity(spearEntity.getVelocity().multiply(-1).multiply(0.5f));
+            if (!player.isFallFlying())
+                user.addVelocity(spearEntity.getVelocity().multiply(-1).multiply(0.5f));
+
             user.velocityModified = true;
 
             spearEntity.setOwner(user);
@@ -77,7 +80,8 @@ public class OldLordsSpearItem extends Item {
 
         world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.COMPULSION_AXE, SoundCategory.PLAYERS, 1.0F, 1.0F / (world.getRandom().nextFloat() * 0.4F + 1.2F) + charge * 0.5F);
         player.incrementStat(Stats.USED.getOrCreateStat(this));
-        player.getItemCooldownManager().set(stack.getItem(), 6 * 20);
+        if (!player.isCreative())
+            player.getItemCooldownManager().set(stack.getItem(), MidnightConfigCyra.cooldown_spear * 20);
 
     }
 

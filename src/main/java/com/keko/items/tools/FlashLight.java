@@ -65,7 +65,12 @@ public class FlashLight extends Item {
                 world.spawnEntity(lightEntity);
             }else {
                 LightEntity lightEntity = (LightEntity) world.getEntityById(user.getStackInHand(hand).get(ModDataComponentTypes.LIGHT_ID));
-                lightEntity.discard();
+                try {
+                    lightEntity.discard();
+                }catch (Exception e){
+                    user.getStackInHand(hand).set(ModDataComponentTypes.HAS_LIGHT, false);
+                    user.getStackInHand(hand).set(ModDataComponentTypes.LIGHT_ID, 0);
+                }
                 user.getStackInHand(hand).set(ModDataComponentTypes.HAS_LIGHT, false);
 
             }
@@ -82,6 +87,13 @@ public class FlashLight extends Item {
             stack.set(ModDataComponentTypes.LIGHT_ID, 0);
 
         }
+        if (stack.get(ModDataComponentTypes.HAS_LIGHT) != null && stack.get(ModDataComponentTypes.LIGHT_ID) != null){
+            if (stack.get(ModDataComponentTypes.HAS_LIGHT) == false && stack.get(ModDataComponentTypes.LIGHT_ID) == 0){
+                stack.set(ModDataComponentTypes.HAS_LIGHT, false);
+                stack.set(ModDataComponentTypes.LIGHT_ID, 0);
+            }
+        }
+
         if (world.isClient && light != null)
             this.light.setTo(camera);
 

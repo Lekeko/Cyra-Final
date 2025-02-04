@@ -2,6 +2,7 @@ package com.keko.items.weapons;
 
 import com.keko.ComponentTypes.ModDataComponentTypes;
 import com.keko.entities.projectiles.electroCharge.ElectroCharge;
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.EggEntity;
@@ -33,7 +34,7 @@ public class ElectroChargeWeapon extends Item {
         }
 
         if (!user.isCreative())
-            user.getItemCooldownManager().set(itemStack.getItem(), 60);
+            user.getItemCooldownManager().set(itemStack.getItem(), MidnightConfigCyra.cooldown_electro * 20);
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         itemStack.decrementUnlessCreative(1, user);
         return TypedActionResult.success(itemStack, world.isClient());

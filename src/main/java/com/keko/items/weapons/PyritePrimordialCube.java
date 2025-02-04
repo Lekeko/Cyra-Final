@@ -45,11 +45,11 @@ public class PyritePrimordialCube extends Item {
         colorHashMap.put(5, new Color(255, 102, 25, 255));
         colorHashMap.put(6, new Color(113, 217, 41, 255));
         cooldownHashMap.put(1, 0);
-        cooldownHashMap.put(2, MidnightConfigCyra.cooldown_cube_purple);
+        cooldownHashMap.put(2, MidnightConfigCyra.cooldown_cube_purple * 20);
         cooldownHashMap.put(3, 0);
-        cooldownHashMap.put(4, MidnightConfigCyra.cooldown_cube_red);
-        cooldownHashMap.put(5, MidnightConfigCyra.cooldown_cube_orange);
-        cooldownHashMap.put(6, MidnightConfigCyra.cooldown_cube_green);
+        cooldownHashMap.put(4, MidnightConfigCyra.cooldown_cube_red * 20);
+        cooldownHashMap.put(5, MidnightConfigCyra.cooldown_cube_orange * 20);
+        cooldownHashMap.put(6, MidnightConfigCyra.cooldown_cube_green * 20);
         sound.add(ModSounds.CUBE_1);
         sound.add(ModSounds.CUBE_2);
         sound.add(ModSounds.CUBE_3);
@@ -94,11 +94,11 @@ public class PyritePrimordialCube extends Item {
     private void updateCooldownMap() {
         cooldownHashMap.clear();
         cooldownHashMap.put(1, 0);
-        cooldownHashMap.put(2, MidnightConfigCyra.cooldown_cube_purple);
+        cooldownHashMap.put(2, MidnightConfigCyra.cooldown_cube_purple * 20);
         cooldownHashMap.put(3, 0);
-        cooldownHashMap.put(4, MidnightConfigCyra.cooldown_cube_red);
-        cooldownHashMap.put(5, MidnightConfigCyra.cooldown_cube_orange);
-        cooldownHashMap.put(6, MidnightConfigCyra.cooldown_cube_green);
+        cooldownHashMap.put(4, MidnightConfigCyra.cooldown_cube_red * 20);
+        cooldownHashMap.put(5, MidnightConfigCyra.cooldown_cube_orange * 20);
+        cooldownHashMap.put(6, MidnightConfigCyra.cooldown_cube_green * 20);
     }
 
     @Override

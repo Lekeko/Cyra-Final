@@ -1,5 +1,6 @@
 package com.keko.entities.projectiles.oldLordsSpear;
 
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import com.keko.sounds.ModSounds;
 import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
 import net.minecraft.entity.Entity;
@@ -64,7 +65,9 @@ public class OldLordsSpearEntity extends PersistentProjectileEntity {
         int area = 5;
         Box box = new Box(getX() + area, getY() + area, getZ() + area, getX() - area, getY() - area, getZ() - area);
         for (Entity entity : getWorld().getEntitiesByClass(Entity.class, box, Entity::isAlive)){
-            entity.setVelocity(entity.getPos().subtract(this.getPos()).normalize().multiply(2f));
+            if (entity instanceof PlayerEntity)
+                if (((PlayerEntity)entity).isFallFlying())
+                    entity.addVelocity(entity.getPos().subtract(this.getPos()).normalize().multiply(2f).multiply(MidnightConfigCyra.nerf_elytra_boost_spear ? 0.2f : 1));
             if (entity != getOwner())
                 entity.damage(getWorld().getDamageSources().generic(), 15 - (entity instanceof PlayerEntity ? (float) ((PlayerEntity) entity).getArmor() / 4 : 0));
             entity.velocityModified = true;

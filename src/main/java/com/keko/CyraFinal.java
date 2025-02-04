@@ -110,6 +110,7 @@ public class CyraFinal implements ModInitializer {
 				}
 		);
 
+
 		UseItemCallback.EVENT.register((player, world, hand) ->{
 			if (!world.isClient && ParryingHandler.hasPyriteWeaponInHand(player, hand)){
 				OldLordEntity entity = null;

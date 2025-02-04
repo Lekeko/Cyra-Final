@@ -1,6 +1,7 @@
 package com.keko.items.tools;
 
 import com.keko.game.KeyBinds;
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import com.keko.world.ModDimensions;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -18,7 +19,6 @@ public class SeaCrystalStriders extends Item {
 
     double boost = 2.0d;
     double notRightDimensionDebuff = 2.0d;
-    float cooldown = 5.0f;
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient && user.isSubmergedInWater()){
@@ -35,7 +35,7 @@ public class SeaCrystalStriders extends Item {
                         lookingDirection.y * boost / notRightDimensionDebuff,
                         lookingDirection.z * boost / notRightDimensionDebuff
                 );
-            user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(), (int) (cooldown * 20));
+            user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(), MidnightConfigCyra.cooldown_sea_strider * 20);
 
             user.velocityModified = true;
             user.setSwimming(false);

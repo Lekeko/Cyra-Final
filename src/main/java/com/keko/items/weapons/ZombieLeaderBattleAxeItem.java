@@ -1,6 +1,7 @@
 package com.keko.items.weapons;
 
 import com.keko.ComponentTypes.ModDataComponentTypes;
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import com.keko.packet.AxeparticlesLordPayload;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.Entity;
@@ -36,7 +37,7 @@ public class ZombieLeaderBattleAxeItem extends AxeItem {
                 user.velocityModified = true;
                 user.fallDistance = 0;
                 if (!user.isCreative())
-                    user.getItemCooldownManager().set(this, 5 * 20);
+                    user.getItemCooldownManager().set(this, MidnightConfigCyra.cooldown_battle_axe * 20);
             } else {
                 stack.set(ModDataComponentTypes.AXE_ATTACK, true);
                 user.setVelocity(user.getRotationVec(1.0f).normalize().multiply(0.3f).add(0, 2, 0));
@@ -58,7 +59,7 @@ public class ZombieLeaderBattleAxeItem extends AxeItem {
             stack.set(ModDataComponentTypes.AXE_ATTACK, false);
             if (entity instanceof PlayerEntity)
                 if (!((PlayerEntity)entity).isCreative())
-                    ((PlayerEntity)entity).getItemCooldownManager().set(this, 5 * 20);
+                    ((PlayerEntity)entity).getItemCooldownManager().set(this, MidnightConfigCyra.cooldown_battle_axe * 20);
 
         }
 

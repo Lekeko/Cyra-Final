@@ -79,7 +79,7 @@ public class CompulsionEvents {
             if (stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) == 4){
                 stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, 1);
                 if (!player.isCreative())
-                    player.getItemCooldownManager().set(stack.getItem(), MidnightConfigCyra.cooldown_comp_3);
+                    player.getItemCooldownManager().set(stack.getItem(), MidnightConfigCyra.cooldown_comp_3 * 20);
             }
         }
 
@@ -102,15 +102,16 @@ public class CompulsionEvents {
             if (stack.get(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID) == 3) {
                 stack.set(ModDataComponentTypes.COMPULSION_WEAPON_STAGE_ID, 1);
                 if (!player.isCreative())
-                    player.getItemCooldownManager().set(stack.getItem(), MidnightConfigCyra.cooldown_comp_2);
+                    player.getItemCooldownManager().set(stack.getItem(), MidnightConfigCyra.cooldown_comp_2 * 20);
             }
         }
     }
 
     private static void summonSwordBig(PlayerEntity player, World world) {
-        world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.NEUTRAL, 1.5F, 1.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
 
         if (!player.getItemCooldownManager().isCoolingDown(player.getStackInHand(player.getActiveHand()).getItem())) {
+            world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.NEUTRAL, 1.5F, 1.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+
             CompulsionSword sword = new CompulsionSword(ModProjectileEntities.COMPULSION_SWORD_ENTITY_TYPE, world);
             Vec3d pos = Directional.rayCast(world, player, player.getRotationVec(1.0f), 40);
             while (world.getBlockState(BlockPos.ofFloored(pos)).isOf(Blocks.AIR) || world.getBlockState(BlockPos.ofFloored(pos)).isOf(Blocks.WATER))
@@ -121,7 +122,7 @@ public class CompulsionEvents {
             sword.setPos(pos.x, pos.y, pos.z);
             world.spawnEntity(sword);
             if (!player.isCreative())
-                player.getItemCooldownManager().set(player.getStackInHand(player.getActiveHand()).getItem(), MidnightConfigCyra.cooldown_comp_1);
+                player.getItemCooldownManager().set(player.getStackInHand(player.getActiveHand()).getItem(), MidnightConfigCyra.cooldown_comp_1 * 20);
         }
 
     }

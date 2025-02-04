@@ -15,13 +15,21 @@
   "entity.cyra.stridely": "Stridely",
 
 
-  "cyra.midnightconfig.cooldown_cube_purple":"Cooldown for purple variant",
-  "cyra.midnightconfig.cooldown_cube_red":"Cooldown for red variant",
-  "cyra.midnightconfig.cooldown_cube_orange":"Cooldown for orange variant",
-  "cyra.midnightconfig.cooldown_cube_green":"Cooldown for green variant",
+  "cyra.midnightconfig.title_cooldowns":"Cooldown for Weapons and Tools in seconds!",
+  "cyra.midnightconfig.cooldown_cube_purple":"Cooldown for purple variant cube",
+  "cyra.midnightconfig.cooldown_cube_red":"Cooldown for red variant cube",
+  "cyra.midnightconfig.cooldown_cube_orange":"Cooldown for orange variant cube",
+  "cyra.midnightconfig.cooldown_cube_green":"Cooldown for green variant cube",
   "cyra.midnightconfig.cooldown_comp_1":"Cooldown for Compulsion Sword",
   "cyra.midnightconfig.cooldown_comp_2":"Cooldown for Compulsion Axe" ,
   "cyra.midnightconfig.cooldown_comp_3":"Cooldown for Compulsion Scythe" ,
+  "cyra.midnightconfig.cooldown_electro":"Cooldown for Electro Charge" ,
+  "cyra.midnightconfig.cooldown_battle_axe":"Cooldown for Battle Axe" ,
+  "cyra.midnightconfig.cooldown_spear":"Cooldown for Old Lord's Spear" ,
+  "cyra.midnightconfig.cooldown_sea_wand":"Cooldown for Sea Wand" ,
+  "cyra.midnightconfig.cooldown_sea_strider":"Cooldown for Sea Strider" ,
+  "cyra.midnightconfig.title":"Cyra Configurations" ,
+  "cyra.midnightconfig.nerf_elytra_boost_spear":"Nerf elystra boosting with the Old Lord's Spear?" ,
 
 
 
@@ -31,6 +39,7 @@
   "item.cyra.orb_of_force": "Orb Of Force",
   "item.cyra.orb_of_impetuosity": "Orb Of Impetuosity",
   "item.cyra.orb_of_vitality": "Orb Of Vitality",
+  "item.cyra.orb_of_zephyr": "Orb Of Zephyr",
   "item.cyra.jelly_pasta": "Jelly Pasta",
   "item.cyra.depth_charm_tier_1": "Depth Charm Tier 1",
   "item.cyra.depth_charm_tier_2": "Depth Charm Tier 2",
@@ -43,7 +52,7 @@
   "item.cyra.jelly_crown": "Jelly Crown",
   "item.cyra.electro_charge1": "Electro Charge",
   "item.cyra.jelly_tentacles": "Jelly Tentacles",
-  "item.cyra.sea_crystal_flash_light": "Sea Crystal Flash Light",
+  "item.cyra.sea_crystal_flash_light": "Wisp in a Lantern",
   "item.cyra.deep_salmon_bucket": "Deep Salmon Bucket",
   "item.cyra.groxion_bucket": "Groxion Bucket",
   "item.cyra.sea_rodent_bucket": "Sea Rodent Bucket",
