@@ -32,7 +32,7 @@ public class OldLordsSpearEntity extends PersistentProjectileEntity {
 
     @Override
     public double getDamage() {
-        return 6f;
+        return 9f;
     }
 
     @Override
@@ -68,10 +68,19 @@ public class OldLordsSpearEntity extends PersistentProjectileEntity {
             if (entity instanceof PlayerEntity)
                 if (((PlayerEntity)entity).isFallFlying())
                     entity.addVelocity(entity.getPos().subtract(this.getPos()).normalize().multiply(2f).multiply(MidnightConfigCyra.nerf_elytra_boost_spear ? 0.2f : 1));
-            if (entity != getOwner())
-                entity.damage(getWorld().getDamageSources().generic(), 15 - (entity instanceof PlayerEntity ? (float) ((PlayerEntity) entity).getArmor() / 4 : 0));
+                else
+                    entity.addVelocity(entity.getPos().subtract(this.getPos()).normalize().multiply(1.35f));
+
+            if (entity != getOwner() && !playerWithShield(entity))
+                entity.damage(getWorld().getDamageSources().generic(), 25 - (entity instanceof PlayerEntity ? (float) ((PlayerEntity) entity).getArmor() / 4 : 0));
             entity.velocityModified = true;
         }
+    }
+
+    private boolean playerWithShield(Entity entity) {
+        if (entity instanceof PlayerEntity)
+            return ((PlayerEntity) entity).isBlocking();
+        return false;
     }
 
     @Override

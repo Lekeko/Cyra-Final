@@ -14,12 +14,15 @@
   "entity.cyra.groxion": "Groxion",
   "entity.cyra.stridely": "Stridely",
 
+  "itemgroup.cyra": "Cyra",
+
 
   "cyra.midnightconfig.title_cooldowns":"Cooldown for Weapons and Tools in seconds!",
   "cyra.midnightconfig.cooldown_cube_purple":"Cooldown for purple variant cube",
   "cyra.midnightconfig.cooldown_cube_red":"Cooldown for red variant cube",
   "cyra.midnightconfig.cooldown_cube_orange":"Cooldown for orange variant cube",
   "cyra.midnightconfig.cooldown_cube_green":"Cooldown for green variant cube",
+  "cyra.midnightconfig.cooldown_comp":"Cooldown for Old Lord's Flame Compulsion",
   "cyra.midnightconfig.cooldown_comp_1":"Cooldown for Compulsion Sword",
   "cyra.midnightconfig.cooldown_comp_2":"Cooldown for Compulsion Axe" ,
   "cyra.midnightconfig.cooldown_comp_3":"Cooldown for Compulsion Scythe" ,
@@ -29,7 +32,7 @@
   "cyra.midnightconfig.cooldown_sea_wand":"Cooldown for Sea Wand" ,
   "cyra.midnightconfig.cooldown_sea_strider":"Cooldown for Sea Strider" ,
   "cyra.midnightconfig.title":"Cyra Configurations" ,
-  "cyra.midnightconfig.nerf_elytra_boost_spear":"Nerf elystra boosting with the Old Lord's Spear?" ,
+  "cyra.midnightconfig.nerf_elytra_boost_spear":"Nerf elytra boosting with the Old Lord's Spear?" ,
 
 
 
@@ -89,12 +92,12 @@
   "item.cyra.sea_crystal_axe": "Sea Crystal Axe",
   "item.cyra.sea_crystal_hoe": "Sea Crystal Hoe",
   "item.cyra.pyrite_chunk": "Pyrite Chunk",
-  "item.cyra.old_lords_flame": "Old Lords Flame",
+  "item.cyra.old_lords_flame": "Old Lord's Flame",
   "item.cyra.shackle_of_imprisonment": "Shackle Of Imprisonment",
   "item.cyra.restored_pyrite": "Restored Pyrite",
   "item.cyra.pyrite_primordial_cube1": "Pyrite Primordial Cube",
   "item.cyra.pyrite_bulwark": "Pyrite Bulwark",
-  "item.cyra.old_lords_spear": "Old Lords Spear",
+  "item.cyra.old_lords_spear": "Old Lord's Spear",
   "item.cyra.pyrite_sword": "Pyrite Sword",
   "item.cyra.pyrite_shovel": "Pyrite Shovel",
   "item.cyra.pyrite_pickaxe": "Pyrite Pickaxe",

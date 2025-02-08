@@ -104,7 +104,7 @@ public class PyritePrimordialCube extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        world.playSound((Entity) user, user.getBlockPos(), sound.get(itemStack.get(ModDataComponentTypes.VARIANT) - 1) , SoundCategory.PLAYERS ,  1.0f, (float) (0.5 + world.random.nextFloat() * 1.2F)) ;
+        world.playSound((Entity) user, user.getBlockPos(), sound.get(itemStack.get(ModDataComponentTypes.VARIANT) - 1) , SoundCategory.PLAYERS ,  1.0f, (float) (0.5 + world.random.nextFloat() * 1.15F)) ;
 
         if (!world.isClient){
 

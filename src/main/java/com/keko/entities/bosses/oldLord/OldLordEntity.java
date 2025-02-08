@@ -237,6 +237,7 @@ public class OldLordEntity extends HostileEntity implements GeoEntity {
                 attackTimer = 40;
                 this.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, target.getPos());
                 this.setPos(target.getX() + getWorld().random.nextBetween(-5,5), target.getY() + 3, target.getZ() + getWorld().random.nextBetween(-5,5));
+                getWorld().playSound(null, this.getBlockPos(), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.HOSTILE, 2f, 2f);
 
 
             }else {

@@ -14,6 +14,7 @@ public class MidnightConfigCyra extends MidnightConfig {
     @Entry(category = NUMBERS) public static int cooldown_cube_green = 60;
 
 
+    @Entry(category = NUMBERS) public static int cooldown_comp = 120;
     @Entry(category = NUMBERS) public static int cooldown_comp_1 = 15;
     @Entry(category = NUMBERS) public static int cooldown_comp_2 = 6;
     @Entry(category = NUMBERS) public static int cooldown_comp_3 = 6;

@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cyra:item/awakened_pyrite_axe"
+  },
+
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ 0, -90, 55 ],
+      "translation": [ 0, 10.0,  0 ],
+      "scale": [1.6, 1.6, 1.6 ]
+    },
+    "firstperson_righthand": {
+      "rotation": [ 0, -90, 55 ],
+      "translation": [ 0, 7.0,  0 ],
+      "scale": [1.0, 1.0, 1.0 ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [ 0, 90, -55 ],
+      "translation": [ 0, 7.0,  0 ],
+      "scale": [1.0, 1.0, 1.0 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 0, 90, -55 ],
+      "translation": [ 0, 10.0,  0 ],
+      "scale": [1.6, 1.6, 1.6 ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "stages": [
+    {
+      "type": "veil:blit",
+      "shader": "cyra:sphere",
+      "in": "minecraft:main",
+      "out": "swap"
+    },
+    {
+      "type": "veil:copy",
+      "in": "swap",
+      "out": "minecraft:main",
+      "color": true
+    }
+  ],
+  "framebuffers": {
+    "swap": {
+      "depth": true
+    }
+  }
+}

@@ -3,15 +3,21 @@
   "textures": {
     "layer0": "cyra:item/pyrite_hoe"
   },
+  "overrides": [
+    { "predicate": { "cyra:awakened": 0.0 }, "model": "cyra:item/pyrite_hoe" },
+    { "predicate": { "cyra:awakened": 0.1 }, "model": "cyra:item/awakened_pyrite_hoe" }
+  ],
+
+
   "display": {
     "thirdperson_righthand": {
       "rotation": [ 0, -90, 55 ],
-      "translation": [ 0, 4.0, 0.5 ],
+      "translation": [ 0, 7.0, 0.5 ],
       "scale": [ 1.2, 1.2, 0.85 ]
     },
     "thirdperson_lefthand": {
       "rotation": [ 0, 90, -55 ],
-      "translation": [ 0, 4.0, 0.5 ],
+      "translation": [ 0, 7.0, 0.5 ],
       "scale": [ 1.2, 1.2, 0.85 ]
     }
   }

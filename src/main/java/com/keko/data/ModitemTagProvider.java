@@ -50,7 +50,7 @@ public class ModitemTagProvider extends FabricTagProvider<Item> {
                 .add(ModItems.PYRITE_AXE);
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ModItems.PYRITE_PICKAXE);
-        getOrCreateTagBuilder(ItemTags.HOES)
+        getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ModItems.PYRITE_HOE);
 
         getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)

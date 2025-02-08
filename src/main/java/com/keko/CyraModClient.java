@@ -10,6 +10,7 @@ import com.keko.events.AmbianceEvents;
 import com.keko.game.KeyBinds;
 import com.keko.items.ModItems;
 import com.keko.items.tools.FlashLight;
+import com.keko.model.ModModelChanger;
 import com.keko.model.ModModelsRegister;
 import com.keko.packet.networking.ModMessages;
 import com.keko.particle.ParticleRegisterMod;
@@ -105,41 +106,7 @@ public class CyraModClient implements ClientModInitializer {
         });
 
 
-        Identifier variantProperty = Identifier.of(CyraFinal.MOD_ID, "variant");
-        ModelPredicateProviderRegistry.register(ModItems.PYRITE_PRIMORDIAL_CUBE, variantProperty, (itemStack, clientWorld, livingEntity, seed) -> {
-            if (itemStack.isEmpty()) {
-                return 0f;
-            }
-            if (itemStack.get(ModDataComponentTypes.VARIANT) == null)
-                return 0f;
-            else {
-                return (float) (itemStack.get(ModDataComponentTypes.VARIANT) - 1) / 10;
-            }
-        });
-
-        Identifier variantProperty2 = Identifier.of(CyraFinal.MOD_ID, "variant");
-        ModelPredicateProviderRegistry.register(ModItems.FLASHLIGHT, variantProperty2, (itemStack, clientWorld, livingEntity, seed) -> {
-            if (itemStack.isEmpty()) {
-                return 0f;
-            }
-            if (itemStack.get(ModDataComponentTypes.HAS_LIGHT) == null)
-                return 0f;
-            else {
-                return itemStack.get(ModDataComponentTypes.HAS_LIGHT) == false ? 0f : 0.1f;
-            }
-        });
-
-        Identifier variantProperty1 = Identifier.of(CyraFinal.MOD_ID, "variant");
-        ModelPredicateProviderRegistry.register(ModItems.ELECTRO_CHARGE, variantProperty1, (itemStack, clientWorld, livingEntity, seed) -> {
-            if (itemStack.isEmpty()) {
-                return 0f;
-            }
-            if (itemStack.get(ModDataComponentTypes.ELECTRO_VARIANT) == null)
-                return 0f;
-
-            return (itemStack.get(ModDataComponentTypes.ELECTRO_VARIANT) - 1) / 100f;
-
-        });
+        ModModelChanger.register();
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (musicTicks > 0) {

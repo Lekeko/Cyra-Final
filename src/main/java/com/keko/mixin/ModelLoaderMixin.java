@@ -24,6 +24,9 @@ public abstract class ModelLoaderMixin {
 	public void addCyraTrident(BlockColors blockColors, Profiler profiler, Map jsonUnbakedModels, Map blockStates, CallbackInfo ci) {
 		this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of("cyra:zombie_leader_battle_axe_inv")));
 		this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of("cyra:skeleton_leader_battle_bow_inv")));
+		this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of("cyra:awakened_pyrite_sword_inv")));
+		this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of("cyra:awakened_pyrite_axe_inv")));
+		this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of("cyra:awakened_pyrite_hoe_inv")));
 	}
 }
 

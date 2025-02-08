@@ -3,6 +3,12 @@
   "textures": {
     "layer0": "cyra:item/pyrite_axe"
   },
+  "overrides": [
+    { "predicate": { "cyra:awakened": 0.0 }, "model": "cyra:item/pyrite_axe" },
+    { "predicate": { "cyra:awakened": 0.1 }, "model": "cyra:item/awakened_pyrite_axe" }
+  ],
+
+
   "display": {
     "thirdperson_righthand": {
       "rotation": [ 0, -90, 55 ],

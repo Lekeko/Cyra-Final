@@ -20,6 +20,7 @@ public class ModDataComponentTypes {
     public static final ComponentType<Boolean> HAS_LIGHT = register("has_light", boolBuilder -> boolBuilder.codec(Codec.BOOL));
     public static final ComponentType<Integer> LIGHT_ID = register("light_id", integerBuilder -> integerBuilder.codec(Codec.INT));
     public static final ComponentType<Integer> COMPULSION_WEAPON_STAGE_ID = register("compulsion_weapon_stage_id", integerBuilder -> integerBuilder.codec(Codec.INT));
+    public static final ComponentType<Integer> AWAKENED_ARMAMENT = register("awakened_armament_id", integerBuilder -> integerBuilder.codec(Codec.INT));
 
     public static void registerDataComponents() {
 

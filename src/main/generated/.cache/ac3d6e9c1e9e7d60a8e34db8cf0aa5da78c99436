@@ -1,4 +1,4 @@
-// 1.21	2025-02-01T13:14:47.086919	Cyra/Recipes
+// 1.21	2025-02-08T13:06:13.0890215	Cyra/Recipes
 dc39066c96bbcb949d82d9f8b27565d4d6c3816d data\cyra\recipe\pyrite_brick_stairs.json
 265fc2ccc1d1c46460746a1a6e235df611d66d3b data\cyra\advancement\recipes\building_blocks\chiseled_void_bricks.json
 6084df1ca5f850cc16d470203c6979952e14b6be data\cyra\advancement\recipes\building_blocks\smooth_pyrite.json
@@ -41,8 +41,8 @@ a3243e500c2f81823004597182431718e3e3fda2 data\cyra\recipe\dazed_sea_stone_brick.
 75a621126d0af90323a7e9a5a9e876496af3593c data\cyra\recipe\sea_crystal_chestplate.json
 3df855e8582077b87ed43c5af6b41c7935efac8b data\cyra\recipe\sea_crystal_bricks_door.json
 2fdf98d88506928bbbc05e45f2b8886ac5298b3e data\cyra\recipe\jelly_pasta.json
-a15e9ac244f4d3cb3fecd22742d69c27a85d02b7 data\cyra\advancement\recipes\combat\buff_flask.json
 c544382ee31eb8021067c743021508994039f20b data\cyra\advancement\recipes\combat\depth_charm_tier_1.json
+a15e9ac244f4d3cb3fecd22742d69c27a85d02b7 data\cyra\advancement\recipes\combat\buff_flask.json
 99568290169659bb206fb3778343c1415b1f6c1e data\cyra\recipe\sea_crystal_oxygen_tank.json
 7c840ba8089f843c5fc85e2d785f78f6a97699b7 data\cyra\recipe\pillar_pyrite_bricks.json
 100ee96672d9238602aab23e7f5f5392f079a141 data\cyra\recipe\chiseled_pyrite_bricks.json

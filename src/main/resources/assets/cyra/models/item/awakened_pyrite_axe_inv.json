@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "cyra:item/awakened_pyrite_axe_inv"
+  }
+}

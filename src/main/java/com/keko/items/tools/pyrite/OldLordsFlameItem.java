@@ -2,6 +2,7 @@ package com.keko.items.tools.pyrite;
 
 import com.keko.effects.ModStatusEffects;
 import com.keko.items.ModItems;
+import com.keko.midnightLibConfigs.MidnightConfigCyra;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +25,7 @@ public class OldLordsFlameItem extends Item {
                 ItemStack stack = user.getStackInHand(hand);
                 if (!user.getItemCooldownManager().isCoolingDown(stack.getItem())) {
                     user.addStatusEffect(new StatusEffectInstance(ModStatusEffects.COMPULSION, 1000, 1));
-                    user.getItemCooldownManager().set(stack.getItem(), 2 * 60 * 20);
+                    user.getItemCooldownManager().set(stack.getItem(), MidnightConfigCyra.cooldown_comp * 20);
                 }
             }
         }

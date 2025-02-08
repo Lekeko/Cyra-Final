@@ -94,27 +94,21 @@ public class ModItems {
 
 
     /*enderite*/
-        public static final Item ENDERITE_CHUNK = registerItem(new Item(new Item.Settings()), "enderite_chunk");
-        public static final Item ENDERITE_INGOT = registerItem(new Item(new Item.Settings()), "enderite_ingot");
+    public static final Item ENDERITE_CHUNK = registerItem(new Item(new Item.Settings()), "enderite_chunk");
+    public static final Item ENDERITE_INGOT = registerItem(new Item(new Item.Settings()), "enderite_ingot");
 
-        public static final Item ENDERITE_SWORD = registerItem(new SwordItem(ModToolMaterial.ENDERITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 4, -2.4F)))), "enderite_sword");
-        public static final Item ENDERITE_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.ENDERITE, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 2, -2.3F)))), "enderite_shovel");
-        public static final Item ENDERITE_PICKAXE = registerItem(new PickaxeItem(ModToolMaterial.ENDERITE, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 2, -2.0F))), "enderite_pickaxe");
-        public static final Item ENDERITE_AXE = registerItem(new AxeItem(ModToolMaterial.ENDERITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 6, -2.0F))), "enderite_axe");
-        public static final Item ENDERITE_HOE = registerItem(new HoeItem(ModToolMaterial.ENDERITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.ENDERITE, -3, -1.8F))), "enderite_hoe");
+    public static final Item ENDERITE_SWORD = registerItem(new SwordItem(ModToolMaterial.ENDERITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 4, -2.4F)))), "enderite_sword");
+    public static final Item ENDERITE_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.ENDERITE, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 2, -2.3F)))), "enderite_shovel");
+    public static final Item ENDERITE_PICKAXE = registerItem(new PickaxeItem(ModToolMaterial.ENDERITE, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 2, -2.0F))), "enderite_pickaxe");
+    public static final Item ENDERITE_AXE = registerItem(new AxeItem(ModToolMaterial.ENDERITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.ENDERITE, 6, -2.0F))), "enderite_axe");
+    public static final Item ENDERITE_HOE = registerItem(new HoeItem(ModToolMaterial.ENDERITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.ENDERITE, -3, -1.8F))), "enderite_hoe");
 
-        public static final Item ENDERITE_HELMET = registerItem(new ArmorItem(ModArmorMaterial.ENDERITE, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "enderite_helmet");
-        public static final Item ENDERITE_CHESTPLATE = registerItem(new ArmorItem(ModArmorMaterial.ENDERITE, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(37))), "enderite_chestplate");
-        public static final Item ENDERITE_LEGGINGS = registerItem(new ArmorItem(ModArmorMaterial.ENDERITE, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(37))), "enderite_leggings");
-        public static final Item ENDERITE_BOOTS = registerItem(new ArmorItem(ModArmorMaterial.ENDERITE, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(37))), "enderite_boots");
-
-
-
-
-
+    public static final Item ENDERITE_HELMET = registerItem(new ArmorItem(ModArmorMaterial.ENDERITE, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "enderite_helmet");
+    public static final Item ENDERITE_CHESTPLATE = registerItem(new ArmorItem(ModArmorMaterial.ENDERITE, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(37))), "enderite_chestplate");
+    public static final Item ENDERITE_LEGGINGS = registerItem(new ArmorItem(ModArmorMaterial.ENDERITE, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(37))), "enderite_leggings");
+    public static final Item ENDERITE_BOOTS = registerItem(new ArmorItem(ModArmorMaterial.ENDERITE, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(37))), "enderite_boots");
 
     //SEA CRYSTAL
-
     public static final Item SEA_CRYSTAL_FRAGMENT = registerItem(new Item(new Item.Settings()), "sea_crystal_fragment");
     public static final Item SEA_CRYSTAL = registerItem(new Item(new Item.Settings()), "sea_crystal");
     public static final Item SEA_WAND = registerItem(new SeaWandItem(new Item.Settings().rarity(Rarity.RARE)), "sea_support_block_wand");
@@ -143,11 +137,11 @@ public class ModItems {
     public static final Item PYRITE_BULWARK = registerItem(new ShieldItem(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)), "PYRITE_BULWARK".toLowerCase());
     public static final Item OLD_LORDS_SPEAR = registerItem(new OldLordsSpearItem(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)), "old_lords_spear");
 
-    public static final Item PYRITE_SWORD = registerItem(new SwordItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.PYRITE, 8, -1.4F))).rarity(Rarity.EPIC)), "pyrite_sword");
+    public static final Item PYRITE_SWORD = registerItem(new PyriteSwordItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.PYRITE, 8, -1.4F))).rarity(Rarity.EPIC)), "pyrite_sword");
     public static final Item PYRITE_SHOVEL = registerItem(new ShovelItem(ModToolMaterial.PYRITE, (new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterial.PYRITE, 3, -1.8F)))), "pyrite_shovel");
     public static final Item PYRITE_PICKAXE = registerItem(new PickaxeItem(ModToolMaterial.PYRITE, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterial.PYRITE, 4, -1.6F))), "pyrite_pickaxe");
-    public static final Item PYRITE_AXE = registerItem(new AxeItem(ModToolMaterial.PYRITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.PYRITE, 9, -2.1F)).rarity(Rarity.EPIC)), "pyrite_axe");
-    public static final Item PYRITE_HOE = registerItem(new PyriteHoe(ModToolMaterial.PYRITE, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterial.PYRITE, 7, -1.1F)).rarity(Rarity.EPIC)), "pyrite_hoe");
+    public static final Item PYRITE_AXE = registerItem(new PyriteAxeItem(ModToolMaterial.PYRITE, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterial.PYRITE, 9, -2.1F)).rarity(Rarity.EPIC)), "pyrite_axe");
+    public static final Item PYRITE_HOE = registerItem(new PyriteSwordItem(ModToolMaterial.PYRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterial.PYRITE, 7, -1.1F)).rarity(Rarity.EPIC)), "pyrite_hoe");
 
     public static final Item PYRITE_HELMET = registerItem(new ArmorItem(ModArmorMaterial.PYRITE, ArmorItem.Type.HELMET , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "pyrite_helmet");
     public static final Item PYRITE_CHESTPLATE = registerItem(new ArmorItem(ModArmorMaterial.PYRITE, ArmorItem.Type.CHESTPLATE , new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))), "pyrite_chestplate");

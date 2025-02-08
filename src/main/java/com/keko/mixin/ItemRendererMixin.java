@@ -1,5 +1,6 @@
 package com.keko.mixin;
 
+import com.keko.ComponentTypes.ModDataComponentTypes;
 import com.keko.CyraFinal;
 import com.keko.items.ModItems;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -23,6 +24,27 @@ public class ItemRendererMixin {
 		}
 		if (stack.isOf(ModItems.SKELETON_BOW) && modelTransformation == ModelTransformationMode.GUI) {
 			return ((ItemRendererAccessor) this).cyra$getModel().getModelManager().getModel(new ModelIdentifier(Identifier.of(CyraFinal.MOD_ID, "skeleton_leader_battle_bow_inv"), "inventory"));
+		}
+		if (stack.isOf(ModItems.PYRITE_SWORD)  && modelTransformation == ModelTransformationMode.GUI) {
+			try {
+				if (stack.get(ModDataComponentTypes.AWAKENED_ARMAMENT) == 1) {
+					return ((ItemRendererAccessor) this).cyra$getModel().getModelManager().getModel(new ModelIdentifier(Identifier.of(CyraFinal.MOD_ID, "awakened_pyrite_sword_inv"), "inventory"));
+				}
+			}catch (Exception ignored){}
+		}
+		if (stack.isOf(ModItems.PYRITE_AXE)  && modelTransformation == ModelTransformationMode.GUI) {
+			try {
+				if (stack.get(ModDataComponentTypes.AWAKENED_ARMAMENT) == 1) {
+					return ((ItemRendererAccessor) this).cyra$getModel().getModelManager().getModel(new ModelIdentifier(Identifier.of(CyraFinal.MOD_ID, "awakened_pyrite_axe_inv"), "inventory"));
+				}
+			}catch (Exception ignored){}
+		}
+		if (stack.isOf(ModItems.PYRITE_HOE)  && modelTransformation == ModelTransformationMode.GUI) {
+			try {
+				if (stack.get(ModDataComponentTypes.AWAKENED_ARMAMENT) == 1) {
+					return ((ItemRendererAccessor) this).cyra$getModel().getModelManager().getModel(new ModelIdentifier(Identifier.of(CyraFinal.MOD_ID, "awakened_pyrite_hoe_inv"), "inventory"));
+				}
+			}catch (Exception ignored){}
 		}
 		return value;
 	}
